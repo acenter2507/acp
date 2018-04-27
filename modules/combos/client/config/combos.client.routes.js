@@ -32,7 +32,7 @@
           comboResolve: newCombo
         },
         data: {
-          roles: ['user', 'admin'],
+          // roles: ['user', 'admin'],
           pageTitle: 'Combos Create'
         }
       })
@@ -45,7 +45,7 @@
           comboResolve: getCombo
         },
         data: {
-          roles: ['user', 'admin'],
+          // roles: ['user', 'admin'],
           pageTitle: 'Edit Combo {{ comboResolve.name }}'
         }
       })

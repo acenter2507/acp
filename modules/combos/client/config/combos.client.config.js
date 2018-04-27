@@ -26,7 +26,7 @@
     menuService.addSubMenuItem('topbar', 'combos', {
       title: 'Create Combo',
       state: 'combos.create',
-      roles: ['user']
+      roles: ['*']
     });
   }
 }());

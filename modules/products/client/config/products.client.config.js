@@ -26,7 +26,7 @@
     menuService.addSubMenuItem('topbar', 'products', {
       title: 'Create Product',
       state: 'products.create',
-      roles: ['user']
+      roles: ['*']
     });
   }
 }());

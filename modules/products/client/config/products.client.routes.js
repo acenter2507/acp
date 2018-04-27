@@ -32,7 +32,7 @@
           productResolve: newProduct
         },
         data: {
-          roles: ['user', 'admin'],
+          // roles: ['user', 'admin'],
           pageTitle: 'Products Create'
         }
       })
@@ -45,7 +45,7 @@
           productResolve: getProduct
         },
         data: {
-          roles: ['user', 'admin'],
+          // roles: ['user', 'admin'],
           pageTitle: 'Edit Product {{ productResolve.name }}'
         }
       })
