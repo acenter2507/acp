@@ -39,9 +39,9 @@ var ProductSchema = new Schema({
 });
 ProductSchema.plugin(paginate);
 
-ProductSchema.pre('save', function (next) {
-  this.search = this.name + '-' + this.brand + '-' + this.model_number + '-' + this.lot_number + '-' + this.qr_code;
-  next();
-});
+// ProductSchema.pre('save', function (next) {
+//   this.search = this.name + '-' + this.brand + '-' + this.model_number + '-' + this.lot_number + '-' + this.qr_code;
+//   next();
+// });
 
 mongoose.model('Product', ProductSchema);
