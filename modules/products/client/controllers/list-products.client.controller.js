@@ -18,6 +18,9 @@
     vm.pages = [];
     vm.total = 0;
 
+    // Start function
+    prepareCondition();
+
     function prepareCondition() {
       vm.condition = {
         sort: '-created',
