@@ -44,12 +44,12 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
     ngDialog.openConfirm({
       templateUrl: 'confirmTemplate.html',
       scope: $scope
-    }).then(res => {
+    }).then(function(res) {
       delete $scope.dialog;
       if (resolve) {
         resolve(res);
       }
-    }, res => {
+    }, function(res) {
       delete $scope.dialog;
       if (reject) {
         reject(res);
@@ -57,7 +57,7 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
     });
   };
   // Hiển thị Dashboard
-  $scope.handleShowDashboardMenu = () => {
+  $scope.handleShowDashboardMenu = function() {
     var mDialog = ngDialog.open({
       template: 'modules/core/client/views/templates/dashboard.dialog.template.html',
       scope: $scope

@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('underscore');
+var _ = require('underscore');
 // Create the chat configuration
 module.exports = function (io, socket) {
   socket.on('init', function (req) {
