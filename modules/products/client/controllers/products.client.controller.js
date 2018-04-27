@@ -6,9 +6,9 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$window', '$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
+  ProductsController.$inject = ['$timeout', '$window', '$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
 
-  function ProductsController($window, $scope, $state, product, FileUploader, ngDialog) {
+  function ProductsController($timeout, $window, $scope, $state, product, FileUploader, ngDialog) {
     var vm = this;
 
     vm.product = product;
