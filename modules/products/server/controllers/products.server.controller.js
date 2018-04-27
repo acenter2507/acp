@@ -108,7 +108,7 @@ exports.image = function (req, res) {
   });
 };
 
-exports.seach = function (req, res) {
+exports.search = function (req, res) {
   var page = req.body.page || 1;
   var condition = req.body.condition || {};
 
