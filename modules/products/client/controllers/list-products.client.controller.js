@@ -20,6 +20,7 @@
 
     // Start function
     prepareCondition();
+    handleSearch();
 
     function prepareCondition() {
       vm.condition = {
