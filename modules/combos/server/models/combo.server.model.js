@@ -27,6 +27,6 @@ var ComboSchema = new Schema({
   sterilize_date: { type: Date },
   created: { type: Date, default: Date.now }
 });
-ProductSchema.plugin(paginate);
+ComboSchema.plugin(paginate);
 
 mongoose.model('Combo', ComboSchema);
