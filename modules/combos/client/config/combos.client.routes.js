@@ -20,6 +20,12 @@
         controller: 'CombosListController',
         controllerAs: 'vm'
       })
+      .state('combos.check', {
+        url: '/checking',
+        templateUrl: 'modules/combos/client/views/check-combo.client.view.html',
+        controller: 'ComboCheckController',
+        controllerAs: 'vm'
+      })
       .state('combos.create', {
         url: '/create',
         templateUrl: 'modules/combos/client/views/form-combo.client.view.html',
@@ -46,12 +52,6 @@
         resolve: {
           comboResolve: getCombo
         }
-      })
-      .state('combos.check', {
-        url: '/checking',
-        templateUrl: 'modules/combos/client/views/check-combo.client.view.html',
-        controller: 'ComboCheckController',
-        controllerAs: 'vm'
       });
   }
 
