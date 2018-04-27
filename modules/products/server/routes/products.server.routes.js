@@ -7,6 +7,7 @@ var productsPolicy = require('../policies/products.server.policy'),
   products = require('../controllers/products.server.controller');
 
 module.exports = function(app) {
+  app.route('/api/products/image').post(products.image);
   // Products Routes
   app.route('/api/products')//.all(productsPolicy.isAllowed)
     .get(products.list)

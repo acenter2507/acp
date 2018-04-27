@@ -53,7 +53,7 @@
     };
     // Called after the user has successfully uploaded a new picture
     vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
-      vm.product.avatar = response;
+      vm.product.image = response;
       handleSaveProduct();
       vm.cancelUpload();
     };
@@ -95,16 +95,17 @@
         vm.busy = false;
         return false;
       }
-      vm.uploader.uploadAll();
-      if (vm.isGetAvatarFromFile) {
-        vm.uploader.uploadAll();
-      } else {
-        handleSaveProduct();
-      }
+      console.log(vm.product);
+      // if (vm.isGetAvatarFromFile) {
+      //   vm.uploader.uploadAll();
+      // } else {
+      //   handleSaveProduct();
+      // }
 
     };
     
     function handleSaveProduct() {
+      
       if (vm.product._id) {
         vm.product.$update(successCallback, errorCallback);
       } else {

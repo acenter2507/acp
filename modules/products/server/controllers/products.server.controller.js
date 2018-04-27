@@ -6,8 +6,10 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Product = mongoose.model('Product'),
+  config = require(path.resolve('./config/config')),
+  multer = require('multer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('underscore');
 
 /**
  * Create a Product
@@ -89,6 +91,20 @@ exports.list = function(req, res) {
     } else {
       res.jsonp(products);
     }
+  });
+};
+
+/**
+ * Change Products image
+ */
+exports.image = function (req, res) {
+  var upload = multer(config.uploads.productImage).single('productImage');
+  var productImageFilter = require(path.resolve('./config/lib/multer')).productImageFilter;
+  upload.fileFilter = productImageFilter;
+  upload(req, res, function (uploadError) {
+    if (uploadError) return res.status(400).send({ message: '写真をアップロードできません！' });
+    var imageUrl = config.uploads.productImage.dest + req.file.filename;
+    return res.jsonp(imageUrl);
   });
 };
 
