@@ -5,7 +5,7 @@
     .module('sets')
     .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  menuConfig.$inject = ['Menus'];
 
   function menuConfig(menuService) {
     // Set top bar menu items
