@@ -9,7 +9,5 @@
 
   function ComboCheckController(CombosService) {
     var vm = this;
-
-    vm.combos = CombosService.query();
   }
 }());
