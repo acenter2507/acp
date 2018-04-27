@@ -6,9 +6,9 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
+  ProductsController.$inject = ['$window', '$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
 
-  function ProductsController($scope, $state, product, FileUploader, ngDialog) {
+  function ProductsController($window, $scope, $state, product, FileUploader, ngDialog) {
     var vm = this;
 
     vm.product = product;
@@ -86,7 +86,7 @@
     };
 
     // Save Department
-    vm.handleStartSaveProduct = isValid => {
+    vm.handleStartSaveProduct = function (isValid) {
       if (vm.busy) return;
       vm.busy = true;
       if (!isValid) {
