@@ -85,7 +85,7 @@
       vm.uploader.clearQueue();
     };
 
-    // Save Department
+    // Save Product
     vm.handleStartSaveProduct = function (isValid) {
       if (vm.busy) return;
       vm.busy = true;
@@ -98,7 +98,7 @@
       if (vm.isGetAvatarFromFile) {
         vm.uploader.uploadAll();
       } else {
-        handleSaveDepartment();
+        handleSaveProduct();
       }
 
     };
