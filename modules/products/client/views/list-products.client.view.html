@@ -1,22 +1,33 @@
-<section>
-  <div class="page-header">
-    <h1>Products</h1>
+<div class="container-fluid animated fadeIn">
+  <!-- Tool tìm kiếm -->
+  <div class="row" id="rests-review-tools">
+    <div class="col-xs-12">
+      <!-- 検索ツール -->
+      <accordion close-others="true" ng-init="openTools = false;">
+        <accordion-group is-open="openTools">
+          <accordion-heading>
+            <i class="fa fa-arrow-circle-down" ng-class="{'fa-rotate-180': openTools}"></i> 検索ツール
+          </accordion-heading>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="key">検索キー</label>
+              <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー">
+            </div>
+            <div class="col-sm-6">
+              <label for="limit">表示件数</label>
+              <input name="limit" type="number" ng-model="vm.condition.limit" class="form-control">
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button class="btn btn-sm btn-danger" ng-click="vm.handleClearCondition()">クリア</button>
+              <button class="btn btn-sm btn-primary" ng-click="vm.handleStartSearch()">検索</button>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </accordion-group>
+      </accordion>
+    </div>
   </div>
-  <div class="list-group">
-    <a ng-repeat="product in vm.products"
-       ui-sref="products.view({ productId: product._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="product.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="product.user" ng-bind="product.user.displayName"></span>
-        <span ng-if="!product.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="product.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.products.$resolved && !vm.products.length">
-    No Products yet, why don't you <a ui-sref="products.create">create one</a>?
-  </div>
-</section>
+</div>
