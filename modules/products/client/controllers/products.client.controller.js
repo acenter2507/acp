@@ -6,33 +6,104 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'productResolve'];
+  ProductsController.$inject = ['$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
 
-  function ProductsController ($scope, $state, $window, Authentication, product) {
+  function ProductsController($scope, $state, product, FileUploader, ngDialog) {
     var vm = this;
 
-    vm.authentication = Authentication;
     vm.product = product;
-    vm.error = null;
     vm.form = {};
-    vm.remove = remove;
-    vm.save = save;
 
-    // Remove existing Product
-    function remove() {
-      if ($window.confirm('Are you sure you want to delete?')) {
-        vm.product.$remove($state.go('products.list'));
-      }
+    vm.busy = false;
+
+    onCreate();
+    function onCreate() {
+      vm.imageUrl = vm.product.avatar || './modules/products/client/img/placeholder.png';
+      prepareUploader();
     }
 
-    // Save Product
-    function save(isValid) {
+    function prepareUploader() {
+      vm.uploader = new FileUploader({
+        url: 'api/products/image',
+        alias: 'productImage'
+      });
+      vm.uploader.filters.push({
+        name: 'imageFilter',
+        fn: function (item, options) {
+          var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+          return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+      });
+    }
+
+    // Called after the user selected a new picture file
+    vm.uploader.onAfterAddingFile = function (fileItem) {
+      if ($window.FileReader) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(fileItem._file);
+
+        fileReader.onload = function (fileReaderEvent) {
+          $timeout(function () {
+            // $scope.imageURL = fileReaderEvent.target.result;
+            handleCropImage(fileReaderEvent.target.result);
+          }, 0);
+        };
+      }
+    };
+    // Called after the user has successfully uploaded a new picture
+    vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
+      vm.product.avatar = response;
+      handleSaveProduct();
+      vm.cancelUpload();
+    };
+    // Called after the user has failed to uploaded a new picture
+    vm.uploader.onErrorItem = function (fileItem, response, status, headers) {
+      vm.busy = false;
+      $scope.handleShowToast(response, true);
+      // Clear upload buttons
+      vm.cancelUpload();
+    };
+    // Change user profile picture
+    function handleCropImage(data) {
+      $scope.sourceImageUrl = data;
+      $scope.desImageUrl = {};
+      var mDialog = ngDialog.open({
+        template: 'modules/core/client/views/templates/crop-image.dialog.template.html',
+        scope: $scope
+      });
+      mDialog.closePromise.then(function (res) {
+        if (!res.value) return;
+        vm.imageUrl = res.value;
+        var blob = dataURItoBlob(res.value);
+        vm.uploader.queue[0]._file = blob;
+        delete $scope.sourceImageUrl;
+        vm.isGetAvatarFromFile = true;
+      });
+    }
+    // Cancel the upload process
+    vm.cancelUpload = function () {
+      vm.uploader.clearQueue();
+    };
+
+    // Save Department
+    vm.handleStartSaveProduct = isValid => {
+      if (vm.busy) return;
+      vm.busy = true;
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.productForm');
+        vm.busy = false;
         return false;
       }
+      vm.uploader.uploadAll();
+      if (vm.isGetAvatarFromFile) {
+        vm.uploader.uploadAll();
+      } else {
+        handleSaveDepartment();
+      }
 
-      // TODO: move create/update logic to service
+    };
+    
+    function handleSaveProduct() {
       if (vm.product._id) {
         vm.product.$update(successCallback, errorCallback);
       } else {
@@ -40,13 +111,15 @@
       }
 
       function successCallback(res) {
+        vm.busy = false;
         $state.go('products.view', {
           productId: res._id
         });
       }
 
       function errorCallback(res) {
-        vm.error = res.data.message;
+        vm.busy = false;
+        $scope.handleShowToast(res.data.message, true);
       }
     }
   }
