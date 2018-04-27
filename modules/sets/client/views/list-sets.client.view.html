@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Sets</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="set in vm.sets"
+       ui-sref="sets.view({ setId: set._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="set.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="set.user" ng-bind="set.user.displayName"></span>
+        <span ng-if="!set.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="set.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.sets.$resolved && !vm.sets.length">
+    No Sets yet, why don't you <a ui-sref="sets.create">create one</a>?
+  </div>
+</section>
