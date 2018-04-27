@@ -1,5 +1,59 @@
 <div class="container-fluid animated fadeIn">
   <div class="row">
-
+    <div class="col-xs-12">
+      <h2>製品登録画面</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <div class="well">
+        <form name="vm.form.productForm" ng-submit="vm.handleSaveProduct(vm.form.productForm.$valid)" novalidate>
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <img class="img-responsive" src="{{ vm.imageUrl }}">
+              <div class="form-group mgnb mg5t">
+                <span class="btn btn-default btn-xs btn-upload-file">
+                  ファイル選択
+                  <input type="file" nv-file-select uploader="vm.uploader" style="display: hidden;">
+                </span>
+              </div>
+              <div class="d-sm-none h20"></div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <div class="form-group" show-errors>
+                <input name="name" type="text" ng-model="vm.product.name" id="name" class="form-control" placeholder="名称" required>
+                <div ng-messages="vm.form.productForm.name.$error" role="alert">
+                  <p class="help-block error-text font-sm" ng-message="required">名称は必須です。</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <input name="brand" type="text" ng-model="vm.product.brand" class="form-control" placeholder="ブランド">
+              </div>
+              <div class="form-group">
+                <input name="model_number" type="text" ng-model="vm.product.model_number" class="form-control" placeholder="型番">
+              </div>
+              <div class="form-group">
+                <input name="lot_number" type="text" ng-model="vm.product.lot_number" class="form-control" placeholder="ロット番号">
+              </div>
+              <div class="form-group">
+                <input name="qr_code" type="text" ng-model="vm.product.qr_code" class="form-control" placeholder="２次元コード">
+              </div>
+              <div class="form-group">
+                <input name="intro_date" type="date" ng-model="vm.product.intro_date" class="form-control" placeholder="導入年月日">
+              </div>
+              <div class="form-group">
+                <input name="exchange_date" type="date" ng-model="vm.product.exchange_date" class="form-control" placeholder="交換日">
+              </div>
+            </div>
+          </div>
+          <div class="form-group mgnb">
+            <button type="submit" class="btn btn-primary pull-right">
+              <i ng-show="vm.busy" class="fa fa-spinner fa-pulse fa-fw"></i> 保存</button>
+            <button type="button" class="btn btn-default pull-right mg5r" ng-click="vm.handleCancelInput()">キャンセル</button>
+            <button type="button" class="btn btn-danger pull-right mg5r" ng-if="vm.product._id" ng-click="vm.handleDeleteDepartment()">削除</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

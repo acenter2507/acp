@@ -1,0 +1,85 @@
+.product-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.product-item-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: calc(25% - 30px);
+  padding: 12px;
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05); }
+  .product-item-block .product-block-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px; }
+    .product-item-block .product-block-header .product-block-avatar,
+    .product-item-block .product-block-header .product-block-avatar img {
+      width: 64px;
+      height: 64px;
+      margin-right: 12px;
+      border-radius: 50%;}
+    .product-item-block .product-block-header .product-block-info {
+      flex-grow: 1; }
+      .product-item-block .product-block-header .product-block-info .product-block-title {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.4rem;
+        margin-top: 0;
+        vertical-align: top;
+        width: 100%;}
+      .product-item-block .product-block-header .product-block-info .product-block-action {
+        display: flex;
+        justify-content: flex-start;}
+      .product-item-block .product-block-header .product-block-info .product-block-action a {
+        margin-right: 5px;}
+
+
+  .product-item-block .product-block-leaders {
+    width: 100%;
+    margin-bottom: 6px;
+    display: flex;
+    position: relative; }
+  .product-item-block .product-block-leaders {
+    width: 100%;
+    margin-bottom: 6px;
+    display: flex;
+    position: relative; }
+  .product-item-block .product-block-members {
+    width: 100%;
+    margin-bottom: 6px;
+    display: flex;
+    position: relative; }
+    .product-item-block .product-block-members .images,
+    .product-item-block .product-block-leaders .images {
+      flex-grow: 1;
+      overflow: hidden; }
+    .product-item-block .product-block-members .buttons,
+    .product-item-block .product-block-leaders .buttons {
+      text-align: right;
+      vertical-align: middle;
+      width: 20px; 
+      height: 100%;}
+@media (min-width: 0px) {
+  .product-item-block {
+    width: calc(100% - 30px) !important; } }
+
+@media (min-width: 767px) {
+  .product-item-block {
+    width: calc(50% - 30px) !important; } }
+
+@media (min-width: 991px) {
+  .product-item-block {
+    width: calc(33.3333% - 30px) !important; } }
+
+@media (min-width: 1199px) {
+  .product-item-block {
+    width: calc(25% - 30px) !important; } }
