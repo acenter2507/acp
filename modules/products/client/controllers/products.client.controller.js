@@ -44,7 +44,8 @@
 
         fileReader.onload = function (fileReaderEvent) {
           $timeout(function () {
-            $scope.imageURL = fileReaderEvent.target.result;
+            vm.imageUrl = fileReaderEvent.target.result;
+            // alert();
             // handleCropImage(fileReaderEvent.target.result);
           }, 0);
         };
