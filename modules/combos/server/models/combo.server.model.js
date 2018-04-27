@@ -7,13 +7,13 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Set Schema
+ * Combo Schema
  */
-var SetSchema = new Schema({
+var ComboSchema = new Schema({
   name: {
     type: String,
     default: '',
-    required: 'Please fill Set name',
+    required: 'Please fill Combo name',
     trim: true
   },
   created: {
@@ -26,4 +26,4 @@ var SetSchema = new Schema({
   }
 });
 
-mongoose.model('Set', SetSchema);
+mongoose.model('Combo', ComboSchema);

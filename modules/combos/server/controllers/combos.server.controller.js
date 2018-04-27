@@ -5,113 +5,113 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Set = mongoose.model('Set'),
+  Combo = mongoose.model('Combo'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
 /**
- * Create a Set
+ * Create a Combo
  */
 exports.create = function(req, res) {
-  var set = new Set(req.body);
-  set.user = req.user;
+  var combo = new Combo(req.body);
+  combo.user = req.user;
 
-  set.save(function(err) {
+  combo.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(set);
+      res.jsonp(combo);
     }
   });
 };
 
 /**
- * Show the current Set
+ * Show the current Combo
  */
 exports.read = function(req, res) {
   // convert mongoose document to JSON
-  var set = req.set ? req.set.toJSON() : {};
+  var combo = req.combo ? req.combo.toJSON() : {};
 
   // Add a custom field to the Article, for determining if the current User is the "owner".
   // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  set.isCurrentUserOwner = req.user && set.user && set.user._id.toString() === req.user._id.toString();
+  combo.isCurrentUserOwner = req.user && combo.user && combo.user._id.toString() === req.user._id.toString();
 
-  res.jsonp(set);
+  res.jsonp(combo);
 };
 
 /**
- * Update a Set
+ * Update a Combo
  */
 exports.update = function(req, res) {
-  var set = req.set;
+  var combo = req.combo;
 
-  set = _.extend(set, req.body);
+  combo = _.extend(combo, req.body);
 
-  set.save(function(err) {
+  combo.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(set);
+      res.jsonp(combo);
     }
   });
 };
 
 /**
- * Delete an Set
+ * Delete an Combo
  */
 exports.delete = function(req, res) {
-  var set = req.set;
+  var combo = req.combo;
 
-  set.remove(function(err) {
+  combo.remove(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(set);
+      res.jsonp(combo);
     }
   });
 };
 
 /**
- * List of Sets
+ * List of Combos
  */
 exports.list = function(req, res) {
-  Set.find().sort('-created').populate('user', 'displayName').exec(function(err, sets) {
+  Combo.find().sort('-created').populate('user', 'displayName').exec(function(err, combos) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(sets);
+      res.jsonp(combos);
     }
   });
 };
 
 /**
- * Set middleware
+ * Combo middleware
  */
-exports.setByID = function(req, res, next, id) {
+exports.comboByID = function(req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Set is invalid'
+      message: 'Combo is invalid'
     });
   }
 
-  Set.findById(id).populate('user', 'displayName').exec(function (err, set) {
+  Combo.findById(id).populate('user', 'displayName').exec(function (err, combo) {
     if (err) {
       return next(err);
-    } else if (!set) {
+    } else if (!combo) {
       return res.status(404).send({
-        message: 'No Set with that identifier has been found'
+        message: 'No Combo with that identifier has been found'
       });
     }
-    req.set = set;
+    req.combo = combo;
     next();
   });
 };

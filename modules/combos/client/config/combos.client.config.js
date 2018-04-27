@@ -2,30 +2,30 @@
   'use strict';
 
   angular
-    .module('sets')
+    .module('combos')
     .run(menuConfig);
 
-  menuConfig.$inject = ['Menus'];
+  menuConfig.$inject = ['menuService'];
 
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Sets',
-      state: 'sets',
+      title: 'Combos',
+      state: 'combos',
       type: 'dropdown',
       roles: ['*']
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'sets', {
-      title: 'List Sets',
-      state: 'sets.list'
+    menuService.addSubMenuItem('topbar', 'combos', {
+      title: 'List Combos',
+      state: 'combos.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'sets', {
-      title: 'Create Set',
-      state: 'sets.create',
+    menuService.addSubMenuItem('topbar', 'combos', {
+      title: 'Create Combo',
+      state: 'combos.create',
       roles: ['user']
     });
   }

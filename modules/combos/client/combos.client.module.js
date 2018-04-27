@@ -1,5 +1,5 @@
 (function (app) {
   'use strict';
 
-  app.registerModule('sets');
+  app.registerModule('combos');
 }(ApplicationConfiguration));

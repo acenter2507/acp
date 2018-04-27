@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.combo.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.combo.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="combos.edit({ comboId: vm.combo._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.combo.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.combo.user"
+            ng-bind="vm.combo.user.displayName"></span>
+      <span ng-if="!vm.combo.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.combo.content"></p>
+</section>
