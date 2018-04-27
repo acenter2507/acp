@@ -13,6 +13,7 @@ module.exports = {
         'public/lib/ng-dialog/css/ngDialog-theme-default.min.css',
       ],
       js: [
+        'public/lib/jquery/dist/jquery.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-animate/angular-animate.js',
