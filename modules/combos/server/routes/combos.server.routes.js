@@ -8,11 +8,11 @@ var combosPolicy = require('../policies/combos.server.policy'),
 
 module.exports = function(app) {
   // Combos Routes
-  app.route('/api/combos').all(combosPolicy.isAllowed)
+  app.route('/api/combos')//.all(combosPolicy.isAllowed)
     .get(combos.list)
     .post(combos.create);
 
-  app.route('/api/combos/:comboId').all(combosPolicy.isAllowed)
+  app.route('/api/combos/:comboId')//.all(combosPolicy.isAllowed)
     .get(combos.read)
     .put(combos.update)
     .delete(combos.delete);
