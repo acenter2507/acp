@@ -26,3 +26,13 @@
   </ul>
 
 </div>
+<!-- TEMPALTES -->
+<!-- 確認 -->
+<script type="text/ng-template" id="confirmTemplate.html">
+  <p>{{:: dialog.message}}</p>
+  <div class="form-group mgnb">
+    <button class="btn btn-default pull-right" ng-click="closeThisDialog()">キャンセル</button>
+    <button class="btn btn-primary pull-right mg10r" ng-click="confirm()">{{:: dialog.button || '確認'}}</button>
+    <div class="clearfix"></div>
+  </div>
+</script>
