@@ -30,4 +30,48 @@
       </accordion>
     </div>
   </div>
+
+  <!-- Danh sách ngày nghỉ -->
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- 休暇一覧 -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>写真</th>
+            <th>ブランド</th>
+            <th>名称</th>
+            <th>型番</th>
+            <th>ロット番号</th>
+            <th>２次元コード</th>
+            <th>導入年月日</th>
+            <th>交換日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-show="vm.products.length === 0">
+            <td colspan="7">データが見つかりません。</td>
+          </tr>
+          <tr ng-repeat="product in vm.products track by $index">
+            <td>
+              <img width="50" height="50" src="{{product.image}}">
+            </td>
+            <td>{{ product.brand }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.model_number }}</td>
+            <td>{{ product.lot_number }}</td>
+            <td>{{ product.qr_code }}</td>
+            <td>{{ product.intro_date }}</td>
+            <td>{{ product.exchange_date }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Pagination -->
+      <ul class="pagination mg10y" ng-show="vm.pages.length > 1">
+        <li ng-repeat="page in vm.pages" ng-class="{'active': page === vm.page}">
+          <a ng-click="vm.handlePageChanged(page)">{{page}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

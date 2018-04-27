@@ -108,6 +108,40 @@ exports.image = function (req, res) {
   });
 };
 
+exports.seach = function (req, res) {
+  var page = req.body.page || 1;
+  var condition = req.body.condition || {};
+
+  var query = {};
+  var and_arr = [];
+  if (condition.key && condition.key !== '') {
+    var key_lower = condition.key.toLowerCase();
+    var key_upper = condition.key.toUpperCase();
+    var or_arr = [
+      { search: { $regex: '.*' + condition.key + '.*' } },
+      { search: { $regex: '.*' + key_lower + '.*' } },
+      { search: { $regex: '.*' + key_upper + '.*' } }
+    ];
+    and_arr.push({ $or: or_arr });
+  }
+  if (and_arr.length > 0) {
+    query = { $and: and_arr };
+  }
+  Product.paginate(query, {
+    sort: condition.sort,
+    page: page,
+    populate: [
+      { path: 'combos' }
+    ],
+    limit: condition.limit
+  }).then(products => {
+    res.jsonp(products);
+  }, err => {
+    return res.status(400).send({ message: 'データを取得できません！' });
+  });
+};
+
+
 /**
  * Product middleware
  */

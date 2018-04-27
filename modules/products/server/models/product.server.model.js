@@ -29,10 +29,19 @@ var ProductSchema = new Schema({
   qr_code: { type: String },
   // 導入年月日
   intro_date: { type: Date },
+  // 検索用
+  search: { type: String },
   // 交換日
   exchange_date: { type: Date },
+  // セット
+  combos: [{ type: Schema.ObjectId, ref: 'Combo' }],
   created: { type: Date, default: Date.now }
 });
 ProductSchema.plugin(paginate);
+
+ProductSchema.pre('save', function (next) {
+  this.search = this.name + '-' this.brand + '-' + this.model_number + '-' + this.lot_number + '-' + this.qr_code;
+  next();
+});
 
 mongoose.model('Product', ProductSchema);
