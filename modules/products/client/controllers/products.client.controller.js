@@ -110,7 +110,7 @@
         handlePreviousScreen();
       });
     };
-    // Remove existing Department
+    // Remove existing Product
     vm.handleDeleteProduct = () => {
       $scope.handleShowConfirm({
         message: vm.product.name + 'を削除しますか？'
