@@ -102,9 +102,17 @@
       }
 
     };
-    
+    // Cancel
+    vm.handleCancelInput = () => {
+      $scope.handleShowConfirm({
+        message: '操作を止めますか？'
+      }, () => {
+        handlePreviousScreen();
+      });
+    };
+
     function handleSaveProduct() {
-      
+
       if (vm.product._id) {
         vm.product.$update(successCallback, errorCallback);
       } else {
@@ -132,6 +140,10 @@
         array.push(binary.charCodeAt(i));
       }
       return new Blob([new Uint8Array(array)], { type: mimeString });
+    }
+    // Back to before state
+    function handlePreviousScreen() {
+      $state.go($state.previous.state.name || 'home', $state.previous.params);
     }
   }
 }());
