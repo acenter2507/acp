@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Combos',
+      title: 'セット管理',
       state: 'combos',
       type: 'dropdown',
       roles: ['*']
@@ -18,14 +18,21 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'combos', {
-      title: 'List Combos',
+      title: 'セット一覧',
       state: 'combos.list'
     });
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'combos', {
-      title: 'Create Combo',
+      title: 'セット定義',
       state: 'combos.create',
+      roles: ['*']
+    });
+
+    // Add the dropdown search item
+    menuService.addSubMenuItem('topbar', 'combos', {
+      title: 'セット確認',
+      state: 'combos.check',
       roles: ['*']
     });
   }

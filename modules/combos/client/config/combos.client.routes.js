@@ -18,10 +18,7 @@
         url: '',
         templateUrl: 'modules/combos/client/views/list-combos.client.view.html',
         controller: 'CombosListController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Combos List'
-        }
+        controllerAs: 'vm'
       })
       .state('combos.create', {
         url: '/create',
@@ -30,10 +27,6 @@
         controllerAs: 'vm',
         resolve: {
           comboResolve: newCombo
-        },
-        data: {
-          // roles: ['user', 'admin'],
-          pageTitle: 'Combos Create'
         }
       })
       .state('combos.edit', {
@@ -43,10 +36,6 @@
         controllerAs: 'vm',
         resolve: {
           comboResolve: getCombo
-        },
-        data: {
-          // roles: ['user', 'admin'],
-          pageTitle: 'Edit Combo {{ comboResolve.name }}'
         }
       })
       .state('combos.view', {
@@ -56,10 +45,13 @@
         controllerAs: 'vm',
         resolve: {
           comboResolve: getCombo
-        },
-        data: {
-          pageTitle: 'Combo {{ comboResolve.name }}'
         }
+      })
+      .state('combos.check', {
+        url: '/checking',
+        templateUrl: 'modules/combos/client/views/check-combo.client.view.html',
+        controller: 'ComboCheckController',
+        controllerAs: 'vm'
       });
   }
 
