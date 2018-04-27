@@ -4,26 +4,29 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+  paginate = require('mongoose-paginate'),
   Schema = mongoose.Schema;
 
 /**
  * Combo Schema
  */
 var ComboSchema = new Schema({
+  // セット名称
   name: {
     type: String,
-    default: '',
-    required: 'Please fill Combo name',
+    required: 'セット名称が必須です。',
     trim: true
   },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  }
+  // セット組カラーコード
+  color_code: { type: String },
+  // セット年月日
+  datetime: { type: Date },
+  // セット担当者
+  author: { type: String },
+  // 減菌年月日
+  sterilize_date: { type: Date },
+  created: { type: Date, default: Date.now }
 });
+ProductSchema.plugin(paginate);
 
 mongoose.model('Combo', ComboSchema);
