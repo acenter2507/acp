@@ -95,12 +95,11 @@
         vm.busy = false;
         return false;
       }
-      console.log(vm.product);
-      // if (vm.isGetAvatarFromFile) {
-      //   vm.uploader.uploadAll();
-      // } else {
-      //   handleSaveProduct();
-      // }
+      if (vm.isGetAvatarFromFile) {
+        vm.uploader.uploadAll();
+      } else {
+        handleSaveProduct();
+      }
 
     };
     
