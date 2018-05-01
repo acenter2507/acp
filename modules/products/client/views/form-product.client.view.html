@@ -8,8 +8,9 @@
         <form name="vm.form.productForm" ng-submit="vm.handleStartSaveProduct(vm.form.productForm.$valid)" novalidate>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <a ng-click="handleShowImage(vm.imageUrl)" ng-if="vm.product._id"><img class="img-responsive" src="{{ vm.imageUrl }}"></a>
-              <img ng-if="!vm.product._id" class="img-responsive" src="{{ vm.imageUrl }}">
+              <a ng-click="handleShowImage(vm.imageUrl)">
+                <img class="img-responsive" src="{{ vm.imageUrl }}">
+              </a>
               <div class="form-group mgnb mg5t">
                 <span class="btn btn-default btn-sm btn-upload-file">
                   ファイル選択
