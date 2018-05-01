@@ -23,8 +23,8 @@
 
       // 画面チェック
       if (vm.product._id) {
-        vm.intro_date = new Date(vm.intro_date);
-        vm.exchange_date = new Date(vm.exchange_date);
+        vm.intro_date = moment(vm.intro_date);
+        vm.exchange_date = moment(vm.exchange_date);
       }
     }
 
