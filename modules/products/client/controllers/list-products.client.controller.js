@@ -60,7 +60,7 @@
     };
 
     vm.isSelecting = false;
-    // vm.checkedAll = false;
+    vm.checkedAll = false;
     vm.handleStartSelectRow = function () {
       vm.isSelecting = !vm.isSelecting;
 
