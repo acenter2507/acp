@@ -18,10 +18,7 @@
         url: '',
         templateUrl: 'modules/products/client/views/list-products.client.view.html',
         controller: 'ProductsListController',
-        controllerAs: 'vm',
-        data: {
-          pageTitle: 'Products List'
-        }
+        controllerAs: 'vm'
       })
       .state('products.create', {
         url: '/create',
@@ -30,10 +27,6 @@
         controllerAs: 'vm',
         resolve: {
           productResolve: newProduct
-        },
-        data: {
-          // roles: ['user', 'admin'],
-          pageTitle: 'Products Create'
         }
       })
       .state('products.edit', {
@@ -43,22 +36,15 @@
         controllerAs: 'vm',
         resolve: {
           productResolve: getProduct
-        },
-        data: {
-          // roles: ['user', 'admin'],
-          pageTitle: 'Edit Product {{ productResolve.name }}'
         }
       })
       .state('products.view', {
         url: '/:productId',
-        templateUrl: 'modules/products/client/views/view-product.client.view.html',
+        templateUrl: 'modules/products/client/views/form-product.client.view.html',
         controller: 'ProductsController',
         controllerAs: 'vm',
         resolve: {
           productResolve: getProduct
-        },
-        data: {
-          pageTitle: 'Product {{ productResolve.name }}'
         }
       });
   }

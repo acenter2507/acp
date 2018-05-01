@@ -25,7 +25,6 @@
       if (vm.product._id) {
         vm.product.intro_date = new Date(vm.product.intro_date);
         vm.product.exchange_date = new Date(vm.product.exchange_date);
-        alert(1);
       }
     }
 
