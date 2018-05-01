@@ -98,6 +98,7 @@
       if (vm.isGetAvatarFromFile) {
         vm.uploader.uploadAll();
       } else {
+        product.image = vm.imageUrl;
         handleSaveProduct();
       }
 

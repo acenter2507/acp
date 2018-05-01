@@ -33,6 +33,7 @@
       vm.page = 1;
       handleSearch();
     };
+
     function handleSearch() {
       if (vm.busy) return;
       vm.busy = true;
@@ -48,9 +49,11 @@
           vm.busy = false;
         });
     }
+
     vm.handleClearCondition = () => {
       prepareCondition();
     };
+    
     vm.handlePageChanged = page => {
       vm.page = page;
       handleSearch();
