@@ -83,9 +83,9 @@
           });
       });
     };
-    // vm.handleCheckedAll = function () {
-    //   vm.checkedAll = !vm.checkedAll;
-    //   vm.products.forEach(function (p) { p.isChecked = vm.checkedAll; });
-    // };
+    vm.handleCheckedAll = function () {
+      vm.checkedAll = !vm.checkedAll;
+      vm.products.forEach(function (p) { p.isChecked = vm.checkedAll; });
+    };
   }
 }());
