@@ -56,11 +56,16 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
       }
     });
   };
-  // Hiển thị Dashboard
-  $scope.handleShowDashboardMenu = function() {
-    var mDialog = ngDialog.open({
-      template: 'modules/core/client/views/templates/dashboard.dialog.template.html',
+  // Hiển thị confirm xác nhận
+  $scope.handleShowImage = function (url) {
+    $scope.url = url;
+    ngDialog.openConfirm({
+      templateUrl: 'imageTemplate.html',
       scope: $scope
+    }).then(function(res) {
+      delete $scope.url;
+    }, function(res) {
+      delete $scope.url;
     });
   };
 }
