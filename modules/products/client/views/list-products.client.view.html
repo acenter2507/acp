@@ -82,8 +82,8 @@
             <td>{{ product.model_number }}</td>
             <td>{{ product.lot_number }}</td>
             <td>{{ product.qr_code }}</td>
-            <td>{{ product.intro_date | LL }}</td>
-            <td>{{ product.exchange_date | LL }}</td>
+            <td><span ng-if="product.intro_date">{{ product.intro_date | LL }}</span></td>
+            <td><span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span></td>
             <td>
               <div dropdown dropdown-append-to-body>
                 <a dropdown-toggle class="btn btn-xs btn-default">
