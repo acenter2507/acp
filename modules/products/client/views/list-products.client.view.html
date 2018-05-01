@@ -54,9 +54,13 @@
           </tr>
           <tr ng-repeat="product in vm.products track by $index">
             <td>
-              <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
+              <a ui-sref="products.views({ productId: product._id })">
+                <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
+              </a>
             </td>
-            <td>{{ product.brand }}</td>
+            <td>
+              <a ui-sref="products.views({ productId: product._id })">{{ product.brand }}</a>
+            </td>
             <td>{{ product.name }}</td>
             <td>{{ product.model_number }}</td>
             <td>{{ product.lot_number }}</td>
