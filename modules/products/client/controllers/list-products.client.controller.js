@@ -71,11 +71,11 @@
       $scope.handleShowConfirm({
         message: '選択した製品をすべて削除しますか？'
       }, () => {
-        var products = _.where(list, { isChecked: true });
+        var products = _.where(vm.products, { isChecked: true });
         var productIds = _.pluck(products, '_id');
         ProductsApi.removeAll(productIds)
           .success(data => {
-            products.forEach(function (p) { vm.products = _.without(vm.products, p) });
+            products.forEach(function (p) { vm.products = _.without(vm.products, p); });
           })
           .error(err => {
             $scope.handleShowToast(err.message, true);
