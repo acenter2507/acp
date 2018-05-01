@@ -49,6 +49,25 @@
           </div>
         </form>
       </div>
+      <div class="well" ng-if="vm.combo._id">
+        <h3>製品</h3>
+        <div class="product-item-block mg6x" ng-repeat="product in vm.combo.products">
+          <div class="product-basic-info">
+            <div class="product-avatar">
+              <img src="{{:: product.image }}">
+            </div>
+            <div class="product-info">
+              <span class="product-info-name">{{:: product.name}}</span>
+              <span class="font-sm">{{::product.author}}</span>
+            </div>
+            <div class="product-action">
+              <a class="product-options">
+                <i class="fa fa-product-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

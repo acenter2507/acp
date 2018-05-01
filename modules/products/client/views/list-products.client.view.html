@@ -35,8 +35,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group text-right">
-        <button class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
-        <button class="btn btn-danger" ng-click="vm.handleDeleteProducts()">すべて削除</button>
+        <button ng-show="vm.combos.length > 0" class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
+        <button ng-show="vm.combos.length > 0" class="btn btn-danger" ng-click="vm.handleDeleteProducts()">すべて削除</button>
         <button class="btn btn-primary" ui-sref="products.create">追加</button>
       </div>
     </div>
@@ -64,7 +64,7 @@
         </thead>
         <tbody>
           <tr ng-show="vm.products.length === 0">
-            <td colspan="8">データが見つかりません。</td>
+            <td colspan="9">データが見つかりません。</td>
           </tr>
           <tr ng-repeat="product in vm.products track by $index">
             <td ng-show="vm.isSelecting" class="text-center">
