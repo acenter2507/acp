@@ -50,7 +50,7 @@
         });
     }
 
-    vm.handleClearCondition = fucntion() {
+    vm.handleClearCondition = function() {
       prepareCondition();
     };
 
