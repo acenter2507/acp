@@ -14,19 +14,16 @@
     vm.combo = combo;
     vm.form = {};
 
-    // Remove existing Combo
-    function remove() {
-      vm.combo.$remove($state.go('combos.list'));
+    onCreate();
+    function onCreate() {
+      // 画面チェック
+      if (vm.combo._id) {
+        vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime): vm.combo.datetime;
+        vm.combo.sterilize_date = (vm.combo.sterilize_date) ? new Date(vm.combo.sterilize_date) : vm.combo.sterilize_date;
+      }
     }
 
-    // Save Combo
-    function save(isValid) {
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.comboForm');
-        return false;
-      }
-
-      // TODO: move create/update logic to service
+    vm.handleSaveCombo = function() {
       if (vm.combo._id) {
         vm.combo.$update(successCallback, errorCallback);
       } else {
@@ -34,14 +31,36 @@
       }
 
       function successCallback(res) {
-        $state.go('combos.view', {
-          comboId: res._id
-        });
+        vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime): vm.combo.datetime;
+        vm.combo.sterilize_date = (vm.combo.sterilize_date) ? new Date(vm.combo.sterilize_date) : vm.combo.sterilize_date;
+        vm.busy = false;
+        $state.go('combos.view', { comboId: res._id });
       }
 
       function errorCallback(res) {
-        vm.error = res.data.message;
+        vm.busy = false;
+        $scope.handleShowToast(res.data.message, true);
       }
+    }
+    // Remove existing Combo
+    vm.handleDeleteCombo = function () {
+      $scope.handleShowConfirm({
+        message: vm.combo.name + 'を削除しますか？'
+      }, () => {
+        vm.combo.$remove(handlePreviousScreen());
+      });
+    };
+    // Cancel
+    vm.handleCancelInput = () => {
+      $scope.handleShowConfirm({
+        message: '操作を止めますか？'
+      }, () => {
+        handlePreviousScreen();
+      });
+    };
+    // Back to before state
+    function handlePreviousScreen() {
+      $state.go($state.previous.state.name || 'home', $state.previous.params);
     }
   }
 }());

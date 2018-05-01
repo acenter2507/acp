@@ -110,7 +110,7 @@
 
     };
     // Cancel
-    vm.handleCancelInput = () => {
+    vm.handleCancelInput = function () {
       $scope.handleShowConfirm({
         message: '操作を止めますか？'
       }, () => {
@@ -118,7 +118,7 @@
       });
     };
     // Remove existing Product
-    vm.handleDeleteProduct = () => {
+    vm.handleDeleteProduct = function () {
       $scope.handleShowConfirm({
         message: vm.product.name + 'を削除しますか？'
       }, () => {
