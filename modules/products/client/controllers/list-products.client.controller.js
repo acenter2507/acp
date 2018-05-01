@@ -68,7 +68,7 @@
         vm.products.forEach(function (p) { p.isChecked = false; });
       }
     };
-    vm.handleStartDeleteProducts = function () {
+    vm.handleDeleteProducts = function () {
       var products = _.where(vm.products, { isChecked: true });
       if (products.length === 0) return;
       $scope.handleShowConfirm({
@@ -84,7 +84,7 @@
           });
       });
     };
-    vm.handleStartDeleteProduct = function (product) {
+    vm.handleDeleteProduct = function (product) {
       $scope.handleShowConfirm({
         message: product.name + 'を削除しますか？'
       }, () => {
