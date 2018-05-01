@@ -71,7 +71,7 @@
               <input type="checkbox" ng-model="product.isChecked">
             </td>
             <td>
-              <a ui-sref="products.view({ productId: product._id })">
+              <a ng-click="handleShowImage(product.image)">
                 <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
               </a>
             </td>
