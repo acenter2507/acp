@@ -18,9 +18,13 @@
   }
   ProductsApi.$inject = ['$http'];
   function ProductsApi($http) {
-    this.search = (condition, page) => {
+    this.search = function(condition, page) {
       return $http.post('/api/products/search', { condition: condition, page: page }, { ignoreLoadingBar: true });
     };
+    this.removeAll = function(productIds) {
+      return $http.post('/api/products/removeAll', { productIds: productIds }, { ignoreLoadingBar: true });
+    };
+    
     return this;
   }
 }());

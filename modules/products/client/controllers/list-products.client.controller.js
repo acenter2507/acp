@@ -28,8 +28,8 @@
         limit: 20
       };
     }
-    
-    vm.handleStartSearch = () => {
+
+    vm.handleStartSearch = function () {
       vm.page = 1;
       handleSearch();
     };
@@ -50,13 +50,37 @@
         });
     }
 
-    vm.handleClearCondition = () => {
+    vm.handleClearCondition = fucntion() {
       prepareCondition();
     };
-    
-    vm.handlePageChanged = page => {
+
+    vm.handlePageChanged = function (page) {
       vm.page = page;
       handleSearch();
+    };
+
+    vm.isSelecting = false;
+    vm.handleStartSelectRow = function () {
+      vm.isSelecting = !vm.isSelecting;
+
+      if (!vm.isSelecting) {
+        vm.products.forEach(function (p) { p.isChecked = false; });
+      }
+    };
+    vm.handleStartDeleteProducts = function () {
+      $scope.handleShowConfirm({
+        message: '選択した製品をすべて削除しますか？'
+      }, () => {
+        var products = _.where(list, { isChecked: true });
+        var productIds = _.pluck(products, '_id');
+        ProductsApi.removeAll(productIds)
+          .success(data => {
+            products.forEach(function (p) { vm.products = _.without(vm.products, p) });
+          })
+          .error(err => {
+            $scope.handleShowToast(err.message, true);
+          });
+      });
     };
   }
 }());

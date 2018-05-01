@@ -140,6 +140,15 @@ exports.search = function (req, res) {
     return res.status(400).send({ message: 'データを取得できません！' });
   });
 };
+exports.removeAll = function (req, res) {
+  var ids = req.body.productIds || [];
+
+  Product.remove({ _id: { $in: ids } }).exec(function (err) {
+    if (err)
+      return res.status(400).send({ message: '製品を削除できません！' });
+    return res.end();
+  });
+};
 
 
 /**
