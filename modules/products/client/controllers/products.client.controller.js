@@ -23,8 +23,8 @@
 
       // 画面チェック
       if (vm.product._id) {
-        vm.product.intro_date = new Date(vm.product.intro_date);
-        vm.product.exchange_date = new Date(vm.product.exchange_date);
+        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date): vm.product.intro_date;
+        vm.product.exchange_date = (vm.product.exchange_date) ? new Date(vm.product.exchange_date) : vm.product.exchange_date;
       }
     }
 
@@ -135,8 +135,8 @@
       }
 
       function successCallback(res) {
-        vm.product.intro_date = new Date(vm.product.intro_date);
-        vm.product.exchange_date = new Date(vm.product.exchange_date);
+        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date): vm.product.intro_date;
+        vm.product.exchange_date = (vm.product.exchange_date) ? new Date(vm.product.exchange_date) : vm.product.exchange_date;
         vm.busy = false;
         $state.go('products.view', {
           productId: res._id
