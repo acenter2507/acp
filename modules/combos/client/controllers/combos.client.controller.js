@@ -41,7 +41,7 @@
         vm.busy = false;
         $scope.handleShowToast(res.data.message, true);
       }
-    }
+    };
     // Remove existing Combo
     vm.handleDeleteCombo = function () {
       $scope.handleShowConfirm({
