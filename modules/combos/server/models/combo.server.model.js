@@ -25,6 +25,10 @@ var ComboSchema = new Schema({
   author: { type: String },
   // 減菌年月日
   sterilize_date: { type: Date },
+  // 検索用
+  search: { type: String },
+  // 製品
+  products: [{ type: Schema.ObjectId, ref: 'Product' }],
   created: { type: Date, default: Date.now }
 });
 ComboSchema.plugin(paginate);

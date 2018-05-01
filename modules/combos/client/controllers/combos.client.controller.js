@@ -6,17 +6,13 @@
     .module('combos')
     .controller('CombosController', CombosController);
 
-  CombosController.$inject = ['$scope', '$state', '$window', 'Authentication', 'comboResolve'];
+  CombosController.$inject = ['$scope', '$state', 'comboResolve'];
 
-  function CombosController ($scope, $state, $window, Authentication, combo) {
+  function CombosController ($scope, $state, combo) {
     var vm = this;
 
-    vm.authentication = Authentication;
     vm.combo = combo;
-    vm.error = null;
     vm.form = {};
-    vm.remove = remove;
-    vm.save = save;
 
     // Remove existing Combo
     function remove() {

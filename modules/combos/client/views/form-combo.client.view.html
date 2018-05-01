@@ -1,24 +1,95 @@
-<section>
-  <div class="page-header">
-    <h1>{{vm.combo._id ? 'Edit Combo' : 'New Combo'}}</h1>
-  </div>
-  <div class="col-md-12">
-    <form name="vm.form.comboForm" class="form-horizontal" ng-submit="vm.save(vm.form.comboForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.combo.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.comboForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Combo name is required.</p>
+<div class="container-fluid animated fadeIn">
+  <div class="d-sm-down-none h80"></div>
+
+  <div class="row mg20t">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <div class="well">
+        <h3>セット登録</h3>
+        <form name="vm.form.comboForm" ng-submit="vm.handleStartSaveCombo(vm.form.comboForm.$valid)" novalidate>
+          <div class="form-group" show-errors>
+            <div class="col-xs-12">
+              <input name="name" type="text" ng-model="vm.combo.name" id="name" class="form-control" placeholder="名称" required>
+              <div ng-messages="vm.form.comboForm.name.$error" role="alert">
+                <p class="help-block error-text font-sm" ng-message="required">名称は必須です。</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.combo._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <input name="color_code" type="text" ng-model="vm.combo.color_code" class="form-control" placeholder="セット組カラーコード">
+            </div>
+            <div class="col-sm-6">
+              <input name="author" type="text" ng-model="vm.combo.author" class="form-control" placeholder="担当者">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <input name="datetime" type="date" ng-model="vm.combo.datetime" class="form-control" placeholder="年月日">
+            </div>
+            <div class="col-sm-6">
+              <input name="sterilize_date" type="date" ng-model="vm.combo.sterilize_date" class="form-control" placeholder="減菌年月日">
+            </div>
+          </div>
+          <div class="form-group text-right">
+            <button type="submit" class="btn btn-primary">
+              <i ng-show="vm.busy" class="fa fa-spinner fa-pulse fa-fw"></i> 保存</button>
+            <button type="button" class="btn btn-default" ng-click="vm.handleCancelInput()">キャンセル</button>
+            <button type="button" class="btn btn-danger" ng-if="vm.combo._id" ng-click="vm.handleDeleteCombo()">削除</button>
+          </div>
+        </form>
+      </div>
+      <div class="well">
+        <h3>製品選択</h3>
+        <form name="vm.form.comboForm" ng-submit="vm.handleStartSaveCombo(vm.form.comboForm.$valid)" novalidate>
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <a ng-click="handleShowImage(vm.imageUrl)">
+                <img class="img-responsive" src="{{ vm.imageUrl }}">
+              </a>
+              <div class="form-group mgnb mg5t">
+                <span class="btn btn-default btn-sm btn-upload-file">
+                  ファイル選択
+                  <input type="file" nv-file-select uploader="vm.uploader" style="display: hidden;">
+                </span>
+              </div>
+              <div class="d-sm-none h20"></div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <div class="form-group" show-errors>
+                <input name="name" type="text" ng-model="vm.combo.name" id="name" class="form-control" placeholder="名称" required>
+                <div ng-messages="vm.form.comboForm.name.$error" role="alert">
+                  <p class="help-block error-text font-sm" ng-message="required">名称は必須です。</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <input name="brand" type="text" ng-model="vm.combo.brand" class="form-control" placeholder="ブランド">
+              </div>
+              <div class="form-group">
+                <input name="model_number" type="text" ng-model="vm.combo.model_number" class="form-control" placeholder="型番">
+              </div>
+              <div class="form-group">
+                <input name="lot_number" type="text" ng-model="vm.combo.lot_number" class="form-control" placeholder="ロット番号">
+              </div>
+              <div class="form-group">
+                <input name="qr_code" type="text" ng-model="vm.combo.qr_code" class="form-control" placeholder="２次元コード">
+              </div>
+              <div class="form-group">
+                <input name="intro_date" type="date" ng-model="vm.combo.intro_date" class="form-control" placeholder="導入年月日">
+              </div>
+              <div class="form-group">
+                <input name="exchange_date" type="date" ng-model="vm.combo.exchange_date" class="form-control" placeholder="交換日">
+              </div>
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">
+                  <i ng-show="vm.busy" class="fa fa-spinner fa-pulse fa-fw"></i> 保存</button>
+                <button type="button" class="btn btn-default" ng-click="vm.handleCancelInput()">キャンセル</button>
+                <button type="button" class="btn btn-danger" ng-if="vm.combo._id" ng-click="vm.handleDeleteCombo()">削除</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-</section>
+</div>
