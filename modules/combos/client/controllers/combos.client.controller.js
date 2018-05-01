@@ -8,7 +8,7 @@
 
   CombosController.$inject = ['$scope', '$state', 'comboResolve'];
 
-  function CombosController ($scope, $state, combo) {
+  function CombosController($scope, $state, combo) {
     var vm = this;
 
     vm.combo = combo;
@@ -16,9 +16,7 @@
 
     // Remove existing Combo
     function remove() {
-      if ($window.confirm('Are you sure you want to delete?')) {
-        vm.combo.$remove($state.go('combos.list'));
-      }
+      vm.combo.$remove($state.go('combos.list'));
     }
 
     // Save Combo
