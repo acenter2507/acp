@@ -62,8 +62,7 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
     ngDialog.openConfirm({
       templateUrl: 'imageTemplate.html',
       scope: $scope,
-      showClose: false,
-      width: '80%'
+      showClose: false
     }).then(function(res) {
       delete $scope.url;
     }, function(res) {
