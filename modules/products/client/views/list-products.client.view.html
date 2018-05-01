@@ -65,8 +65,8 @@
             <td>{{ product.model_number }}</td>
             <td>{{ product.lot_number }}</td>
             <td>{{ product.qr_code }}</td>
-            <td>{{ product.intro_date || LL }}</td>
-            <td>{{ product.exchange_date || LL }}</td>
+            <td>{{ product.intro_date | LL }}</td>
+            <td>{{ product.exchange_date | LL }}</td>
           </tr>
         </tbody>
       </table>
