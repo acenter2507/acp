@@ -60,7 +60,7 @@
     };
 
     vm.isSelecting = false;
-    vm.checkedAll = false;
+    // vm.checkedAll = false;
     vm.handleStartSelectRow = function () {
       vm.isSelecting = !vm.isSelecting;
 
@@ -83,9 +83,9 @@
           });
       });
     };
-    vm.handleCheckedAll = function () {
-      vm.checkedAll = !vm.checkedAll;
-      vm.products.forEach(function (p) { p.isChecked = vm.checkedAll; });
-    };
+    // vm.handleCheckedAll = function () {
+    //   vm.checkedAll = !vm.checkedAll;
+    //   vm.products.forEach(function (p) { p.isChecked = vm.checkedAll; });
+    // };
   }
 }());
