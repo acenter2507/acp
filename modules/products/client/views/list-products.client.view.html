@@ -1,6 +1,6 @@
 <div class="container-fluid animated fadeIn">
   <!-- Tool tìm kiếm -->
-  <div class="row" id="rests-review-tools">
+  <div class="row">
     <div class="col-xs-12">
       <!-- 検索ツール -->
       <accordion close-others="true" ng-init="openTools = false;">
@@ -30,7 +30,16 @@
       </accordion>
     </div>
   </div>
-
+  <!-- Tool bar -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group text-right">
+        <button class="btn btn-default" ng-click="vm.handleStartSelectRow()">選択</button>
+        <button class="btn btn-default" ng-click="vm.handleStartSelectRow()">削除</button>
+        <button class="btn btn-default" ng-click="vm.handleStartSelectRow()">編集</button>
+      </div>
+    </div>
+  </div>
   <!-- Danh sách ngày nghỉ -->
   <div class="row">
     <div class="col-xs-12">
@@ -54,12 +63,12 @@
           </tr>
           <tr ng-repeat="product in vm.products track by $index">
             <td>
-              <a ui-sref="products.views({ productId: product._id })">
+              <a ui-sref="products.view({ productId: product._id })">
                 <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
               </a>
             </td>
             <td>
-              <a ui-sref="products.views({ productId: product._id })">{{ product.brand }}</a>
+              <a ui-sref="products.view({ productId: product._id })">{{ product.brand }}</a>
             </td>
             <td>{{ product.name }}</td>
             <td>{{ product.model_number }}</td>
