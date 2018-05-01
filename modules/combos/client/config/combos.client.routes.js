@@ -46,7 +46,7 @@
       })
       .state('combos.view', {
         url: '/:comboId',
-        templateUrl: 'modules/combos/client/views/view-combo.client.view.html',
+        templateUrl: 'modules/combos/client/views/form-combo.client.view.html',
         controller: 'CombosController',
         controllerAs: 'vm',
         resolve: {
