@@ -107,7 +107,6 @@ exports.image = function (req, res) {
     return res.jsonp(imageUrl);
   });
 };
-
 exports.search = function (req, res) {
   var page = req.body.page || 1;
   var condition = req.body.condition || {};
@@ -149,7 +148,6 @@ exports.removeAll = function (req, res) {
     return res.end();
   });
 };
-
 
 /**
  * Product middleware
