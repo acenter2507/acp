@@ -50,7 +50,7 @@
         });
     }
 
-    vm.handleClearCondition = function() {
+    vm.handleClearCondition = function () {
       prepareCondition();
     };
 
@@ -69,10 +69,11 @@
       }
     };
     vm.handleStartDeleteProducts = function () {
+      var products = _.where(vm.products, { isChecked: true });
+      if (products.length === 0) return;
       $scope.handleShowConfirm({
         message: '選択した製品をすべて削除しますか？'
       }, () => {
-        var products = _.where(vm.products, { isChecked: true });
         var productIds = _.pluck(products, '_id');
         ProductsApi.removeAll(productIds)
           .success(data => {
@@ -81,6 +82,16 @@
           .error(err => {
             $scope.handleShowToast(err.message, true);
           });
+      });
+    };
+    vm.handleStartDeleteProduct = function (product) {
+      $scope.handleShowConfirm({
+        message: product.name + 'を削除しますか？'
+      }, () => {
+        var rs_product = new ProductsService({ _id: product._id });
+        rs_product.$remove(function () {
+          vm.products = _.without(vm.products, product);
+        });
       });
     };
     vm.handleCheckedAll = function () {
