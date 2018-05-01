@@ -20,6 +20,12 @@
     function onCreate() {
       vm.imageUrl = vm.product.avatar || './modules/products/client/img/placeholder.png';
       prepareUploader();
+
+      // 画面チェック
+      if (vm.product._id) {
+        vm.intro_date = new Date(vm.intro_date);
+        vm.exchange_date = new Date(vm.exchange_date);
+      }
     }
 
     function prepareUploader() {
