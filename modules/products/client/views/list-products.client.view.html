@@ -49,7 +49,7 @@
         <thead class="bg-primary">
           <tr>
             <th ng-show="vm.isSelecting" class="text-center">
-              <input type="checkbox" ng-click="vm.handleCheckedAll()" ng-model="vm.checkedAll">
+              <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
             </th>
             <th>写真</th>
             <th>ブランド</th>
