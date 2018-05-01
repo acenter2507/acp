@@ -45,18 +45,6 @@
         <h3>製品選択</h3>
         <form name="vm.form.comboForm" ng-submit="vm.handleStartSaveCombo(vm.form.comboForm.$valid)" novalidate>
           <div class="row">
-            <div class="col-xs-12 col-sm-4">
-              <a ng-click="handleShowImage(vm.imageUrl)">
-                <img class="img-responsive" src="{{ vm.imageUrl }}">
-              </a>
-              <div class="form-group mgnb mg5t">
-                <span class="btn btn-default btn-sm btn-upload-file">
-                  ファイル選択
-                  <input type="file" nv-file-select uploader="vm.uploader" style="display: hidden;">
-                </span>
-              </div>
-              <div class="d-sm-none h20"></div>
-            </div>
             <div class="col-xs-12 col-sm-8">
               <div class="form-group" show-errors>
                 <input name="name" type="text" ng-model="vm.combo.name" id="name" class="form-control" placeholder="名称" required>
