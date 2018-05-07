@@ -100,7 +100,7 @@
         });
 
       });
-    }
+    };
     function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;
