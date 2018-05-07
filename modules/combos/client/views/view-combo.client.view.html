@@ -1,5 +1,75 @@
 <div class="container-fluid animated fadeIn">
-    <div class="row">
-  
+  <!-- Tool bar -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group text-right">
+        <button ng-show="vm.combos.length > 0" class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
+        <button ng-show="vm.combos.length > 0" class="btn btn-danger" ng-click="vm.handleDeleteCombos()">すべて削除</button>
+        <button class="btn btn-primary" ui-sref="combos.create">追加</button>
+      </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="well">
+        <h3>セット情報</h3>
+        <table class="table">
+          <tr>
+            <td>名称</td>
+            <td class="text-right">{{ vm.combo.name }}</td>
+          </tr>
+          <tr>
+            <td>カラーコード</td>
+            <td class="text-right">{{ vm.combo.color_code }}</td>
+          </tr>
+          <tr>
+            <td>担当者</td>
+            <td class="text-right">{{ vm.combo.author }}</td>
+          </tr>
+          <tr>
+            <td>減菌年月日</td>
+            <td class="text-right">{{ vm.combo.sterilize_date | LL }}</td>
+          </tr>
+          <tr>
+            <td>年月日</td>
+            <td class="text-right">{{ vm.combo.datetime | LL }}</td>
+          </tr>
+          <td colspan="2" class="text-right">
+            <button type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</button>
+            <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
+            <button type="button" class="btn btn-primary" ng-click="combos.check({ comboId: vm.combo._id })">検査</button>
+          </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <div class="well" ng-if="vm.combo._id">
+        <h3>製品一覧</h3>
+        <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
+        <div class="product-item-block mg6x" ng-repeat="product in vm.combo.products">
+          <div class="product-basic-info">
+            <div class="product-avatar">
+              <img src="{{:: product.image }}">
+            </div>
+            <div class="product-info">
+              <span class="product-info-name">{{:: product.name}}</span>
+              <span class="font-sm">{{::product.author}}</span>
+            </div>
+            <div class="product-action">
+              <a class="product-options">
+                <i class="fa fa-product-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group text-right">
+          <button class="btn btn-primary" ui-sref="combos.add({ comboId: vm.combo._id })">追加</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
