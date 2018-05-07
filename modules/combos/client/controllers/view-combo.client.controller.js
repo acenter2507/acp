@@ -55,6 +55,7 @@
     function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;
+      vm.searchResult = [];
       ProductsApi.quickSearch({ key: vm.searchKey, department: true })
         .success(products => {
           vm.searchResult = products;
