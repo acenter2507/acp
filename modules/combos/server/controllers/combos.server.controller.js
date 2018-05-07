@@ -75,6 +75,9 @@ exports.delete = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      combo.products.forEach(product => {
+        Product.removeCombo(product, combo._id);
+      });
       res.jsonp(combo);
     }
   });
@@ -137,7 +140,7 @@ exports.removeAll = function (req, res) {
         return res.status(400).send({ message: 'セットを削除できません！' });
       res.end();
       ids.forEach(comboId => {
-        Product.find({ products: comboId }).exec((err, products) => {
+        Product.find({ combos: comboId }).exec((err, products) => {
           products.forEach(product => {
             Product.removeCombo(product._id, comboId);
           });
