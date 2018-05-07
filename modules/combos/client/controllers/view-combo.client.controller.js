@@ -91,7 +91,7 @@
       $scope.handleShowConfirm({
         message: '全ての製品を削除しますか？'
       }, () => {
-        CombosApi.clearProduct(vm.combo._id, product._id)
+        CombosApi.clearProduct(vm.combo._id)
         .success(function () {
           vm.combo.products = [];
         })
