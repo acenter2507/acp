@@ -34,7 +34,7 @@
     }
 
     vm.handleEndSearchProduct = function () {
-      angular.element('body').removeClass('open-left-aside');
+      angular.element('body').removeClass('open-combo-left-aside');
     };
     // Add new leader
     vm.handleStartSearchProduct = function () {
