@@ -24,7 +24,9 @@
     this.removeAll = function(productIds) {
       return $http.post('/api/products/removeAll', { productIds: productIds }, { ignoreLoadingBar: true });
     };
-    
+    this.quickSearch = function(condition) {
+      return $http.post('/api/products/quickSearch', { condition: condition}, { ignoreLoadingBar: true });
+    };
     return this;
   }
 }());

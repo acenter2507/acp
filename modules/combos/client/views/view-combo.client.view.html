@@ -66,30 +66,29 @@
 </div>
 <div class="d-sm-down-none h600"></div>
 <div class="combo-left-aside">
-  <h3>社員検索</h3>
+  <h3>製品検索</h3>
   <div class="form-group">
     <input class="form-control" ng-model="vm.searchKey" ng-change="vm.handleSearchChanged()" placeholder="検索キーワード" focus-me="true">
   </div>
   <div class="form-group" ng-show="vm.isSearching">
     <i class="fa fa-spinner fa-pulse fa-fw"></i>
   </div>
-  <!-- <div class="user-list">
-    <div class="user-item-block mg6x" ng-repeat="member in vm.searchResult">
-      <div class="user-basic-info">
-        <div class="user-avatar">
-          <img src="{{:: member.profileImageURL }}">
-          <span class="user-status" ng-class="{ 'working': member.status === 1, 'retired': member.status === 2 }"></span>
+  <div class="product-list">
+    <div class="product-item-block mg6x" ng-repeat="product in vm.searchResult">
+      <div class="product-basic-info">
+        <div class="product-avatar">
+          <img src="{{:: product.image }}">
         </div>
-        <div class="user-info">
-          <span class="user-info-name">{{:: member.displayName}}</span>
-          <span class="font-sm">{{::member.roles | RoleFilter}}</span>
+        <div class="product-info">
+          <span class="product-info-name">{{:: product.name}}</span>
+          <span class="font-sm">{{::product.brand }}</span>
         </div>
-        <div class="user-action">
-          <a class="user-options" ng-click="vm.handleAddUserToDepartment(member)"><i class="fa fa-user-plus"></i></a>
+        <div class="product-action">
+          <a class="product-options" ng-click="vm.handleAddProductToCombo(member)"><i class="fa fa-user-plus"></i></a>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="form-group mg12t">
     <button class="btn btn-primary btn-sm pull-right mg10r" ng-click="vm.handleEndSearchProduct()">閉じる</button>
     <div class="clearfix"></div>

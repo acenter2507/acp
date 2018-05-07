@@ -6,12 +6,16 @@
     .module('combos')
     .controller('ComboViewController', ComboViewController);
 
-  ComboViewController.$inject = ['$scope', '$state', 'comboResolve'];
+  ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi'];
 
-  function ComboViewController($scope, $state, combo) {
+  function ComboViewController($scope, $state, $timeout, combo, ProductsApi) {
     var vm = this;
 
     vm.combo = combo;
+
+    vm.isSearching = false;
+    vm.searchKey = '';
+    vm.searchResult = [];
 
     onCreate();
     function onCreate() {
@@ -40,5 +44,27 @@
     vm.handleStartSearchProduct = function () {
       angular.element('body').toggleClass('open-combo-left-aside');
     };
+    vm.handleSearchChanged = function () {
+      if (vm.searchKey === '') return;
+      if (vm.searchTimer) {
+        $timeout.cancel(vm.searchTimer);
+        vm.searchTimer = undefined;
+      }
+      vm.searchTimer = $timeout(handleSearchProducts, 500);
+    };
+    function handleSearchUser() {
+      if (vm.isSearching) return;
+      vm.isSearching = true;
+      ProductsApi.quickSearch({ key: vm.searchKey, department: true })
+        .success(products => {
+          vm.searchResult = products;
+          vm.isSearching = false;
+          if (!$scope.$$phase) $scope.$digest();
+        })
+        .error(err => {
+          $scope.handleShowToast(err.message, true);
+          vm.isSearching = false;
+        });
+    }
   }
 }());
