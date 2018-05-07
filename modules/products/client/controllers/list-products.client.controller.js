@@ -38,13 +38,13 @@
       if (vm.busy) return;
       vm.busy = true;
       ProductsApi.search(vm.condition, vm.page)
-        .success(res => {
+        .success(function (res) {
           vm.products = res.docs;
           vm.pages = CommonService.createArrayFromRange(res.pages);
           vm.total = res.total;
           vm.busy = false;
         })
-        .error(err => {
+        .error(function (err) {
           $scope.handleShowToast(err.message, true);
           vm.busy = false;
         });
@@ -73,13 +73,13 @@
       if (products.length === 0) return;
       $scope.handleShowConfirm({
         message: '選択した製品をすべて削除しますか？'
-      }, () => {
+      }, function () {
         var productIds = _.pluck(products, '_id');
         ProductsApi.removeAll(productIds)
-          .success(data => {
+          .success(function (data) {
             products.forEach(function (p) { vm.products = _.without(vm.products, p); });
           })
-          .error(err => {
+          .error(function (err) {
             $scope.handleShowToast(err.message, true);
           });
       });
@@ -87,7 +87,7 @@
     vm.handleDeleteProduct = function (product) {
       $scope.handleShowConfirm({
         message: product.name + 'を削除しますか？'
-      }, () => {
+      }, function () {
         var rs_product = new ProductsService({ _id: product._id });
         rs_product.$remove(function () {
           vm.products = _.without(vm.products, product);

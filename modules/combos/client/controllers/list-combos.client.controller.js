@@ -37,13 +37,13 @@
       if (vm.busy) return;
       vm.busy = true;
       CombosApi.search(vm.condition, vm.page)
-        .success(res => {
+        .success(function (res) {
           vm.combos = res.docs;
           vm.pages = CommonService.createArrayFromRange(res.pages);
           vm.total = res.total;
           vm.busy = false;
         })
-        .error(err => {
+        .error(function (err) {
           $scope.handleShowToast(err.message, true);
           vm.busy = false;
         });
@@ -71,13 +71,13 @@
       if (combos.length === 0) return;
       $scope.handleShowConfirm({
         message: '選択したセットをすべて削除しますか？'
-      }, () => {
+      }, function () {
         var comboIds = _.pluck(combos, '_id');
         CombosApi.removeAll(comboIds)
-          .success(data => {
+          .success(function (data) {
             combos.forEach(function (p) { vm.combos = _.without(vm.combos, p); });
           })
-          .error(err => {
+          .error(function (err) {
             $scope.handleShowToast(err.message, true);
           });
       });
@@ -85,7 +85,7 @@
     vm.handleDeleteCombo = function (combo) {
       $scope.handleShowConfirm({
         message: combo.name + 'を削除しますか？'
-      }, () => {
+      }, function () {
         var rs_combo = new CombosService({ _id: combo._id });
         rs_combo.$remove(function () {
           vm.rs_combo = _.without(vm.combos, combo);

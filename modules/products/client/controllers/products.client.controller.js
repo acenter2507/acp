@@ -23,7 +23,7 @@
 
       // 画面チェック
       if (vm.product._id) {
-        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date): vm.product.intro_date;
+        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date) : vm.product.intro_date;
         vm.product.exchange_date = (vm.product.exchange_date) ? new Date(vm.product.exchange_date) : vm.product.exchange_date;
       }
     }
@@ -113,7 +113,7 @@
     vm.handleCancelInput = function () {
       $scope.handleShowConfirm({
         message: '操作を止めますか？'
-      }, () => {
+      }, function () {
         handlePreviousScreen();
       });
     };
@@ -121,7 +121,7 @@
     vm.handleDeleteProduct = function () {
       $scope.handleShowConfirm({
         message: vm.product.name + 'を削除しますか？'
-      }, () => {
+      }, function () {
         vm.product.$remove(handlePreviousScreen());
       });
     };
@@ -135,7 +135,7 @@
       }
 
       function successCallback(res) {
-        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date): vm.product.intro_date;
+        vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date) : vm.product.intro_date;
         vm.product.exchange_date = (vm.product.exchange_date) ? new Date(vm.product.exchange_date) : vm.product.exchange_date;
         vm.busy = false;
         $state.go('products.view', {

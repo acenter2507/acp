@@ -28,7 +28,7 @@
     vm.handleDeleteCombo = function () {
       $scope.handleShowConfirm({
         message: vm.combo.name + 'を削除しますか？'
-      }, () => {
+      }, function () {
         vm.combo.$remove(handlePreviousScreen());
       });
     };
@@ -61,7 +61,7 @@
       }
       $scope.handleShowConfirm({
         message: product.name + 'を' + vm.combo.name + 'に追加しますか？'
-      }, () => {
+      }, function () {
         CombosApi.addProduct(vm.combo._id, product._id)
           .success(function () {
             vm.combo.products.push(product);
@@ -77,7 +77,7 @@
     vm.handleRemoveProductFromCombo = function (product) {
       $scope.handleShowConfirm({
         message: product.name + 'をセットから削除しますか？'
-      }, () => {
+      }, function () {
         CombosApi.removeProduct(vm.combo._id, product._id)
           .success(function () {
             vm.combo.products = _.without(vm.combo.products, product);
@@ -90,14 +90,14 @@
     vm.handleClearProduct = function () {
       $scope.handleShowConfirm({
         message: '全ての製品を削除しますか？'
-      }, () => {
+      }, function () {
         CombosApi.clearProduct(vm.combo._id)
-        .success(function () {
-          vm.combo.products = [];
-        })
-        .error(function (err) {
-          $scope.handleShowToast(err.message, true);
-        });
+          .success(function () {
+            vm.combo.products = [];
+          })
+          .error(function (err) {
+            $scope.handleShowToast(err.message, true);
+          });
 
       });
     };
@@ -106,12 +106,12 @@
       vm.isSearching = true;
       vm.searchResult = [];
       ProductsApi.quickSearch({ key: vm.searchKey, department: true })
-        .success(products => {
+        .success(function (products) {
           vm.searchResult = products;
           vm.isSearching = false;
           if (!$scope.$$phase) $scope.$digest();
         })
-        .error(err => {
+        .error(function (err) {
           $scope.handleShowToast(err.message, true);
           vm.isSearching = false;
         });
