@@ -26,7 +26,7 @@ function CommonService() {
   this.comapreTwoArrays = function (arr1, arr2) {
     if (arr1.length !== arr2.length) return false;
     for (var index = 0; index < arr1.length; index++) {
-      const element = arr1[index];
+      var element = arr1[index];
       if (!_.contains(arr2, element)) {
         return false;
       }
