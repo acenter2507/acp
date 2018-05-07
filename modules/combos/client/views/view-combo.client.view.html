@@ -1,14 +1,4 @@
 <div class="container-fluid animated fadeIn">
-  <!-- Tool bar -->
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="form-group text-right">
-        <button ng-show="vm.combos.length > 0" class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
-        <button ng-show="vm.combos.length > 0" class="btn btn-danger" ng-click="vm.handleDeleteCombos()">すべて削除</button>
-        <button class="btn btn-primary" ui-sref="combos.create">追加</button>
-      </div>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
