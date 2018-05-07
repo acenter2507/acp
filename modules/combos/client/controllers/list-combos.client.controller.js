@@ -76,6 +76,8 @@
         CombosApi.removeAll(comboIds)
           .success(function (data) {
             combos.forEach(function (p) { vm.combos = _.without(vm.combos, p); });
+            vm.isSelecting = false;
+            vm.checkedAll = false;
           })
           .error(function (err) {
             $scope.handleShowToast(err.message, true);
