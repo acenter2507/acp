@@ -42,14 +42,6 @@ exports.read = function (req, res) {
         });
       return res.jsonp(combo);
     });
-  // convert mongoose document to JSON
-  var combo = req.combo ? req.combo.toJSON() : {};
-
-  // Add a custom field to the Article, for determining if the current User is the "owner".
-  // NOTE: This field is NOT persisted to the database, since it doesn't exist in the Article model.
-  combo.isCurrentUserOwner = req.user && combo.user && combo.user._id.toString() === req.user._id.toString();
-
-  res.jsonp(combo);
 };
 
 /**
