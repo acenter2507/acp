@@ -59,7 +59,7 @@
       }, () => {
         CombosApi.addProduct(vm.combo._id, product._id)
           .success(user => {
-            vm.combo.push(product);
+            vm.combo.products.push(product);
             vm.searchResult = _.without(vm.searchResult, product);
             if (!$scope.$$phase) $scope.$digest();
           })
