@@ -1,113 +1,117 @@
 <div class="container-fluid animated fadeIn">
-    <div class="d-sm-down-none h20"></div>
-    <!-- Tool tìm kiếm -->
-    <div class="row mg10t">
-      <div class="col-xs-12">
-        <!-- 検索ツール -->
-        <accordion close-others="true" ng-init="openTools = false;">
-          <accordion-group is-open="openTools">
-            <accordion-heading>
-              <i class="fa fa-arrow-circle-down" ng-class="{'fa-rotate-180': openTools}"></i> 検索ツール
-            </accordion-heading>
-            <div class="form-group">
-              <div class="col-sm-6">
-                <label for="key">検索キー</label>
-                <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー">
-              </div>
-              <div class="col-sm-6">
-                <label for="limit">表示件数</label>
-                <input name="limit" type="number" ng-model="vm.condition.limit" class="form-control">
-              </div>
-              <div class="clearfix"></div>
+  <div class="d-sm-down-none h20"></div>
+  <!-- Tool tìm kiếm -->
+  <div class="row mg10t">
+    <div class="col-xs-12">
+      <!-- 検索ツール -->
+      <accordion close-others="true" ng-init="openTools = false;">
+        <accordion-group is-open="openTools">
+          <accordion-heading>
+            <i class="fa fa-arrow-circle-down" ng-class="{'fa-rotate-180': openTools}"></i> 検索ツール
+          </accordion-heading>
+          <div class="form-group">
+            <div class="col-sm-6">
+              <label for="key">検索キー</label>
+              <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー">
             </div>
-            <div class="form-group">
-              <div class="col-sm-12 text-right">
-                <button class="btn btn-sm btn-danger" ng-click="vm.handleClearCondition()">クリア</button>
-                <button class="btn btn-sm btn-primary" ng-click="vm.handleStartSearch()">検索</button>
-              </div>
-              <div class="clearfix"></div>
+            <div class="col-sm-6">
+              <label for="limit">表示件数</label>
+              <input name="limit" type="number" ng-model="vm.condition.limit" class="form-control">
             </div>
-          </accordion-group>
-        </accordion>
-      </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12 text-right">
+              <button class="btn btn-sm btn-danger" ng-click="vm.handleClearCondition()">クリア</button>
+              <button class="btn btn-sm btn-primary" ng-click="vm.handleStartSearch()">検索</button>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </accordion-group>
+      </accordion>
     </div>
-    <!-- Tool bar -->
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="form-group text-right">
-          <button ng-show="vm.combos.length > 0" class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
-          <button ng-show="vm.combos.length > 0" class="btn btn-danger" ng-click="vm.handleDeleteCombos()">すべて削除</button>
-          <button class="btn btn-primary" ui-sref="combos.create">追加</button>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <!-- 休暇一覧 -->
-        <table class="table table-bordered">
-          <thead class="bg-primary">
-            <tr>
-              <th ng-show="vm.isSelecting" class="text-center">
-                <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
-              </th>
-              <th>名称</th>
-              <th>カラーコード</th>
-              <th>担当者</th>
-              <th>年月日</th>
-              <th>減菌年月日</th>
-              <th>製品数</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-show="vm.combos.length === 0">
-              <td colspan="7">データが見つかりません。</td>
-            </tr>
-            <tr ng-repeat="combo in vm.combos track by $index">
-              <td ng-show="vm.isSelecting" class="text-center">
-                <input type="checkbox" ng-model="combo.isChecked">
-              </td>
-              <td>
-                <a ui-sref="combos.view({ comboId: combo._id })">{{ combo.name }}</a>
-              </td>
-              <td>{{ combo.color_code }}</td>
-              <td>{{ combo.author }}</td>
-              <td><span ng-if="combo.datetime">{{ combo.datetime | LL }}</span></td>
-              <td><span ng-if="combo.sterilize_date">{{ combo.sterilize_date | LL }}</span></td>
-              <td>{{ combo.products.length }}</td>
-              <td>
-                <div dropdown dropdown-append-to-body>
-                  <a dropdown-toggle class="btn btn-xs btn-default">
-                    <i class="glyphicon glyphicon-option-horizontal"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                    <!-- 詳細 -->
-                    <li>
-                      <a ui-sref="combos.view({ comboId: combo._id })">
-                        <i class="fa fa-eye"></i> 詳細</a>
-                    </li>
-                    <!-- 編集 -->
-                    <li>
-                      <a ui-sref="combos.edit({ comboId: combo._id })">
-                        <i class="fa fa-pencil-square-o"></i> 編集</a>
-                    </li>
-                    <!-- 削除 -->
-                    <li>
-                      <a ng-click="vm.handleDeleteCombo(combo)">
-                        <i class="fa fa-trash"></i> 削除</a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- Pagination -->
-        <ul class="pagination mg10y" ng-show="vm.pages.length > 1">
-          <li ng-repeat="page in vm.pages | limitTo: 5" ng-class="{'active': page === vm.page}">
-            <a ng-click="vm.handlePageChanged(page)">{{page}}</a>
-          </li>
-        </ul>
+  </div>
+  <!-- Tool bar -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group text-right">
+        <button ng-show="vm.combos.length > 0" class="btn btn-default" ng-click="vm.handleStartSelectRow()">{{ (vm.isSelecting) ? 'キャンセル' : '選択' }}</button>
+        <button ng-show="vm.combos.length > 0" class="btn btn-danger" ng-click="vm.handleDeleteCombos()">すべて削除</button>
+        <button class="btn btn-primary" ui-sref="combos.create">追加</button>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- 休暇一覧 -->
+      <table class="table table-bordered">
+        <thead class="bg-primary">
+          <tr>
+            <th ng-show="vm.isSelecting" class="text-center">
+              <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
+            </th>
+            <th>名称</th>
+            <th>カラーコード</th>
+            <th>担当者</th>
+            <th>年月日</th>
+            <th>減菌年月日</th>
+            <th>製品数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-show="vm.combos.length === 0">
+            <td colspan="7">データが見つかりません。</td>
+          </tr>
+          <tr ng-repeat="combo in vm.combos track by $index">
+            <td ng-show="vm.isSelecting" class="text-center">
+              <input type="checkbox" ng-model="combo.isChecked">
+            </td>
+            <td>
+              <a ui-sref="combos.view({ comboId: combo._id })">{{ combo.name }}</a>
+            </td>
+            <td>{{ combo.color_code }}</td>
+            <td>{{ combo.author }}</td>
+            <td>
+              <span ng-if="combo.datetime">{{ combo.datetime | LL }}</span>
+            </td>
+            <td>
+              <span ng-if="combo.sterilize_date">{{ combo.sterilize_date | LL }}</span>
+            </td>
+            <td>{{ combo.products.length }}</td>
+            <td>
+              <div dropdown dropdown-append-to-body>
+                <a dropdown-toggle class="btn btn-xs btn-default">
+                  <i class="glyphicon glyphicon-option-horizontal"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                  <!-- 詳細 -->
+                  <li>
+                    <a ui-sref="combos.view({ comboId: combo._id })">
+                      <i class="fa fa-eye"></i> 詳細</a>
+                  </li>
+                  <!-- 編集 -->
+                  <li>
+                    <a ui-sref="combos.edit({ comboId: combo._id })">
+                      <i class="fa fa-pencil-square-o"></i> 編集</a>
+                  </li>
+                  <!-- 削除 -->
+                  <li>
+                    <a ng-click="vm.handleDeleteCombo(combo)">
+                      <i class="fa fa-trash"></i> 削除</a>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Pagination -->
+      <ul class="pagination mg10y" ng-show="vm.pages.length > 1">
+        <li ng-repeat="page in vm.pages | limitTo: 5" ng-class="{'active': page === vm.page}">
+          <a ng-click="vm.handlePageChanged(page)">{{page}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

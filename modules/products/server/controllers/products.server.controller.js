@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Product = mongoose.model('Product'),
+  Combo = mongoose.model('Combo'),
   config = require(path.resolve('./config/config')),
   multer = require('multer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
@@ -74,6 +75,9 @@ exports.delete = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      product.combos.forEach(combo => {
+        Combo.removeProduct(combo, product._id);
+      });
       res.jsonp(product);
     }
   });
@@ -143,11 +147,12 @@ exports.search = function (req, res) {
 exports.removeAll = function (req, res) {
   var ids = req.body.productIds || [];
 
-  Product.remove({ _id: { $in: ids } }).exec(function (err) {
-    if (err)
-      return res.status(400).send({ message: '製品を削除できません！' });
-    return res.end();
-  });
+  Product.remove({ _id: { $in: ids } })
+    .exec(function (err) {
+      if (err)
+        return res.status(400).send({ message: '製品を削除できません！' });
+      return res.end();
+    });
 };
 
 

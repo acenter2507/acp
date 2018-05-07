@@ -108,6 +108,9 @@ exports.removeProduct = function (req, res) {
       return Product.removeCombo(productId, combo._id);
     })
     .then(() => {
+      combo.products.forEach(product => {
+        Product.removeCombo(product, combo._id);
+      });
       return res.jsonp();
     });
 };
