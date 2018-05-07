@@ -1,46 +1,21 @@
 <aside class="aside-menu" id="aside-menu" ng-controller="HeaderController">
-  <!--<div class="aside-search">
-    <div class="quick-search">
-      <input ng-model="search_key" type="text" class="form-control quick-search-input" name="search" placeholder="{{ 'LB_SEARCH' | translate }}">
-      <a class="quick-search-submit" type="submit" ng-click="search()"><i class="fa fa-search"></i></a>
-      <a class="quick-search-advance" type="button" ui-sref="search"><i class="fa fa-cogs"></i></a>
-    </div>
-  </div>-->
   <nav class="aside-nav">
     <ul class="nav">
-      <!--<li class="nav-title" ng-show="isLogged">{{ 'LANGUAGE' | translate }}</li>
-      <li class="nav-item">
-        <a class="nav-link" ng-click="handleChangeLanguage()">
-          <img style="width: 18px; height: 18px;" ng-src="{{'modules/core/client/img/flags/' + language + '.png'}}">
-          {{ language | translate }}
-        </a>
-      </li>-->
-
-      <!--<li class="nav-title" ng-show="isLogged">{{ 'LB_NOFT' | translate }}</li>
-      <li class="nav-item" ng-show="isLogged">
-        <a class="nav-link" ui-sref="notifs.list"><i class="fa fa-bell-o"></i> {{ 'LB_NOFT_VIEWALL' | translate }}
-          <span class="badge badge-pill badge-danger" ng-bind="Notifications.notifCnt | shortNumber" ng-show="Notifications.notifCnt > 0"></span>
-        </a>
-      </li>
-      <li class="nav-item" ng-show="isLogged && Notifications.notifCnt > 0">
-        <a class="nav-link" ng-click="handleMarkAllNotifRead()"><i class="fa fa-check-square-o"></i> {{ 'LB_NOFT_MARKALL' | translate }}</a>
-      </li>
-      <li class="nav-title">{{ 'LB_NAVIGATION' | translate }}</li>-->
       <li class="nav-item">
         <a class="nav-link" ui-sref-active="active" ui-sref="home"><i class="fa fa-newspaper-o"></i> ホーム</a>
       </li>
       <li class="nav-title">ナビゲーション</li>
       <li class="nav-item">
-        <a class="nav-link" ui-sref-active="active" ui-sref="users.list" ng-if="isLeader"<i class="fa fa-users"></i> 社員</a>
+        <a class="nav-link" ui-sref-active="active" ui-sref="combos.list"></a>セット一覧</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" ui-sref-active="active" ui-sref="departments.list"><i class="fa fa-sitemap"></i> 部署</a>
+        <a class="nav-link" ui-sref-active="active" ui-sref="combos.create"></a>セット作成</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" ui-sref-active="active" ui-sref="workmonths.list"><i class="fa fa-calendar"></i> 勤務表</a>
+        <a class="nav-link" ui-sref-active="active" ui-sref="products.list">製品一覧</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" ui-sref-active="active" ui-sref="workrests.list"><i class="fa fa-calendar-times-o"></i> 休暇</a>
+        <a class="nav-link" ui-sref-active="active" ui-sref="products.create">製品登録</a>
       </li>
     </ul>
   </nav>

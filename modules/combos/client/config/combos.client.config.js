@@ -24,7 +24,7 @@
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'combos', {
-      title: 'セット定義',
+      title: 'セット作成',
       state: 'combos.create',
       roles: ['*']
     });
