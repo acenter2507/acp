@@ -20,11 +20,15 @@
           </tr>
           <tr>
             <td>減菌年月日</td>
-            <td class="text-right">{{ vm.combo.sterilize_date | LL }}</td>
+            <td class="text-right">
+              <span ng-if="combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
+            </td>
           </tr>
           <tr>
             <td>年月日</td>
-            <td class="text-right">{{ vm.combo.datetime | LL }}</td>
+            <td class="text-right">
+              <span ng-if="combo.datetime">{{ vm.combo.datetime | LL }}</span>
+            </td>
           </tr>
           <td colspan="2" class="text-right">
             <button type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</button>
@@ -48,13 +52,15 @@
                   <img src="{{:: product.image }}">
                 </div>
                 <div class="product-info">
-                  <a ui-sref="products.view({ productId: product._id })"><span class="product-info-name">{{:: product.name}}</span></a>
+                  <a ui-sref="products.view({ productId: product._id })">
+                    <span class="product-info-name">{{:: product.name}}</span>
+                  </a>
                   <span class="font-sm">{{::product.author}}</span>
                 </div>
                 <div class="product-action">
-                    <a class="product-options" ng-click="vm.handleRemoveProductFromCombo(product)">
-                      <i class="fa fa-close"></i>
-                    </a>
+                  <a class="product-options" ng-click="vm.handleRemoveProductFromCombo(product)">
+                    <i class="fa fa-close"></i>
+                  </a>
                 </div>
               </div>
             </div>
