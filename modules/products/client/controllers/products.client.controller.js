@@ -50,9 +50,9 @@
 
         fileReader.onload = function (fileReaderEvent) {
           $timeout(function () {
-            vm.imageUrl = fileReaderEvent.target.result;
-            vm.isGetAvatarFromFile = true;
-            // handleCropImage(fileReaderEvent.target.result);
+            //vm.imageUrl = fileReaderEvent.target.result;
+            //vm.isGetAvatarFromFile = true;
+            handleCropImage(fileReaderEvent.target.result);
           }, 0);
         };
       }
