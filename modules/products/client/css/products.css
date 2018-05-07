@@ -31,7 +31,7 @@ img.product-thumbnail {
         border: 2px solid #fff;
         width: 48px;
         height: 48px;
-        border-radius: 50%; }
+        border-radius: 5px; }
       .product-item-block .product-basic-info .product-avatar .product-status {
         position: absolute;
         bottom: 2px;
