@@ -139,6 +139,7 @@ exports.search = function (req, res) {
     return res.status(400).send({ message: 'データを取得できません！' });
   });
 };
+
 exports.removeAll = function (req, res) {
   var ids = req.body.productIds || [];
 
@@ -147,6 +148,36 @@ exports.removeAll = function (req, res) {
       return res.status(400).send({ message: '製品を削除できません！' });
     return res.end();
   });
+};
+
+
+/**
+ * Tìm kiếm user với key và list ignore
+ */
+exports.quickSearch = function (req, res) {
+  var condition = req.body.condition || {};
+  var key = condition.key;
+
+  if (key && key.length > 0) {
+    var key_lower = key.toLowerCase();
+    var key_upper = key.toUpperCase();
+    var or_arr = [
+      { search: { $regex: '.*' + key + '.*' } },
+      { search: { $regex: '.*' + key_lower + '.*' } },
+      { search: { $regex: '.*' + key_upper + '.*' } }
+    ];
+    ands.push({ $or: or_arr });
+  } else {
+    return res.jsonp([]);
+  }
+
+  var query = { $and: ands };
+  Product.find(query)
+    .select('name image brand')
+    .exec((err, products) => {
+      if (err) res.status(400).send(err);
+      res.jsonp(products);
+    });
 };
 
 /**

@@ -9,6 +9,7 @@ var productsPolicy = require('../policies/products.server.policy'),
 module.exports = function(app) {
   app.route('/api/products/image').post(products.image);
   app.route('/api/products/search').post(products.search);
+  app.route('/api/products/search').post(products.quickSearch);
   app.route('/api/products/removeAll').post(products.removeAll);
   // Products Routes
   app.route('/api/products')//.all(productsPolicy.isAllowed)
