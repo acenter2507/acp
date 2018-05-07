@@ -136,21 +136,21 @@ exports.addProduct = function (req, res) {
 exports.clearProduct = function (req, res) {
   var combo = req.combo;
   var products = combo.products;
-  console.log(products);
   combo.products = [];
   res.end();
 
-  // combo.save(function (err) {
-  //   if (err) {
-  //     return res.status(400).send({
-  //       message: errorHandler.getErrorMessage(err)
-  //     });
-  //   } else {
-  //     products.forEach(product => {
-  //       Product.removeCombo(product, combo._id);
-  //     });
-  //   }
-  // });
+  combo.save(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      console.log(products);
+      products.forEach(product => {
+        Product.removeCombo(product, combo._id);
+      });
+    }
+  });
 };
 
 /**
