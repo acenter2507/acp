@@ -63,25 +63,44 @@
         message: product.name + 'を' + vm.combo.name + 'に追加しますか？'
       }, () => {
         CombosApi.addProduct(vm.combo._id, product._id)
-          .success(user => {
+          .success(function () {
             vm.combo.products.push(product);
             vm.searchResult = _.without(vm.searchResult, product);
             if (!$scope.$$phase) $scope.$digest();
           })
-          .error(err => {
+          .error(function (err) {
             $scope.handleShowToast(err.message, true);
           });
       });
     };
-    // Remove member from department
+    // Remove product from combo
     vm.handleRemoveProductFromCombo = function (product) {
       $scope.handleShowConfirm({
         message: product.name + 'をセットから削除しますか？'
       }, () => {
-        vm.combo.products = _.without(vm.combo.products, product);
-        CombosApi.removeProduct(vm.combo._id, product._id);
+        CombosApi.removeProduct(vm.combo._id, product._id)
+          .success(function () {
+            vm.combo.products = _.without(vm.combo.products, product);
+          })
+          .error(function (err) {
+            $scope.handleShowToast(err.message, true);
+          });
       });
     };
+    vm.handleClearProduct = function () {
+      $scope.handleShowConfirm({
+        message: '全ての製品を削除しますか？'
+      }, () => {
+        CombosApi.clearProduct(vm.combo._id, product._id)
+        .success(function () {
+          vm.combo.products = [];
+        })
+        .error(function (err) {
+          $scope.handleShowToast(err.message, true);
+        });
+
+      });
+    }
     function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;

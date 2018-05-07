@@ -131,6 +131,29 @@ exports.addProduct = function (req, res) {
 };
 
 /**
+ * Add product to combo
+ */
+exports.clearProduct = function (req, res) {
+  var combo = req.combo;
+  var products = combo.products;
+  console.log(products);
+  combo.products = [];
+  res.end();
+
+  // combo.save(function (err) {
+  //   if (err) {
+  //     return res.status(400).send({
+  //       message: errorHandler.getErrorMessage(err)
+  //     });
+  //   } else {
+  //     products.forEach(product => {
+  //       Product.removeCombo(product, combo._id);
+  //     });
+  //   }
+  // });
+};
+
+/**
  * Combo middleware
  */
 exports.comboByID = function (req, res, next, id) {
@@ -146,7 +169,7 @@ exports.comboByID = function (req, res, next, id) {
       return next(err);
     } else if (!combo) {
       return res.status(404).send({
-        message: 'No Combo with that identifier has been found'
+        message: 'セットが存在しません！'
       });
     }
     req.combo = combo;

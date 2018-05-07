@@ -19,6 +19,7 @@ module.exports = function (app) {
 
   app.route('/api/combos/:comboId/addProduct').post(combos.addProduct);
   app.route('/api/combos/:comboId/removeProduct').post(combos.removeProduct);
+  app.route('/api/combos/:comboId/clearProduct').post(combos.clearProduct);
 
   // Finish by binding the Combo middleware
   app.param('comboId', combos.comboByID);

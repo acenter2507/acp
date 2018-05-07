@@ -30,6 +30,9 @@
     this.removeProduct = function(comboId, productId) {
       return $http.post('/api/combos/' + comboId + '/removeProduct', { productId: productId }, { ignoreLoadingBar: true });
     };
+    this.clearProduct = function(comboId) {
+      return $http.post('/api/combos/' + comboId + '/clearProduct', { }, { ignoreLoadingBar: true });
+    };
     
     return this;
   }
