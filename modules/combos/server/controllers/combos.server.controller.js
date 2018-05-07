@@ -32,6 +32,16 @@ exports.create = function (req, res) {
  * Show the current Combo
  */
 exports.read = function (req, res) {
+  
+  Combo.findById(req.combo._id)
+    .populate('products', 'name image brand')
+    .exec(function (err, combo) {
+      if (err)
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      return res.jsonp(combo);
+    });
   // convert mongoose document to JSON
   var combo = req.combo ? req.combo.toJSON() : {};
 
@@ -139,7 +149,7 @@ exports.comboByID = function (req, res, next, id) {
     });
   }
 
-  Combo.findById(id).populate('user', 'displayName').exec(function (err, combo) {
+  Combo.findById(id).exec(function (err, combo) {
     if (err) {
       return next(err);
     } else if (!combo) {
