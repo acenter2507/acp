@@ -52,7 +52,7 @@
       }
       vm.searchTimer = $timeout(handleSearchProducts, 500);
     };
-    function handleSearchUser() {
+    function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;
       ProductsApi.quickSearch({ key: vm.searchKey, department: true })
