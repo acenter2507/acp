@@ -78,6 +78,8 @@
         ProductsApi.removeAll(productIds)
           .success(function (data) {
             products.forEach(function (p) { vm.products = _.without(vm.products, p); });
+            vm.isSelecting = false;
+            vm.checkedAll = false;
           })
           .error(function (err) {
             $scope.handleShowToast(err.message, true);
