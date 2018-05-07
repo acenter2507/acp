@@ -31,27 +31,21 @@
         templateUrl: 'modules/combos/client/views/form-combo.client.view.html',
         controller: 'CombosController',
         controllerAs: 'vm',
-        resolve: {
-          comboResolve: newCombo
-        }
+        resolve: { comboResolve: newCombo }
       })
       .state('combos.edit', {
         url: '/:comboId/edit',
         templateUrl: 'modules/combos/client/views/form-combo.client.view.html',
         controller: 'CombosController',
         controllerAs: 'vm',
-        resolve: {
-          comboResolve: getCombo
-        }
+        resolve: { comboResolve: getCombo }
       })
       .state('combos.view', {
         url: '/:comboId',
-        templateUrl: 'modules/combos/client/views/form-combo.client.view.html',
-        controller: 'CombosController',
+        templateUrl: 'modules/combos/client/views/view-combo.client.view.html',
+        controller: 'ComboViewController',
         controllerAs: 'vm',
-        resolve: {
-          comboResolve: getCombo
-        }
+        resolve: { comboResolve: getCombo }
       });
   }
 
