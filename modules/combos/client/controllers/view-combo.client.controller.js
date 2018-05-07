@@ -54,7 +54,7 @@
     };
     // Add a product to combo
     vm.handleAddProductToCombo = function (product) {
-      var checkObj = _.findWhere(vm.combo.products, product);
+      var checkObj = _.findWhere(vm.combo.products, { _id: product._id });
       if (checkObj) {
         $scope.handleShowToast(product.name + 'の製品が既にこのセットに入っています！', true);
         return;
