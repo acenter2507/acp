@@ -18,14 +18,14 @@
   }
   ProductsApi.$inject = ['$http'];
   function ProductsApi($http) {
-    this.search = function(condition, page) {
+    this.search = function (condition, page) {
       return $http.post('/api/products/search', { condition: condition, page: page }, { ignoreLoadingBar: true });
     };
-    this.removeAll = function(productIds) {
+    this.removeAll = function (productIds) {
       return $http.post('/api/products/removeAll', { productIds: productIds }, { ignoreLoadingBar: true });
     };
-    this.quickSearch = function(condition) {
-      return $http.post('/api/products/quickSearch', { condition: condition}, { ignoreLoadingBar: true });
+    this.quickSearch = function (condition) {
+      return $http.post('/api/products/quickSearch', { condition: condition }, { ignoreLoadingBar: true });
     };
     return this;
   }
