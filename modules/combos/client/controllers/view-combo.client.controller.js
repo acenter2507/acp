@@ -59,7 +59,6 @@
         $scope.handleShowToast(product.name + 'の製品が既にこのセットに入っています！', true);
         return;
       }
-      var onlineUser = _.findWhere(global.onlineUsers, { socket: socket.id });
       $scope.handleShowConfirm({
         message: product.name + 'を' + vm.combo.name + 'に追加しますか？'
       }, () => {
