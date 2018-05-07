@@ -114,7 +114,7 @@ exports.search = function (req, res) {
   if (and_arr.length > 0) {
     query = { $and: and_arr };
   }
-  Combos.paginate(query, {
+  Combo.paginate(query, {
     sort: condition.sort,
     page: page,
     populate: [
