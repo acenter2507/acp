@@ -8,7 +8,7 @@
 
   ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi', 'CombosApi'];
 
-  function ComboViewController($scope, $state, $timeout, combo, ProductsApi) {
+  function ComboViewController($scope, $state, $timeout, combo, ProductsApi, CombosApi) {
     var vm = this;
 
     vm.combo = combo;
