@@ -12,36 +12,14 @@
     var vm = this;
 
     vm.combo = combo;
-    vm.form = {};
 
     onCreate();
     function onCreate() {
-      // 画面チェック
-      if (vm.combo._id) {
-        vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime) : vm.combo.datetime;
-        vm.combo.sterilize_date = (vm.combo.sterilize_date) ? new Date(vm.combo.sterilize_date) : vm.combo.sterilize_date;
-      }
+      $scope.$on('$destroy', function () {
+        angular.element('body').removeClass('open-combo-left-aside');
+      });
     }
 
-    vm.handleSaveCombo = function () {
-      if (vm.combo._id) {
-        vm.combo.$update(successCallback, errorCallback);
-      } else {
-        vm.combo.$save(successCallback, errorCallback);
-      }
-
-      function successCallback(res) {
-        vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime) : vm.combo.datetime;
-        vm.combo.sterilize_date = (vm.combo.sterilize_date) ? new Date(vm.combo.sterilize_date) : vm.combo.sterilize_date;
-        vm.busy = false;
-        $state.go('combos.view', { comboId: res._id });
-      }
-
-      function errorCallback(res) {
-        vm.busy = false;
-        $scope.handleShowToast(res.data.message, true);
-      }
-    };
     // Remove existing Combo
     vm.handleDeleteCombo = function () {
       $scope.handleShowConfirm({
@@ -50,17 +28,17 @@
         vm.combo.$remove(handlePreviousScreen());
       });
     };
-    // Cancel
-    vm.handleCancelInput = () => {
-      $scope.handleShowConfirm({
-        message: '操作を止めますか？'
-      }, () => {
-        handlePreviousScreen();
-      });
-    };
     // Back to before state
     function handlePreviousScreen() {
       $state.go($state.previous.state.name || 'home', $state.previous.params);
     }
+
+    vm.handleEndSearchProduct = function () {
+      angular.element('body').removeClass('open-left-aside');
+    };
+    // Add new leader
+    vm.handleStartSearchProduct = function () {
+      angular.element('body').toggleClass('open-combo-left-aside');
+    };
   }
 }());

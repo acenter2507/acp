@@ -26,7 +26,7 @@
             <td>年月日</td>
             <td class="text-right">{{ vm.combo.datetime | LL }}</td>
           </tr>
-          <td colspan="2" class="text-right">
+          <td colspan="2" class="text-right"> 
             <button type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</button>
             <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
             <button type="button" class="btn btn-primary" ng-click="combos.check({ comboId: vm.combo._id })">検査</button>
@@ -58,9 +58,40 @@
         </div>
         <div class="clearfix"></div>
         <div class="form-group text-right">
-          <button class="btn btn-primary" ng-click="vm.handleSelectProducts()">追加</button>
+          <button class="btn btn-primary" ng-click="vm.handleStartSearchProduct()">追加</button>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="combo-left-aside">
+  <h3>社員検索</h3>
+  <div class="form-group">
+    <input class="form-control" ng-model="vm.searchKey" ng-change="vm.handleSearchChanged()" placeholder="メールや名前で検索" focus-me="true">
+  </div>
+  <div class="form-group" ng-show="vm.isSearching">
+    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+  </div>
+  <div class="user-list">
+    <div class="user-item-block mg6x" ng-repeat="member in vm.searchResult">
+      <div class="user-basic-info">
+        <div class="user-avatar">
+          <img src="{{:: member.profileImageURL }}">
+          <span class="user-status" ng-class="{ 'working': member.status === 1, 'retired': member.status === 2 }"></span>
+        </div>
+        <div class="user-info">
+          <span class="user-info-name">{{:: member.displayName}}</span>
+          <span class="font-sm">{{::member.roles | RoleFilter}}</span>
+        </div>
+        <div class="user-action">
+          <a class="user-options" ng-click="vm.handleAddUserToDepartment(member)"><i class="fa fa-user-plus"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mg12t">
+    <button class="btn btn-primary btn-sm pull-right mg10r" ng-click="vm.handleEndSearchProduct()">閉じる</button>
+    <div class="clearfix"></div>
+  </div>
+  <button class="combo-left-aside-close" aria-label="Dismis"></button>
 </div>

@@ -128,8 +128,8 @@ function toggleLeftSideDirective() {
 
   function link(scope, element, attrs) {
     element.on('click', function (e) {
-      if (element.hasClass('left-aside-close')) {
-        angular.element('body').toggleClass('open-left-aside');
+      if (element.hasClass('combo-left-aside-close')) {
+        angular.element('body').toggleClass('open-combo-left-aside');
       }
     });
   }
