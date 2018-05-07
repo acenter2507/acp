@@ -139,7 +139,7 @@ exports.removeAll = function (req, res) {
       ids.forEach(comboId => {
         Product.find({ products: comboId }).exec((err, products) => {
           products.forEach(product => {
-            Product.removeProduct(product._id, comboId);
+            Product.removeCombo(product._id, comboId);
           });
         });
       });
