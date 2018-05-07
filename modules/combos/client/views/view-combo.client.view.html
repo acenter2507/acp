@@ -67,12 +67,12 @@
 <div class="combo-left-aside">
   <h3>社員検索</h3>
   <div class="form-group">
-    <input class="form-control" ng-model="vm.searchKey" ng-change="vm.handleSearchChanged()" placeholder="メールや名前で検索" focus-me="true">
+    <input class="form-control" ng-model="vm.searchKey" ng-change="vm.handleSearchChanged()" placeholder="検索キーワード" focus-me="true">
   </div>
   <div class="form-group" ng-show="vm.isSearching">
     <i class="fa fa-spinner fa-pulse fa-fw"></i>
   </div>
-  <div class="user-list">
+  <!-- <div class="user-list">
     <div class="user-item-block mg6x" ng-repeat="member in vm.searchResult">
       <div class="user-basic-info">
         <div class="user-avatar">
@@ -88,7 +88,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="form-group mg12t">
     <button class="btn btn-primary btn-sm pull-right mg10r" ng-click="vm.handleEndSearchProduct()">閉じる</button>
     <div class="clearfix"></div>
