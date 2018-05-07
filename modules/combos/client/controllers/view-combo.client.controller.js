@@ -54,6 +54,12 @@
     };
     // Add a product to combo
     vm.handleAddProductToCombo = function (product) {
+      var checkObj = _.findWhere(vm.combo.products, product);
+      if (checkObj) {
+        $scope.handleShowToast(product.name + 'の製品が既にこのセットに入っています！', true);
+        return;
+      }
+      var onlineUser = _.findWhere(global.onlineUsers, { socket: socket.id });
       $scope.handleShowConfirm({
         message: product.name + 'を' + vm.combo.name + 'に追加しますか？'
       }, () => {
