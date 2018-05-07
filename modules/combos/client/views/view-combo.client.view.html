@@ -52,9 +52,9 @@
                   <span class="font-sm">{{::product.author}}</span>
                 </div>
                 <div class="product-action">
-                  <a class="product-options">
-                    <i class="fa fa-product-plus"></i>
-                  </a>
+                    <a class="product-options" ng-click="vm.handleRemoveProductFromCombo(product)">
+                      <i class="fa fa-minus"></i>
+                    </a>
                 </div>
               </div>
             </div>
