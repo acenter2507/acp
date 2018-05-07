@@ -26,7 +26,7 @@
             <td>年月日</td>
             <td class="text-right">{{ vm.combo.datetime | LL }}</td>
           </tr>
-          <td colspan="2" class="text-right"> 
+          <td colspan="2" class="text-right">
             <button type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</button>
             <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
             <button type="button" class="btn btn-primary" ng-click="combos.check({ comboId: vm.combo._id })">検査</button>
@@ -40,19 +40,23 @@
       <div class="well" ng-if="vm.combo._id">
         <h3>製品一覧</h3>
         <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
-        <div class="product-item-block mg6x" ng-repeat="product in vm.combo.products">
-          <div class="product-basic-info">
-            <div class="product-avatar">
-              <img src="{{:: product.image }}">
-            </div>
-            <div class="product-info">
-              <span class="product-info-name">{{:: product.name}}</span>
-              <span class="font-sm">{{::product.author}}</span>
-            </div>
-            <div class="product-action">
-              <a class="product-options">
-                <i class="fa fa-product-plus"></i>
-              </a>
+        <div class="row">
+          <div class="col-xs-12 col-sm-2 col-md-3 col-lg-4" ng-repeat="product in vm.combo.products">
+            <div class="product-item-block">
+              <div class="product-basic-info">
+                <div class="product-avatar">
+                  <img src="{{:: product.image }}">
+                </div>
+                <div class="product-info">
+                  <span class="product-info-name">{{:: product.name}}</span>
+                  <span class="font-sm">{{::product.author}}</span>
+                </div>
+                <div class="product-action">
+                  <a class="product-options">
+                    <i class="fa fa-product-plus"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -84,7 +88,9 @@
           <span class="font-sm">{{::product.brand }}</span>
         </div>
         <div class="product-action">
-          <a class="product-options" ng-click="vm.handleAddProductToCombo(product)"><i class="fa fa-plus"></i></a>
+          <a class="product-options" ng-click="vm.handleAddProductToCombo(product)">
+            <i class="fa fa-plus"></i>
+          </a>
         </div>
       </div>
     </div>
