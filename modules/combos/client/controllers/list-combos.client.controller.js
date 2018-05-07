@@ -88,7 +88,7 @@
       }, function () {
         var rs_combo = new CombosService({ _id: combo._id });
         rs_combo.$remove(function () {
-          vm.rs_combo = _.without(vm.combos, combo);
+          vm.combos = _.without(vm.combos, combo);
         });
       });
     };
