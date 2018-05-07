@@ -158,6 +158,7 @@ exports.quickSearch = function (req, res) {
   var condition = req.body.condition || {};
   var key = condition.key;
 
+  var ands = [];
   if (key && key.length > 0) {
     var key_lower = key.toLowerCase();
     var key_upper = key.toUpperCase();
