@@ -145,7 +145,6 @@ exports.clearProduct = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      console.log(products);
       products.forEach(product => {
         Product.removeCombo(product, combo._id);
       });
