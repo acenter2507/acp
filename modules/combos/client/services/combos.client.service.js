@@ -21,8 +21,14 @@
     this.search = function(condition, page) {
       return $http.post('/api/combos/search', { condition: condition, page: page }, { ignoreLoadingBar: true });
     };
-    this.removeAll = function(productIds) {
-      return $http.post('/api/combos/removeAll', { productIds: productIds }, { ignoreLoadingBar: true });
+    this.removeAll = function(comboIds) {
+      return $http.post('/api/combos/removeAll', { comboIds: comboIds }, { ignoreLoadingBar: true });
+    };
+    this.addProduct = function(comboId, productId) {
+      return $http.post('/api/combos/' + comboId + '/addProduct', { productId: productId }, { ignoreLoadingBar: true });
+    };
+    this.removeProduct = function(comboId, productId) {
+      return $http.post('/api/combos/' + comboId + '/removeProduct', { productId: productId }, { ignoreLoadingBar: true });
     };
     
     return this;

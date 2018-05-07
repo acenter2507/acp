@@ -44,4 +44,19 @@ ProductSchema.pre('save', function (next) {
   next();
 });
 
+ProductSchema.statics.addCombo = function (productId, comboId) {
+  return this.findById(productId).exec(function (err, product) {
+    if (err || !product) return;
+    product.combos.push(comboId);
+    return product.save();
+  });
+};
+
+ProductSchema.statics.removeCombo = function (productId, comboId) {
+  return this.findById(productId).exec(function (err, product) {
+    if (err || !product) return;
+    product.combos.pull(comboId);
+    return product.save();
+  });
+};
 mongoose.model('Product', ProductSchema);

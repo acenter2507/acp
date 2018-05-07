@@ -6,7 +6,7 @@
     .module('combos')
     .controller('ComboViewController', ComboViewController);
 
-  ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi'];
+  ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi', 'CombosApi'];
 
   function ComboViewController($scope, $state, $timeout, combo, ProductsApi) {
     var vm = this;
@@ -51,6 +51,31 @@
         vm.searchTimer = undefined;
       }
       vm.searchTimer = $timeout(handleSearchProducts, 500);
+    };
+    // Add a product to combo
+    vm.handleAddProductToCombo = function (product) {
+      $scope.handleShowConfirm({
+        message: product.name + 'を' + vm.combo.name + 'に追加しますか？'
+      }, () => {
+        CombosApi.addProduct(vm.combo._id, product._id)
+          .success(user => {
+            vm.combo.push(product);
+            vm.searchResult = _.without(vm.searchResult, product);
+            if (!$scope.$$phase) $scope.$digest();
+          })
+          .error(err => {
+            $scope.handleShowToast(err.message, true);
+          });
+      });
+    };
+    // Remove member from department
+    vm.handleRemoveProductFromCombo = function (product) {
+      $scope.handleShowConfirm({
+        message: product.name + 'をセットから削除しますか？'
+      }, () => {
+        vm.combo.products = _.without(vm.combo.products, product);
+        CombosApi.removeProduct(vm.combo._id, product._id);
+      });
     };
     function handleSearchProducts() {
       if (vm.isSearching) return;

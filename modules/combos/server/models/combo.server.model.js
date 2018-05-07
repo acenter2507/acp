@@ -33,4 +33,20 @@ var ComboSchema = new Schema({
 });
 ComboSchema.plugin(paginate);
 
+ComboSchema.statics.addProduct = function (comboId, productId) {
+  return this.findById(comboId).exec(function (err, combo) {
+    if (err || !combo) return;
+    combo.products.push(productId);
+    return combo.save();
+  });
+};
+
+ComboSchema.statics.removeProduct = function (comboId, productId) {
+  return this.findById(comboId).exec(function (err, combo) {
+    if (err || !combo) return;
+    combo.products.pull(productId);
+    return combo.save();
+  });
+};
+
 mongoose.model('Combo', ComboSchema);
