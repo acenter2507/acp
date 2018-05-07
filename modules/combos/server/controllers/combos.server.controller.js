@@ -103,7 +103,7 @@ exports.removeProduct = function (req, res) {
 
   Combo.removeProduct(combo._id, productId)
     .then(() => {
-      return Product.removeCombo(productId, combo._id)
+      return Product.removeCombo(productId, combo._id);
     })
     .then(() => {
       return res.jsonp();
@@ -121,7 +121,7 @@ exports.addProduct = function (req, res) {
 
   Combo.addProduct(combo._id, productId)
     .then(() => {
-      return Product.addCombo(productId, combo._id)
+      return Product.addCombo(productId, combo._id);
     })
     .then(() => {
       return res.jsonp();
