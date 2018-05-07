@@ -48,7 +48,7 @@
                   <img src="{{:: product.image }}">
                 </div>
                 <div class="product-info">
-                  <span class="product-info-name">{{:: product.name}}</span>
+                  <a ui-sref="products.view({ productId: product._id })"><span class="product-info-name">{{:: product.name}}</span></a>
                   <span class="font-sm">{{::product.author}}</span>
                 </div>
                 <div class="product-action">
