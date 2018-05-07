@@ -95,6 +95,23 @@ exports.list = function (req, res) {
   });
 };
 
+exports.removeAll = function (req, res) {
+  var ids = req.body.comboIds || [];
+
+  Combo.remove({ _id: { $in: ids } })
+    .exec(function (err) {
+      if (err)
+        return res.status(400).send({ message: 'セットを削除できません！' });
+      res.end();
+      ids.forEach(comboId => {
+        Product.find({ products: comboId }).exec((err, products) => {
+          products.forEach(product => {
+            Product.removeProduct(product._id, comboId);
+          });
+        });
+      });
+    });
+};
 
 /**
  * Delete product from combo

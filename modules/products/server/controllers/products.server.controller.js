@@ -151,7 +151,14 @@ exports.removeAll = function (req, res) {
     .exec(function (err) {
       if (err)
         return res.status(400).send({ message: '製品を削除できません！' });
-      return res.end();
+      res.end();
+      ids.forEach(productId => {
+        Combo.find({ products: productId }).exec((err, combos) => {
+          combos.forEach(combo => {
+            Combo.removeProduct(combo._id, productId);
+          });
+        });
+      });
     });
 };
 
