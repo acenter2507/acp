@@ -7,6 +7,10 @@ var combosPolicy = require('../policies/combos.server.policy'),
   combos = require('../controllers/combos.server.controller');
 
 module.exports = function (app) {
+
+  app.route('/api/combos/search').post(combos.search);
+  app.route('/api/combos/removeAll').post(combos.removeAll);
+
   // Combos Routes
   app.route('/api/combos')//.all(combosPolicy.isAllowed)
     .get(combos.list)

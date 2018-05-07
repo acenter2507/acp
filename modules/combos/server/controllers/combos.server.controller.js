@@ -95,6 +95,39 @@ exports.list = function (req, res) {
   });
 };
 
+exports.search = function (req, res) {
+  var page = req.body.page || 1;
+  var condition = req.body.condition || {};
+
+  var query = {};
+  var and_arr = [];
+  if (condition.key && condition.key !== '') {
+    var key_lower = condition.key.toLowerCase();
+    var key_upper = condition.key.toUpperCase();
+    var or_arr = [
+      { search: { $regex: '.*' + condition.key + '.*' } },
+      { search: { $regex: '.*' + key_lower + '.*' } },
+      { search: { $regex: '.*' + key_upper + '.*' } }
+    ];
+    and_arr.push({ $or: or_arr });
+  }
+  if (and_arr.length > 0) {
+    query = { $and: and_arr };
+  }
+  Combos.paginate(query, {
+    sort: condition.sort,
+    page: page,
+    populate: [
+      { path: 'products' }
+    ],
+    limit: condition.limit
+  }).then(combos => {
+    res.jsonp(combos);
+  }, err => {
+    return res.status(400).send({ message: 'データを取得できません！' });
+  });
+};
+
 exports.removeAll = function (req, res) {
   var ids = req.body.comboIds || [];
 
