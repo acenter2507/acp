@@ -43,4 +43,5 @@
       height: 50px;
       transition: visibility 0s, opacity 0.5s linear; }
   .combo-check-result .check-message {
+    margin-left: 5px;
     flex-grow: 1; }
