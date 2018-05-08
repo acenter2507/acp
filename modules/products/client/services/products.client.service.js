@@ -27,6 +27,9 @@
     this.quickSearch = function (condition) {
       return $http.post('/api/products/quickSearch', { condition: condition }, { ignoreLoadingBar: true });
     };
+    this.getProductByQRCode = function (qr_code) {
+      return $http.post('/api/products/getProductByQRCode', { qr_code: qr_code }, { ignoreLoadingBar: true });
+    };
     return this;
   }
 }());

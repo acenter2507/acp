@@ -162,7 +162,6 @@ exports.removeAll = function (req, res) {
     });
 };
 
-
 /**
  * Tìm kiếm user với key và list ignore
  */
@@ -190,6 +189,23 @@ exports.quickSearch = function (req, res) {
     .exec((err, products) => {
       if (err) res.status(400).send(err);
       res.jsonp(products);
+    });
+};
+
+/**
+ * Tìm kiếm Product với QRCode
+ */
+exports.getProductByQRCode = function (req, res) {
+  var qr_code = req.body.qr_code;
+  if (!qr_code || qr_code.length === 0) {
+    return res.status(400).send({ message: '製品の情報がみつかりません' });
+  }
+
+  Product.findOne({ qr_code: qr_code })
+    .select('name image brand qr_code')
+    .exec((err, product) => {
+      if (err || !product) res.status(400).send(err);
+      res.jsonp(product);
     });
 };
 

@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.route('/api/products/search').post(products.search);
   app.route('/api/products/quickSearch').post(products.quickSearch);
   app.route('/api/products/removeAll').post(products.removeAll);
+  app.route('/api/products/getProductByQRCode').post(products.getProductByQRCode);
   // Products Routes
   app.route('/api/products')//.all(productsPolicy.isAllowed)
     .get(products.list)
