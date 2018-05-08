@@ -55,20 +55,10 @@
         ProductsApi.getProductByQRCode(vm.qr_code)
           .success(function (product) {
             vm.check.wrongSetProducts.push(_.clone(product));
-            vm.check.success = false;
-            vm.check.checking = false;
-            vm.qr_code = '';
-            vm.form.inputForm = {};
-            vm.check.message = product.name + 'は現在のセットに追加されていない。';
-            validateProducts();
+            handleCheckResult(3);
           })
           .error(function (err) {
-            vm.check.success = false;
-            vm.check.checking = false;
-            vm.qr_code = '';
-            vm.form.inputForm = {};
-            vm.check.message = '入力された製品の情報がみつかりません！';
-            validateProducts();
+            handleCheckResult(4);
           });
       } else {
         // セットに追加されました
@@ -76,23 +66,42 @@
         var duplicate_Product = _.findWhere(vm.check.checkedProducts, { _id: product._id });
         if (duplicate_Product) {
           vm.check.duplicateProducts.push(product);
-          vm.check.success = false;
-          vm.check.message = product.name + 'の製品は既にチェックされました。';
+          handleCheckResult(2);
         } else {
           vm.check.checkedProducts.push(_.clone(product));
           vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, product);
-          vm.check.success = true;
-          vm.check.message = product.name + 'の製品を確認しました。！';
+          handleCheckResult(1);
+        }
+      }
+
+      function handleCheckResult(result) {
+        // 1: ok - 2: duplicate - 3: notin - 4: not exists
+        switch (result) {
+          case 1:
+            vm.check.success = true;
+            vm.check.message = product.name + 'の製品を確認しました。！';
+            break;
+          case 2:
+            vm.check.success = false;
+            vm.check.message = product.name + 'の製品は重複です。';
+            break;
+          case 3:
+            vm.check.success = false;
+            vm.check.message = product.name + 'は現在のセットに追加されていない。';
+            break;
+          case 4:
+            vm.check.success = false;
+            vm.check.message = '入力された製品の情報がみつかりません！';
+            break;
         }
         vm.qr_code = '';
         vm.form.inputForm = {};
         vm.check.checking = false;
         validateProducts();
-
       }
 
     };
-    vm.handleReset = function() {
+    vm.handleReset = function () {
       prepareCheckData();
     };
   }
