@@ -18,16 +18,24 @@
             <div class="input-group">
               <input focus-me="true" name="qr_code" type="text" class="form-control" ng-model="vm.qr_code" placeholder="2次元コード入力" required>
               <span class="input-group-btn">
-                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                <button type="submit" class="btn btn-success">
+                  <i class="fa fa-search"></i>
+                </button>
               </span>
             </div>
             <div ng-messages="vm.form.inputForm.qr_code.$error" role="alert">
               <p class="help-block error-text font-sm" ng-message="required">2次元コードを入力してください！</p>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-show="vm.check.dirty">
             <div class="combo-check-result">
-              <div class="check-mark"></div>
+              <div class="check-mark">
+                <img ng-show="vm.check.checking" src="./modules/combos/client/img/box.png">
+                <i ng-show="vm.check.checking" class="fa fa-search"></i>
+
+                <img ng-show="vm.check.success && !vm.check.checking" src="./modules/combos/client/img/success.png">
+                <img ng-show="!vm.check.success && !vm.check.checking" src="./modules/combos/client/img/fail.png">
+              </div>
               <div class="check-message"></div>
             </div>
           </div>
@@ -45,15 +53,19 @@
           </tr>
           <tr>
             <td>確認済</td>
-            <td class="text-right">{{ vm.checkedProducts }}</td>
+            <td class="text-right">{{ vm.check.checkedProducts.length }}</td>
           </tr>
           <tr>
             <td>未確認</td>
-            <td class="text-right">{{ vm.uncheckProducts }}</td>
+            <td class="text-right">{{ vm.check.uncheckProducts.length }}</td>
           </tr>
           <tr>
             <td>セット外</td>
-            <td class="text-right">{{ vm.wrongSetProducts }}</td>
+            <td class="text-right">{{ vm.check.wrongSetProducts.length }}</td>
+          </tr>
+          <tr>
+            <td>重複</td>
+            <td class="text-right">{{ vm.check.duplicateProducts.length }}</td>
           </tr>
         </table>
       </div>

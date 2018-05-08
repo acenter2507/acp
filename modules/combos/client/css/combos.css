@@ -38,9 +38,11 @@
   .combo-check-result .check-mark {
     width: 50px;
     height: 50px;
-    transition: visibility 0s, opacity 0.5s linear;
-    background-color: yellow;
-  }
+    background-color: yellow; }
+    .combo-check-result .check-mark img {
+      width: 50px;
+      height: 50px;
+      transition: visibility 0s, opacity 0.5s linear; }
   .combo-check-result .check-message {
     flex-grow: 1;
     background-color: blue;
