@@ -17,7 +17,7 @@
     function prepareCheckData() {
       vm.check = {
         dirty: false,
-        checking: true,
+        checking: false,
         success: false,
         message: '',
         checkedProducts: [],
