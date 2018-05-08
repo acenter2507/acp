@@ -5,9 +5,9 @@
     .module('combos')
     .controller('ComboCheckController', ComboCheckController);
 
-  ComboCheckController.$inject = ['$scope', 'CombosService', 'comboResolve', 'ProductsApi'];
+  ComboCheckController.$inject = ['$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
 
-  function ComboCheckController($scope, CombosService, combo, ProductsApi) {
+  function ComboCheckController($scope, $timeout, CombosService, combo, ProductsApi) {
     var vm = this;
 
     vm.combo = combo;
@@ -58,7 +58,7 @@
             handleCheckResult(3);
           })
           .error(function (err) {
-            handleCheckResult(4);
+            $timeout(handleCheckResult(4), 5000);
           });
       } else {
         // セットに追加されました
