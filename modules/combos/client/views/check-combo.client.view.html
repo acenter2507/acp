@@ -50,8 +50,8 @@
     </div>
     <!-- Info report -->
     <div class="col-xs-12">
-        <table class="table table-bordered">
-        <thead>
+      <table class="table table-bordered">
+        <thead class="bg-warning">
           <tr>
             <th>セット名</th>
             <th>確認済</th>
@@ -62,11 +62,11 @@
         </thead>
         <tbody>
           <tr>
-            <td class="text-right">{{ vm.combo.name }}</td>
-            <td class="text-right">{{ vm.check.checkedProducts.length }}</td>
-            <td class="text-right">{{ vm.check.uncheckProducts.length }}</td>
-            <td class="text-right">{{ vm.check.wrongSetProducts.length }}</td>
-            <td class="text-right">{{ vm.check.duplicateProducts.length }}</td>
+            <td>{{ vm.combo.name }}</td>
+            <td>{{ vm.check.checkedProducts.length }}</td>
+            <td>{{ vm.check.uncheckProducts.length }}</td>
+            <td>{{ vm.check.wrongSetProducts.length }}</td>
+            <td>{{ vm.check.duplicateProducts.length }}</td>
           </tr>
         </tbody>
       </table>
