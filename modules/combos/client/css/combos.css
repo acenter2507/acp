@@ -36,13 +36,20 @@
   display: flex;
   flex-direction: row; }
   .combo-check-result .check-mark {
+    position: relative;
     width: 50px;
     height: 50px; }
     .combo-check-result .check-mark img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 50px;
       height: 50px;
       transition: display 0s, opacity 0.5s linear; }
     .combo-check-result .check-mark .loading {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 50px;
       height: 50px;
       animation: circle 5s linear infinite;
