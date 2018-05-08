@@ -46,8 +46,7 @@
       width: 50px;
       height: 50px;
       animation: circle 5s linear infinite;
-      background: rgba(255, 255, 255, 0.8);
-      transform-origin: 50% 100px; }
+      transform-origin: 50% 50px; }
       .combo-check-result .check-mark .loading i {
         animation: inner-circle 5s linear infinite; }
   .combo-check-result .check-message {
