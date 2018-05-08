@@ -92,7 +92,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="product in vm.combo.products track by $index | orderBy: 'result'">
+          <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
             <td class="text-center" ng-switch="product.result">
               <span ng-switch-when="1">Ok</span>
               <span ng-switch-when="2">NG</span>
