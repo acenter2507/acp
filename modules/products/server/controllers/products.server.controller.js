@@ -204,8 +204,8 @@ exports.getProductByQRCode = function (req, res) {
   Product.findOne({ qr_code: qr_code })
     .select('name image brand qr_code')
     .exec((err, product) => {
-      if (err || !product) res.status(400).send(err);
-      res.jsonp(product);
+      if (err || !product) return res.status(400).send(err);
+      return res.jsonp(product);
     });
 };
 
