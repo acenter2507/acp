@@ -56,7 +56,7 @@
           vm.check.message = product.name + 'の製品は既にチェックされました。';
         } else {
           vm.check.checkedProducts.push(_.clone(product));
-          vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, { _id: product._id });
+          vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, product);
           vm.check.success = true;
           vm.check.message = product.name + 'の製品を確認しました。！';
         }
