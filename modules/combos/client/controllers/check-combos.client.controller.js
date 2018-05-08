@@ -20,7 +20,7 @@
       message: '',
       checkedProducts: [],
       duplicateProducts: [],
-      uncheckProducts: vm.combo.products,
+      uncheckProducts: _.clone(vm.combo.products),
       wrongSetProducts: []
     };
 
@@ -34,7 +34,7 @@
       if (!product) {
         ProductsApi.getProductByQRCode(vm.qr_code)
           .success(function (product) {
-            vm.check.wrongSetProducts.push(product);
+            vm.check.wrongSetProducts.push(_.clone(product));
             vm.check.success = false;
             vm.check.checking = false;
             vm.check.message = product.name + 'は現在のセットに追加されていない。';
@@ -55,7 +55,7 @@
           vm.check.success = false;
           vm.check.message = product.name + 'の製品は既にチェックされました。';
         } else {
-          vm.check.checkedProducts.push(product);
+          vm.check.checkedProducts.push(_.clone(product));
           vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, { _id: product._id });
           vm.check.success = true;
           vm.check.message = product.name + 'の製品はチェックされました。！';
