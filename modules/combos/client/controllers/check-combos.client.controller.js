@@ -58,7 +58,7 @@
           vm.check.checkedProducts.push(_.clone(product));
           vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, { _id: product._id });
           vm.check.success = true;
-          vm.check.message = product.name + 'の製品はチェックされました。！';
+          vm.check.message = product.name + 'の製品を確認しました。！';
         }
         vm.qr_code = '';
         vm.form.inputForm = {};
