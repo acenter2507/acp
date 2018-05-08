@@ -31,9 +31,9 @@
             </td>
           </tr>
           <td colspan="2" class="text-right">
-            <button type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</button>
+            <a type="button" class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</a>
             <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
-            <button type="button" class="btn btn-primary" ng-click="combos.check({ comboId: vm.combo._id })">検査</button>
+            <a type="button" class="btn btn-primary" ng-click="combos.check({ comboId: vm.combo._id })">検査</a>
           </td>
           </tr>
         </table>
