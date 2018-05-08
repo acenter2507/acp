@@ -41,7 +41,24 @@
     .combo-check-result .check-mark img {
       width: 50px;
       height: 50px;
-      transition: visibility 0s, opacity 0.5s linear; }
+      transition: display 0s, opacity 0.5s linear; }
+    .combo-check-result .check-mark .loading {
+      width: 50px;
+      height: 50px;
+      animation: circle 5s linear infinite;
+      transform-origin: 50% 200px; }
+      .combo-check-result .check-mark .loading i {
+        animation: inner-circle 5s linear infinite; }
   .combo-check-result .check-message {
     margin-left: 5px;
     flex-grow: 1; }
+
+@keyframes circle {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+  
+@keyframes inner-circle {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(-360deg); }
+}
