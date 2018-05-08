@@ -58,7 +58,9 @@
             handleCheckResult(3);
           })
           .error(function (err) {
-            $timeout(handleCheckResult(4), 5000);
+            $timeout(function () {
+              handleCheckResult(4);
+            }, 5000);
           });
       } else {
         // セットに追加されました
