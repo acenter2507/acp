@@ -52,6 +52,8 @@
       left: 0;
       width: 50px;
       height: 50px;
+      font-size: 18px;
+      color: blue;
       animation: circle 5s linear infinite;
       transform-origin: 50% 20px; }
       .combo-check-result .check-mark .loading i {
