@@ -19,9 +19,10 @@
     vm.wrongSetProducts = 0;
 
     vm.handleInputCode = function() {
-      console.log(vm.inputCode);
+      var product = _.findWhere(vm.combo.products, { qr_code: vm.qr_code });
+      
     };
 
-    
+
   }
 }());

@@ -34,7 +34,7 @@ exports.create = function (req, res) {
 exports.read = function (req, res) {
   
   Combo.findById(req.combo._id)
-    .populate('products', 'name image brand')
+    .populate('products', 'name image brand qr_code')
     .exec(function (err, combo) {
       if (err)
         return res.status(400).send({

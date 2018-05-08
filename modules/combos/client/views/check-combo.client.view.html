@@ -10,28 +10,29 @@
   </div>
   <div class="row">
     <!-- Scan form -->
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
       <div class="well">
         <h3>入力パネル</h3>
         <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
           <div class="form-group" show-errors>
             <div class="input-group">
-              <input focus-me="true" name="inputCode" type="text" class="form-control" ng-model="vm.inputCode" placeholder="2次元コード入力" required>
+              <input focus-me="true" name="qr_code" type="text" class="form-control" ng-model="vm.qr_code" placeholder="2次元コード入力" required>
               <span class="input-group-btn">
-                <button type="submit" class="btn btn-success">
-                  <i class="fa fa-search"></i>
-                </button>
+                <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
               </span>
             </div>
-            <div ng-messages="vm.form.inputForm.inputCode.$error" role="alert">
+            <div ng-messages="vm.form.inputForm.qr_code.$error" role="alert">
               <p class="help-block error-text font-sm" ng-message="required">2次元コードを入力してください！</p>
             </div>
+          </div>
+          <div >
+
           </div>
         </form>
       </div>
     </div>
     <!-- Info report -->
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
       <div class="well">
         <h3>報告パネル</h3>
         <table class="table">
@@ -55,12 +56,12 @@
       </div>
     </div>
     <!-- Product list -->
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
       <div class="well">
         <h3>製品パネル</h3>
         <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="product in vm.combo.products">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="product in vm.combo.products">
             <div class="product-item-block" ng-class="{ 'valid': product.isValid, 'unvalid': !product.isValid }">
               <div class="product-basic-info">
                 <div class="product-avatar">
