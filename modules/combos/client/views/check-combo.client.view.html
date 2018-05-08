@@ -16,7 +16,7 @@
         <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
           <div class="form-group" show-errors>
             <div class="input-group">
-              <input name="inputCode" type="text" class="form-control" ng-model="vm.inputCode" placeholder="2次元コード入力" required>
+              <input ng-focus="true" name="inputCode" type="text" class="form-control" ng-model="vm.inputCode" placeholder="2次元コード入力" required>
               <span class="input-group-btn">
                 <button type="submit" class="btn btn-success">
                   <i class="fa fa-search"></i>
