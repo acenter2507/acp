@@ -79,7 +79,7 @@
         <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="product in vm.combo.products">
-            <div class="product-item-block" ng-class="{ 'valid': product.isValid, 'unvalid': !product.isValid }">
+            <div class="product-item-block" ng-class="{ 'checked': product.result === 1, 'uncheck': product.result === 2 , 'duplicate': product.result === 3 }">
               <div class="product-basic-info">
                 <div class="product-avatar">
                   <img src="{{:: product.image }}">

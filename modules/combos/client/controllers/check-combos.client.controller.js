@@ -38,13 +38,13 @@
             vm.check.success = false;
             vm.check.checking = false;
             vm.check.message = product.name + 'は現在のセットに追加されていない。';
-            if (!$scope.$$phase) $scope.$digest();
+            validateProducts();
           })
           .error(function (err) {
             vm.check.success = false;
             vm.check.checking = false;
             vm.check.message = '入力された製品の情報がみつかりません！';
-            if (!$scope.$$phase) $scope.$digest();
+            validateProducts();
           });
       } else {
         // セットに追加されました
@@ -63,11 +63,25 @@
         vm.qr_code = '';
         vm.form.inputForm = {};
         vm.check.checking = false;
-        if (!$scope.$$phase) $scope.$digest();
+        validateProducts();
+        
       }
 
     };
 
-
+    function validateProducts() {
+      vm.combo.products.forEach(product => {
+        if (_.contains(vm.check.uncheckProducts, { _id: product._id })) {
+          product.result = 2;
+        }
+        if (_.contains(vm.check.checkedProducts, { _id: product._id })) {
+          product.result = 1;
+        }
+        if (_.contains(vm.check.duplicateProducts, { _id: product._id })) {
+          product.result = 3;
+        }
+      });
+      if (!$scope.$$phase) $scope.$digest();
+    }
   }
 }());

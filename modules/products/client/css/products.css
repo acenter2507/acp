@@ -79,7 +79,9 @@ img.product-thumbnail {
     margin-top: 12px;
     width: 100%;
     display: flex; }
-.product-item-block.valid {
+.product-item-block.checked {
   border: 1px solid #3399ff; }
-  .product-item-block.unvalid {
-    border: 1px solid #ff4444; }
+.product-item-block.uncheck {
+  border: 1px solid #ff4444; }
+.product-item-block.duplicate {
+  border: 1px solid #ffd700; }
