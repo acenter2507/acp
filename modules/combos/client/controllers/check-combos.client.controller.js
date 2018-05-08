@@ -56,12 +56,16 @@
             vm.check.wrongSetProducts.push(_.clone(product));
             vm.check.success = false;
             vm.check.checking = false;
+            vm.qr_code = '';
+            vm.form.inputForm = {};
             vm.check.message = product.name + 'は現在のセットに追加されていない。';
             validateProducts();
           })
           .error(function (err) {
             vm.check.success = false;
             vm.check.checking = false;
+            vm.qr_code = '';
+            vm.form.inputForm = {};
             vm.check.message = '入力された製品の情報がみつかりません！';
             validateProducts();
           });
