@@ -23,6 +23,7 @@
       uncheckProducts: _.clone(vm.combo.products),
       wrongSetProducts: []
     };
+    validateProducts();
 
     vm.handleInputCode = function () {
       vm.check.dirty = true;
