@@ -38,11 +38,13 @@
             vm.check.success = false;
             vm.check.checking = false;
             vm.check.message = product.name + 'は現在のセットに追加されていない。';
+            if (!$scope.$$phase) $scope.$digest();
           })
           .error(function (err) {
             vm.check.success = false;
             vm.check.checking = false;
             vm.check.message = '入力された製品の情報がみつかりません！';
+            if (!$scope.$$phase) $scope.$digest();
           });
       } else {
         // セットに追加されました
@@ -61,6 +63,7 @@
         vm.qr_code = '';
         vm.form.inputForm = {};
         vm.check.checking = false;
+        if (!$scope.$$phase) $scope.$digest();
       }
 
     };
