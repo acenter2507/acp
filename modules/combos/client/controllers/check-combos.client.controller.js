@@ -13,17 +13,35 @@
     vm.combo = combo;
     vm.form = {};
 
-    vm.check = {
-      dirty: false,
-      checking: false,
-      success: false,
-      message: '',
-      checkedProducts: [],
-      duplicateProducts: [],
-      uncheckProducts: _.clone(vm.combo.products),
-      wrongSetProducts: []
-    };
-    validateProducts();
+    prepareCheckData();
+    function prepareCheckData() {
+      vm.check = {
+        dirty: false,
+        checking: false,
+        success: false,
+        message: '',
+        checkedProducts: [],
+        duplicateProducts: [],
+        uncheckProducts: _.clone(vm.combo.products),
+        wrongSetProducts: []
+      };
+      validateProducts();
+    }
+
+    function validateProducts() {
+      vm.combo.products.forEach(product => {
+        if (_.findWhere(vm.check.uncheckProducts, { _id: product._id })) {
+          product.result = 2;
+        }
+        if (_.findWhere(vm.check.checkedProducts, { _id: product._id })) {
+          product.result = 1;
+        }
+        if (_.findWhere(vm.check.duplicateProducts, { _id: product._id })) {
+          product.result = 3;
+        }
+      });
+      if (!$scope.$$phase) $scope.$digest();
+    }
 
     vm.handleInputCode = function () {
       vm.check.dirty = true;
@@ -65,24 +83,12 @@
         vm.form.inputForm = {};
         vm.check.checking = false;
         validateProducts();
-        
+
       }
 
     };
-
-    function validateProducts() {
-      vm.combo.products.forEach(product => {
-        if (_.findWhere(vm.check.uncheckProducts, { _id: product._id })) {
-          product.result = 2;
-        }
-        if (_.findWhere(vm.check.checkedProducts, { _id: product._id })) {
-          product.result = 1;
-        }
-        if (_.findWhere(vm.check.duplicateProducts, { _id: product._id })) {
-          product.result = 3;
-        }
-      });
-      if (!$scope.$$phase) $scope.$digest();
-    }
+    vm.handleReset = function() {
+      prepareCheckData();
+    };
   }
 }());
