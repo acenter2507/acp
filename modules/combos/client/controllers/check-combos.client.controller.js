@@ -46,6 +46,7 @@
     vm.handleInputCode = function () {
       vm.check.dirty = true;
       if (vm.check.checking) return;
+
       vm.check.checking = true;
 
       var product = _.findWhere(vm.combo.products, { qr_code: vm.qr_code });
