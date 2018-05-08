@@ -32,3 +32,16 @@
     font-weight: 400;
     line-height: 26px;
     text-align: center; }
+.combo-check-result {
+  display: flex;
+  flex-direction: row; }
+  .combo-check-result .check-mark {
+    width: 100px;
+    height: 100px;
+    transition: visibility 0s, opacity 0.5s linear;
+    background-color: yellow;
+  }
+  .combo-check-result .check-message {
+    flex-grow: 1;
+    background-color: blue;
+  }
