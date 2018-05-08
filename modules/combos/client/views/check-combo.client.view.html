@@ -36,7 +36,9 @@
                 <img ng-show="vm.check.success && !vm.check.checking" src="./modules/combos/client/img/success.png">
                 <img ng-show="!vm.check.success && !vm.check.checking" src="./modules/combos/client/img/fail.png">
               </div>
-              <div class="check-message"></div>
+              <div class="check-message">
+                <p>{{vm.check.message}}</p>
+              </div>
             </div>
           </div>
         </form>
