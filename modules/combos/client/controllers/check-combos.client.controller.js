@@ -72,13 +72,13 @@
 
     function validateProducts() {
       vm.combo.products.forEach(product => {
-        if (_.contains(vm.check.uncheckProducts, { _id: product._id })) {
+        if (_.findWhere(vm.check.uncheckProducts, { _id: product._id })) {
           product.result = 2;
         }
-        if (_.contains(vm.check.checkedProducts, { _id: product._id })) {
+        if (_.findWhere(vm.check.checkedProducts, { _id: product._id })) {
           product.result = 1;
         }
-        if (_.contains(vm.check.duplicateProducts, { _id: product._id })) {
+        if (_.findWhere(vm.check.duplicateProducts, { _id: product._id })) {
           product.result = 3;
         }
       });
