@@ -79,3 +79,7 @@ img.product-thumbnail {
     margin-top: 12px;
     width: 100%;
     display: flex; }
+.product-item-block.valid {
+  border: 1px solid #3399ff; }
+  .product-item-block.unvalid {
+    border: 1px solid #ff4444; }
