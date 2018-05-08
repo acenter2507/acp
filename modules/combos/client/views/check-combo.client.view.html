@@ -31,8 +31,8 @@
           <div class="form-group" ng-show="vm.check.dirty">
             <div class="combo-check-result">
               <div class="check-mark">
+                <img ng-show="vm.check.checking" src="./modules/combos/client/img/box.png">
                 <div class="loading" ng-show="vm.check.checking">
-                  <img src="./modules/combos/client/img/box.png">
                   <i class="fa fa-search"></i>
                 </div>
                 <div ng-hide="vm.check.checking">
