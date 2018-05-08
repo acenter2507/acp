@@ -1,5 +1,85 @@
 <div class="container-fluid animated fadeIn">
-    <div class="row">
-  
+  <div class="d-sm-down-none h20"></div>
+  <!-- Tool bar -->
+  <div class="row mg10t">
+    <div class="col-xs-12">
+      <div class="form-group text-right">
+        <button class="btn btn-danger" ng-click="vm.handleStopCheck()">終了</button>
+      </div>
     </div>
   </div>
+  <div class="row">
+    <!-- Scan form -->
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="well">
+        <h3>入力パネル</h3>
+        <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
+          <div class="form-group" show-errors>
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="vm.inputCode" placeholder="2次元コード入力">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-success">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Info report -->
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="well">
+        <h3>報告パネル</h3>
+        <table class="table">
+          <tr>
+            <td>セット名</td>
+            <td class="text-right">{{ vm.combo.name }}</td>
+          </tr>
+          <tr>
+            <td>確認済</td>
+            <td class="text-right">{{ vm.checkedProducts }}</td>
+          </tr>
+          <tr>
+            <td>未確認</td>
+            <td class="text-right">{{ vm.uncheckProducts }}</td>
+          </tr>
+          <tr>
+            <td>セット外</td>
+            <td class="text-right">{{ vm.wrongSetProducts }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- Product list -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
+      <div class="well">
+        <h3>製品パネル</h3>
+        <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-repeat="product in vm.combo.products">
+            <div class="product-item-block">
+              <div class="product-basic-info">
+                <div class="product-avatar">
+                  <img src="{{:: product.image }}">
+                </div>
+                <div class="product-info">
+                  <a ui-sref="products.view({ productId: product._id })">
+                    <span class="product-info-name">{{:: product.name}}</span>
+                  </a>
+                  <span class="font-sm">{{::product.author}}</span>
+                </div>
+                <div class="product-action">
+                  <a class="product-options" ng-click="vm.handleRemoveProductFromCombo(product)">
+                    <i class="fa fa-close"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

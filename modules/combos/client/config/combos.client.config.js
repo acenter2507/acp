@@ -28,12 +28,5 @@
       state: 'combos.create',
       roles: ['*']
     });
-
-    // Add the dropdown search item
-    menuService.addSubMenuItem('topbar', 'combos', {
-      title: 'セット確認',
-      state: 'combos.check',
-      roles: ['*']
-    });
   }
 }());
