@@ -21,5 +21,7 @@
     vm.handleInputCode = function() {
       console.log(vm.inputCode);
     };
+
+    
   }
 }());
