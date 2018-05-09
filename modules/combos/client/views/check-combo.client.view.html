@@ -54,26 +54,28 @@
     </div>
     <!-- Info report -->
     <div class="col-xs-12">
-      <table class="table table-bordered">
-        <thead class="bg-warning">
-          <tr>
-            <th class="text-center">セット名</th>
-            <th class="text-center">確認済</th>
-            <th class="text-center">未確認</th>
-            <th class="text-center">セット外</th>
-            <th class="text-center">重複</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-center">{{ vm.combo.name }}</td>
-            <td class="text-center">{{ vm.check.checkedProducts.length }}</td>
-            <td class="text-center">{{ vm.check.uncheckProducts.length }}</td>
-            <td class="text-center">{{ vm.check.wrongSetProducts.length }}</td>
-            <td class="text-center">{{ vm.check.duplicateProducts.length }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-warning">
+            <tr>
+              <th class="text-center">セット名</th>
+              <th class="text-center">確認済</th>
+              <th class="text-center">未確認</th>
+              <th class="text-center">セット外</th>
+              <th class="text-center">重複</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">{{ vm.combo.name }}</td>
+              <td class="text-center">{{ vm.check.checkedProducts.length }}</td>
+              <td class="text-center">{{ vm.check.uncheckProducts.length }}</td>
+              <td class="text-center">{{ vm.check.wrongSetProducts.length }}</td>
+              <td class="text-center">{{ vm.check.duplicateProducts.length }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- Product list -->
     <div class="col-xs-12">
