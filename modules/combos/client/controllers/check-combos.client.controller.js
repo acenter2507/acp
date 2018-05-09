@@ -5,9 +5,9 @@
     .module('combos')
     .controller('ComboCheckController', ComboCheckController);
 
-  ComboCheckController.$inject = ['$window', '$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
+  ComboCheckController.$inject = ['$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
 
-  function ComboCheckController($window, $scope, $timeout, CombosService, combo, ProductsApi) {
+  function ComboCheckController($scope, $timeout, CombosService, combo, ProductsApi) {
     var vm = this;
 
     vm.combo = combo;
