@@ -5,9 +5,9 @@
     .module('combos')
     .controller('ComboCheckController', ComboCheckController);
 
-  ComboCheckController.$inject = ['$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
+  ComboCheckController.$inject = ['$window', '$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
 
-  function ComboCheckController($scope, $timeout, CombosService, combo, ProductsApi) {
+  function ComboCheckController($window, $scope, $timeout, CombosService, combo, ProductsApi) {
     var vm = this;
 
     vm.combo = combo;
@@ -115,8 +115,9 @@
     vm.handleStartCheck = function () {
       vm.isChecking = true;
       prepareCheckData();
-      var qr_code = angular.element('#qr_code');
-      qr_code.focus();
+      var qr_code = $window.document.getElementById('qr_code');
+      if (qr_code)
+        qr_code.focus();
     };
   }
 }());
