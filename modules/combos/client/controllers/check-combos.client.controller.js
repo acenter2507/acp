@@ -11,6 +11,7 @@
     var vm = this;
 
     vm.combo = combo;
+    console.log(vm.combo);
     vm.form = {};
 
     vm.isChecking = true;
