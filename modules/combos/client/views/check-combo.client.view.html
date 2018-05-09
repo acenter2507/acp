@@ -101,9 +101,9 @@
             </tr>
             <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
               <td class="text-center" ng-switch="product.result">
-                <img ng-switch-when="1" src="./modules/combos/client/img/success.png">
-                <img ng-switch-when="2" src="./modules/combos/client/img/fail.png">
-                <img ng-switch-when="3" src="./modules/combos/client/img/duplicate.png">
+                <img class="product-result" ng-switch-when="1" src="./modules/combos/client/img/success.png">
+                <img class="product-result" ng-switch-when="2" src="./modules/combos/client/img/fail.png">
+                <img class="product-result" ng-switch-when="3" src="./modules/combos/client/img/duplicate.png">
               </td>
               <td class="text-center">
                 <a ng-click="handleShowImage(product.image)">
