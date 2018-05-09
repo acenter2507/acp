@@ -115,10 +115,7 @@
     vm.handleStartCheck = function () {
       vm.isChecking = true;
       prepareCheckData();
-      var qr_code = $window.document.getElementById('qr_code');
-      console.log(qr_code);
-      if (qr_code)
-        qr_code.focus();
+      $('#qr_code').focus();
     };
   }
 }());
