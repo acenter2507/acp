@@ -77,72 +77,50 @@
     </div>
     <!-- Product list -->
     <div class="col-xs-12">
-      <table class="table table-bordered">
-        <thead class="bg-primary">
-          <tr>
-            <th>結果</th>
-            <th class="text-center">写真</th>
-            <th>ブランド</th>
-            <th>名称</th>
-            <th>型番</th>
-            <th>ロット番号</th>
-            <th>２次元コード</th>
-            <th>導入年月日</th>
-            <th>交換日</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
-            <td class="text-center" ng-switch="product.result">
-              <span ng-switch-when="1">Ok</span>
-              <span ng-switch-when="2">NG</span>
-              <span ng-switch-when="3">DUP</span>
-            </td>
-            <td class="text-center">
-              <a ng-click="handleShowImage(product.image)">
-                <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
-              </a>
-            </td>
-            <td>{{ product.brand }}</td>
-            <td>
-              <a ui-sref="products.view({ productId: product._id })">{{ product.name }}</a>
-            </td>
-            <td>{{ product.model_number }}</td>
-            <td>{{ product.lot_number }}</td>
-            <td>{{ product.qr_code }}</td>
-            <td>
-              <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
-            </td>
-            <td>
-              <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="product in vm.combo.products">
-            <div class="product-item-block" ng-class="{ 'checked': product.result === 1, 'uncheck': product.result === 2 , 'duplicate': product.result === 3 }">
-              <div class="product-basic-info">
-                <div class="product-avatar">
-                  <img src="{{:: product.image }}">
-                </div>
-                <div class="product-info">
-                  <a ui-sref="products.view({ productId: product._id })">
-                    <span class="product-info-name">{{:: product.name}}</span>
-                  </a>
-                  <span class="font-sm">{{::product.author}}</span>
-                </div>
-                <div class="product-action">
-                  <a class="product-options" ng-click="vm.handleRemoveProductFromCombo(product)">
-                    <i class="fa fa-close"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div> -->
-
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="bg-primary">
+            <tr>
+              <th>結果</th>
+              <th class="text-center">写真</th>
+              <th>ブランド</th>
+              <th>名称</th>
+              <th>型番</th>
+              <th>ロット番号</th>
+              <th>２次元コード</th>
+              <th>導入年月日</th>
+              <th>交換日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
+              <td class="text-center" ng-switch="product.result">
+                <span ng-switch-when="1">Ok</span>
+                <span ng-switch-when="2">NG</span>
+                <span ng-switch-when="3">DUP</span>
+              </td>
+              <td class="text-center">
+                <a ng-click="handleShowImage(product.image)">
+                  <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
+                </a>
+              </td>
+              <td>{{ product.brand }}</td>
+              <td>
+                <a ui-sref="products.view({ productId: product._id })">{{ product.name }}</a>
+              </td>
+              <td>{{ product.model_number }}</td>
+              <td>{{ product.lot_number }}</td>
+              <td>{{ product.qr_code }}</td>
+              <td>
+                <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+              </td>
+              <td>
+                <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -44,76 +44,82 @@
   <!-- Danh sách ngày nghỉ -->
   <div class="row">
     <div class="col-xs-12">
-      <!-- 休暇一覧 -->
-      <table class="table table-bordered">
-        <thead class="bg-primary">
-          <tr>
-            <th ng-show="vm.isSelecting" class="text-center">
-              <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
-            </th>
-            <th>写真</th>
-            <th>ブランド</th>
-            <th>名称</th>
-            <th>型番</th>
-            <th>ロット番号</th>
-            <th>２次元コード</th>
-            <th>導入年月日</th>
-            <th>交換日</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-show="vm.products.length === 0">
-            <td colspan="9">データが見つかりません。</td>
-          </tr>
-          <tr ng-repeat="product in vm.products track by $index">
-            <td ng-show="vm.isSelecting" class="text-center">
-              <input type="checkbox" ng-model="product.isChecked">
-            </td>
-            <td>
-              <a ng-click="handleShowImage(product.image)">
-                <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
-              </a>
-            </td>
-            <td>{{ product.brand }}</td>
-            <td>
-              <a ui-sref="products.view({ productId: product._id })">{{ product.name }}</a>
-            </td>
-            <td>{{ product.model_number }}</td>
-            <td>{{ product.lot_number }}</td>
-            <td>{{ product.qr_code }}</td>
-            <td><span ng-if="product.intro_date">{{ product.intro_date | LL }}</span></td>
-            <td><span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span></td>
-            <td>
-              <div dropdown dropdown-append-to-body>
-                <a dropdown-toggle class="btn btn-xs btn-default">
-                  <i class="glyphicon glyphicon-option-horizontal"></i>
+      <div class="table-responsive">
+        <!-- 製品一覧 -->
+        <table class="table table-bordered">
+          <thead class="bg-primary">
+            <tr>
+              <th ng-show="vm.isSelecting" class="text-center">
+                <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
+              </th>
+              <th>写真</th>
+              <th>ブランド</th>
+              <th>名称</th>
+              <th>型番</th>
+              <th>ロット番号</th>
+              <th>２次元コード</th>
+              <th>導入年月日</th>
+              <th>交換日</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="vm.products.length === 0">
+              <td colspan="9">データが見つかりません。</td>
+            </tr>
+            <tr ng-repeat="product in vm.products track by $index">
+              <td ng-show="vm.isSelecting" class="text-center">
+                <input type="checkbox" ng-model="product.isChecked">
+              </td>
+              <td>
+                <a ng-click="handleShowImage(product.image)">
+                  <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                  <!-- 詳細 -->
-                  <li>
-                    <a ui-sref="products.view({ productId: product._id })">
-                      <i class="fa fa-eye"></i> 詳細</a>
-                  </li>
-                  <!-- 編集 -->
-                  <li>
-                    <a ui-sref="products.edit({ productId: product._id })">
-                      <i class="fa fa-pencil-square-o"></i> 編集</a>
-                  </li>
-                  <!-- 削除 -->
-                  <li>
-                    <a ng-click="vm.handleDeleteProduct(product)">
-                      <i class="fa fa-trash"></i> 削除</a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+              <td>{{ product.brand }}</td>
+              <td>
+                <a ui-sref="products.view({ productId: product._id })">{{ product.name }}</a>
+              </td>
+              <td>{{ product.model_number }}</td>
+              <td>{{ product.lot_number }}</td>
+              <td>{{ product.qr_code }}</td>
+              <td>
+                <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+              </td>
+              <td>
+                <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
+              </td>
+              <td>
+                <div dropdown dropdown-append-to-body>
+                  <a dropdown-toggle class="btn btn-xs btn-default">
+                    <i class="glyphicon glyphicon-option-horizontal"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <!-- 詳細 -->
+                    <li>
+                      <a ui-sref="products.view({ productId: product._id })">
+                        <i class="fa fa-eye"></i> 詳細</a>
+                    </li>
+                    <!-- 編集 -->
+                    <li>
+                      <a ui-sref="products.edit({ productId: product._id })">
+                        <i class="fa fa-pencil-square-o"></i> 編集</a>
+                    </li>
+                    <!-- 削除 -->
+                    <li>
+                      <a ng-click="vm.handleDeleteProduct(product)">
+                        <i class="fa fa-trash"></i> 削除</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <!-- Pagination -->
       <ul class="pagination mg10y" ng-show="vm.pages.length > 1">
-        <li ng-repeat="page in vm.pages | limitTo: 5" ng-class="{'active': page === vm.page}">
+        <li ng-repeat="page in vm.pages" ng-class="{'active': page === vm.page}">
           <a ng-click="vm.handlePageChanged(page)">{{page}}</a>
         </li>
       </ul>
