@@ -115,7 +115,10 @@
     vm.handleStartCheck = function () {
       vm.isChecking = true;
       prepareCheckData();
-      $('#qr_code').focus();
+      $timeout(function () {
+        $('#qr_code').focus();
+      }, 500);
+
     };
   }
 }());
