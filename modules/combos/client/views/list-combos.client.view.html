@@ -100,6 +100,11 @@
                     <a ng-click="vm.handleDeleteCombo(combo)">
                       <i class="fa fa-trash"></i> 削除</a>
                   </li>
+                  <!-- 検査 -->
+                  <li>
+                    <a ui-sref="combos.check({ comboId: combo._id })">
+                      <i class="fa fa-search"></i> 検査</a>
+                  </li>
                 </ul>
               </div>
             </td>
