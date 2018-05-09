@@ -95,6 +95,9 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td colspan="9">製品が登録されていません！</td>
+            </tr>
             <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
               <td class="text-center" ng-switch="product.result">
                 <span ng-switch-when="1">Ok</span>
