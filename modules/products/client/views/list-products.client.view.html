@@ -52,7 +52,7 @@
               <th ng-show="vm.isSelecting" class="text-center">
                 <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
               </th>
-              <th>写真</th>
+              <th class="text-center">写真</th>
               <th>ブランド</th>
               <th>名称</th>
               <th>型番</th>
@@ -71,9 +71,9 @@
               <td ng-show="vm.isSelecting" class="text-center">
                 <input type="checkbox" ng-model="product.isChecked">
               </td>
-              <td>
+              <td class="text-center">
                 <a ng-click="handleShowImage(product.image)">
-                  <img class="img-rounded img-responsive product-thumbnail" src="{{product.image}}">
+                  <img class="img-rounded product-thumbnail" src="{{product.image}}">
                 </a>
               </td>
               <td>{{ product.brand }}</td>
