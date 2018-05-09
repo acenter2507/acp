@@ -54,9 +54,9 @@
       // セットに追加されていない場合
       if (!product) {
         ProductsApi.getProductByQRCode(vm.qr_code)
-          .success(function (product) {
-            vm.check.wrongSetProducts.push(_.clone(product));
-            handleCheckResult(3);
+          .success(function (_product) {
+            vm.check.wrongSetProducts.push(_.clone(_product));
+            handleCheckResult(3, _product);
           })
           .error(function (err) {
             $timeout(function () {
@@ -68,16 +68,16 @@
         // 重複チェック
         var duplicate_Product = _.findWhere(vm.check.checkedProducts, { _id: product._id });
         if (duplicate_Product) {
-          vm.check.duplicateProducts.push(product);
-          handleCheckResult(2);
+          vm.check.duplicateProducts.push(_.clone(product));
+          handleCheckResult(2, product);
         } else {
           vm.check.checkedProducts.push(_.clone(product));
           vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, product);
-          handleCheckResult(1);
+          handleCheckResult(1, product);
         }
       }
 
-      function handleCheckResult(result) {
+      function handleCheckResult(result, product) {
         // 1: ok - 2: duplicate - 3: notin - 4: not exists
         switch (result) {
           case 1:
@@ -94,7 +94,7 @@
             break;
           case 4:
             vm.check.success = false;
-            vm.check.message = '入力された製品の情報がみつかりません！';
+            vm.check.message = 'コードがそんざいしません！';
             break;
         }
         vm.qr_code = '';
