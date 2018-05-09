@@ -11,7 +11,6 @@
     var vm = this;
 
     vm.combo = combo;
-    console.log(vm.combo);
     vm.form = {};
 
     vm.isChecking = true;
@@ -116,6 +115,8 @@
     vm.handleStartCheck = function () {
       vm.isChecking = true;
       prepareCheckData();
+      var qr_code = angular.element('#qr_code');
+      qr_code.focus();
     };
   }
 }());
