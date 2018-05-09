@@ -18,7 +18,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     //   templateUrl: 'modules/core/client/views/home.client.view.html'
     // })
     .state('combos.list', {
-      url: '',
+      url: '/',
       templateUrl: 'modules/combos/client/views/list-combos.client.view.html',
       controller: 'CombosListController',
       controllerAs: 'vm'
