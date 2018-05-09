@@ -20,7 +20,8 @@
             <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
               <div class="form-group" show-errors>
                 <div class="input-group">
-                  <input focus-me="true" id="qr_code" name="qr_code" type="text" class="form-control" ng-model="vm.qr_code" placeholder="2次元コード入力" required>
+                  <input focus-me="true" id="qr_code" name="qr_code" type="text" class="form-control" ng-model="vm.qr_code" placeholder="2次元コード入力"
+                    required>
                   <span class="input-group-btn">
                     <button type="submit" class="btn btn-success">
                       <i class="fa fa-search"></i>
@@ -69,11 +70,21 @@
           </thead>
           <tbody>
             <tr>
-              <td class="text-center"><strong class="font-lg">{{ vm.combo.name }}</strong></td>
-              <td class="text-center"><strong class="font-lg">{{ vm.check.checkedProducts.length }}</strong></td>
-              <td class="text-center"><strong class="font-lg">{{ vm.check.uncheckProducts.length }}</strong></td>
-              <td class="text-center"><strong class="font-lg">{{ vm.check.wrongSetProducts.length }}</strong></td>
-              <td class="text-center"><strong class="font-lg">{{ vm.check.duplicateProducts.length }}</strong></td>
+              <td class="text-center">
+                <strong class="font-lg">{{ vm.combo.name }}</strong>
+              </td>
+              <td class="text-center">
+                <strong class="font-lg">{{ vm.check.checkedProducts.length }}</strong>
+              </td>
+              <td class="text-center">
+                <strong class="font-lg">{{ vm.check.uncheckProducts.length }}</strong>
+              </td>
+              <td class="text-center">
+                <strong class="font-lg">{{ vm.check.wrongSetProducts.length }}</strong>
+              </td>
+              <td class="text-center">
+                <strong class="font-lg">{{ vm.check.duplicateProducts.length }}</strong>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -127,6 +138,22 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="well">
+        <p>
+          <img class="product-result" src="./modules/combos/client/img/success.png">
+          <span>確認された製品</span>
+        </p>
+        <p>
+          <img class="product-result" ng-switch-when="2" src="./modules/combos/client/img/fail.png">
+          <span>確認されていない製品</span>
+        </p>
+        <p>
+          <img class="product-result" ng-switch-when="3" src="./modules/combos/client/img/duplicate.png">
+          <span>重複した製品</span>
+        </p>
       </div>
     </div>
   </div>
