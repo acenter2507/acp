@@ -2,6 +2,10 @@ img.product-thumbnail {
   max-width: 50px;
   max-height: 50px;
 }
+img.product-result {
+  max-width: 50px;
+  max-height: 50px;
+}
 
 
 .product-item-block {
