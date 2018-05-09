@@ -48,7 +48,7 @@
       if (vm.check.checking) return;
 
       vm.check.checking = true;
-      vm.check.message = '';
+      vm.check.message = '確認中...';
 
       var product = _.findWhere(vm.combo.products, { qr_code: vm.qr_code });
       // セットに追加されていない場合
