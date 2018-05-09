@@ -13,11 +13,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
     // Home state routing
     $stateProvider
-    // .state('home', {
-    //   url: '/',
-    //   templateUrl: 'modules/core/client/views/home.client.view.html'
-    // })
-    .state('combos.list', {
+    .state('home', {
       url: '/',
       templateUrl: 'modules/combos/client/views/list-combos.client.view.html',
       controller: 'CombosListController',
