@@ -117,7 +117,7 @@
       prepareCheckData();
       $timeout(function () {
         $('#qr_code').focus();
-      }, 500);
+      }, 100);
 
     };
   }
