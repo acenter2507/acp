@@ -13,6 +13,8 @@
     vm.combo = combo;
     vm.form = {};
 
+    vm.isChecking = true;
+
     prepareCheckData();
     function prepareCheckData() {
       vm.check = {
@@ -56,11 +58,13 @@
         ProductsApi.getProductByQRCode(vm.qr_code)
           .success(function (_product) {
             vm.check.wrongSetProducts.push(_.clone(_product));
-            handleCheckResult(3, _product);
+            vm.check.result = 3;
+            handleCheckResult(_product);
           })
           .error(function (err) {
             $timeout(function () {
-              handleCheckResult(4);
+              vm.check.result = 4;
+              handleCheckResult();
             }, 5000);
           });
       } else {
@@ -69,32 +73,30 @@
         var duplicate_Product = _.findWhere(vm.check.checkedProducts, { _id: product._id });
         if (duplicate_Product) {
           vm.check.duplicateProducts.push(_.clone(product));
-          handleCheckResult(2, product);
+          vm.check.result = 2;
+          handleCheckResult(product);
         } else {
           vm.check.checkedProducts.push(_.clone(product));
           vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, product);
-          handleCheckResult(1, product);
+          vm.check.result = 1;
+          handleCheckResult(product);
         }
       }
 
-      function handleCheckResult(result, product) {
+      function handleCheckResult(product) {
         // 1: ok - 2: duplicate - 3: notin - 4: not exists
-        switch (result) {
+        switch (vm.check.result) {
           case 1:
-            vm.check.success = true;
             vm.check.message = product.name + 'の製品を確認しました。！';
             break;
           case 2:
-            vm.check.success = false;
             vm.check.message = product.name + 'の製品は重複です。';
             break;
           case 3:
-            vm.check.success = false;
             vm.check.message = product.name + 'は現在のセットに追加されていない。';
             break;
           case 4:
-            vm.check.success = false;
-            vm.check.message = 'コードがそんざいしません！';
+            vm.check.message = 'コードが存在しません！';
             break;
         }
         vm.qr_code = '';
@@ -104,7 +106,14 @@
       }
 
     };
-    vm.handleReset = function () {
+    vm.handleResetCheck = function () {
+      prepareCheckData();
+    };
+    vm.handleStopCheck = function () {
+      vm.isChecking = false;
+    };
+    vm.handleStartCheck = function () {
+      vm.isChecking = true;
       prepareCheckData();
     };
   }
