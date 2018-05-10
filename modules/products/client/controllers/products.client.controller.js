@@ -80,8 +80,10 @@
         scope: $scope
       });
       mDialog.closePromise.then(function (res) {
-        console.log(res);
-        if (!res.value) return;
+        if (!res.value) {
+          console.log('Null');
+          vm.cancelUpload();
+        }
         vm.imageUrl = res.value;
         var blob = dataURItoBlob(res.value);
         vm.uploader.queue[0]._file = blob;
