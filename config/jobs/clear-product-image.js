@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
   path = require('path'),
   fs = require('fs');
 
-var product_image_folder = '../../modules/products/client/img/';
+var product_image_folder = path.resolve('./modules/products/client/img/');
 
 exports.excute = function () {
   clear_image();
