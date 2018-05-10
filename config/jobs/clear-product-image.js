@@ -15,10 +15,10 @@ function clear_image() {
   console.log('Runing job');
   var products = [];
   get_products()
-    .then(function(_products) {
+    .then(function (_products) {
       products = _products;
       fs.readdirSync(product_image_folder).forEach(file => {
-      products = _products;
+        products = _products;
         var product = _.findWhere(products, { image: file });
         if (!product) {
           var filePath = product_image_folder + file;
@@ -27,7 +27,7 @@ function clear_image() {
       });
 
     })
-    .catch(function(err) {
+    .catch(function (err) {
       return;
     });
 }
