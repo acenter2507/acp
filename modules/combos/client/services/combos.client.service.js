@@ -33,8 +33,8 @@
     this.clearProduct = function(comboId) {
       return $http.post('/api/combos/' + comboId + '/clearProduct', { }, { ignoreLoadingBar: true });
     };
-    this.copyProduct = function(comboId) {
-      return $http.post('/api/combos/' + comboId + '/copyProduct', { }, { ignoreLoadingBar: true });
+    this.copyCombo = function(comboId) {
+      return $http.post('/api/combos/' + comboId + '/copyCombo', { }, { ignoreLoadingBar: true });
     };
     
     return this;

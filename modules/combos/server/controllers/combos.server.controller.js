@@ -32,7 +32,7 @@ exports.create = function (req, res) {
  * Show the current Combo
  */
 exports.read = function (req, res) {
-  
+
   Combo.findById(req.combo._id)
     .populate('products')
     .exec(function (err, combo) {
@@ -210,7 +210,7 @@ exports.clearProduct = function (req, res) {
 /**
  * Copy new combo
  */
-exports.copyProduct = function (req, res) {
+exports.copyCombo = function (req, res) {
   var newCombo = new Combo({
     name: req.combo.name,
     color_code: req.combo.color_code,

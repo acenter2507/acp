@@ -95,7 +95,7 @@
       });
     };
     vm.handleCopyCombo = function (combo) {
-      CombosApi.removeAll(combo._id)
+      CombosApi.copyCombo(combo._id)
         .success(function (data) {
           $state.go('combos.view', { comboId: data._id });
         })
