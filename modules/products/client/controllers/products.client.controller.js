@@ -155,6 +155,7 @@
     }
     // Change image from URI to blob
     function dataURItoBlob(dataURI) {
+      if (!dataURI) return;
       var binary = atob(dataURI.split(',')[1]);
       var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
       var array = [];
