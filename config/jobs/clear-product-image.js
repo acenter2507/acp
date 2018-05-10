@@ -21,7 +21,7 @@ function clear_image() {
         products = _products;
         var product = _.findWhere(products, { image: file });
         if (!product) {
-          var filePath = product_image_folder + file;
+          var filePath = product_image_folder + '/' + file;
           return fs.unlink(filePath);
         }
       });
