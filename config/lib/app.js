@@ -7,6 +7,7 @@ var config = require('../config'),
   mongoose = require('./mongoose'),
   express = require('./express'),
   chalk = require('chalk'),
+  job = require('./job'),
   seed = require('./seed');
 
 function seedDB() {
@@ -27,6 +28,8 @@ module.exports.init = function init(callback) {
   mongoose.connect(function (db) {
     // Initialize express
     var app = express.init(db);
+    // Registry job
+    job.start();
     if (callback) callback(app, db, config);
 
   });
