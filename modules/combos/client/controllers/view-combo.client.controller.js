@@ -101,6 +101,15 @@
 
       });
     };
+    vm.handleCopyCombo = function () {
+      CombosApi.copyCombo(vm.combo._id)
+        .success(function (data) {
+          $state.go('combos.view', { comboId: data._id });
+        })
+        .error(function (err) {
+          $scope.handleShowToast(err.message, true);
+        });
+    };
     function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;
