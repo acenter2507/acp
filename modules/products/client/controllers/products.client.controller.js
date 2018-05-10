@@ -83,6 +83,7 @@
         if (res === '$document' || !res.value) {
           vm.uploader.clearQueue();
           vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
+          return;
         }
         vm.imageUrl = res.value;
         var blob = dataURItoBlob(res.value);
