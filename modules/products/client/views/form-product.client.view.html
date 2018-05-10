@@ -1,11 +1,11 @@
 <div class="container-fluid animated fadeIn" nv-file-drop uploader="vm.uploader">
   <div class="d-sm-down-none h80"></div>
   <div class="row mg20t">
-    <div class="col-xs-12" ng-if="vm.uploader.isHTML5">
+    <!-- <div class="col-xs-12" ng-if="vm.uploader.isHTML5">
       <div class="well drop-image-box" nv-file-over="" uploader="vm.uploader">
         DRAG YOUR IMAGE
       </div>
-    </div>
+    </div> -->
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 
       <div class="well">
@@ -13,11 +13,11 @@
         <form name="vm.form.productForm" ng-submit="vm.handleStartSaveProduct(vm.form.productForm.$valid)" novalidate>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <!-- <div class="drop-image-box" ng-if="vm.uploader.isHTML5" nv-file-over uploader="vm.uploader">
-                </div> -->
-              <a ng-click="handleShowImage(vm.imageUrl)">
-                <img class="img-responsive" src="{{ vm.imageUrl }}">
-              </a>
+              <div class="drop-image-box" nv-file-over uploader="vm.uploader">
+                <a ng-click="handleShowImage(vm.imageUrl)">
+                  <img class="img-responsive" src="{{ vm.imageUrl }}">
+                </a>
+              </div>
               <div class="form-group mgnb mg5t">
                 <span class="btn btn-default btn-sm btn-upload-file">
                   ファイル選択
