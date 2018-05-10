@@ -107,7 +107,11 @@
 
     };
     vm.handleResetCheck = function () {
+      if (!vm.isChecking) return;
       prepareCheckData();
+      $timeout(function () {
+        $('#qr_code').focus();
+      }, 100);
     };
     vm.handleStopCheck = function () {
       vm.isChecking = false;
