@@ -81,8 +81,8 @@
       });
       mDialog.closePromise.then(function (res) {
         if (res === '$document' || !res.value) {
-          console.log('Null');
-          vm.cancelUpload();
+          vm.uploader.clearQueue();
+          vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
         }
         vm.imageUrl = res.value;
         var blob = dataURItoBlob(res.value);
