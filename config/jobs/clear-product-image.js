@@ -12,6 +12,7 @@ exports.excute = function () {
 };
 
 function clear_image() {
+  console.log('Runing job');
   fs.readdirSync(product_image_folder).forEach(file => {
     console.log(file);
   });

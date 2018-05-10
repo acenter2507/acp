@@ -13,7 +13,7 @@ var test_job = new CronJob({
   timeZone: 'Asia/Tokyo'
 });
 var clear_product_image_job = new CronJob({
-  cronTime: '0 1 * * * *', //every 24hours (every midnight)
+  cronTime: '30 * * * * *', //every 24hours (every midnight)
   onTick: function() {
     clear_product_image.excute();
   },
