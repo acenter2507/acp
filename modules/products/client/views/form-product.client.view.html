@@ -8,12 +8,12 @@
         <form name="vm.form.productForm" ng-submit="vm.handleStartSaveProduct(vm.form.productForm.$valid)" novalidate>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <div class="drop-image-box" ng-if="vm.uploader.isHTML5" nv-file-drop uploader="vm.uploader">
+              <div class="drop-image-box" ng-if="vm.uploader.isHTML5" nv-file-over uploader="vm.uploader">
                 <!-- <img class="img-responsive" src="{{ vm.imageUrl }}"> -->
               </div>
-              <!-- <a ng-click="handleShowImage(vm.imageUrl)">
+              <a ng-click="handleShowImage(vm.imageUrl)">
                 <img class="img-responsive" src="{{ vm.imageUrl }}">
-              </a> -->
+              </a>
               <div class="form-group mgnb mg5t">
                 <span class="btn btn-default btn-sm btn-upload-file">
                   ファイル選択
