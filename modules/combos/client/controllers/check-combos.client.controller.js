@@ -31,7 +31,7 @@
     }
 
     function validateProducts() {
-      vm.combo.products.forEach(product => {
+      vm.combo.products.forEach(function (product) {
         if (_.findWhere(vm.check.uncheckProducts, { _id: product._id })) {
           product.result = 2;
         }
