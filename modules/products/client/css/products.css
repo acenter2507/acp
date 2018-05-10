@@ -93,4 +93,6 @@ img.product-icon {
 .drop-image-box {
   max-height: 300px;
   max-width: 300px;
-  border: 2px dashed #3399ff; }
+  border: 2px dashed lightgray; }
+  .drop-image-box.nv-file-over {
+    border: 2px dashed #3399ff; }
