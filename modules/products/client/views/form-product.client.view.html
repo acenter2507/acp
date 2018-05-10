@@ -1,8 +1,12 @@
 <div class="container-fluid animated fadeIn">
   <div class="d-sm-down-none h80"></div>
   <div class="row mg20t">
+    <div class="col-xs-12" ng-if="vm.uploader.isHTML5">
+      <div class="well drop-image-box" nv-file-over="" uploader="vm.uploader">
+        DRAG YOUR IMAGE
+      </div>
+    </div>
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-      <div class="well drop-image-box h50" nv-file-over="" uploader="vm.uploader"></div>
 
       <div class="well">
         <h3>製品登録</h3>
