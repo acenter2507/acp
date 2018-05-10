@@ -1,7 +1,6 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  Product = mongoose.model('Product'),
   _ = require('underscore'),
   path = require('path'),
   fs = require('fs');
@@ -33,6 +32,7 @@ function clear_image() {
     });
 }
 function get_products() {
+  Product = mongoose.model('Product');
   return new Promise(function (resolve, reject) {
     Product.find().exec(function (err, products) {
       if (err) return reject();
