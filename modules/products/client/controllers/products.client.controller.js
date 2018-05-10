@@ -18,7 +18,7 @@
 
     onCreate();
     function onCreate() {
-      vm.imageUrl = vm.product.image || './modules/products/client/img/placeholder.png';
+      vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
       prepareUploader();
 
       // 画面チェック

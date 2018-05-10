@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+  Product = mongoose.model('Product'),
   _ = require('underscore'),
   path = require('path'),
   fs = require('fs');
@@ -13,11 +14,29 @@ exports.excute = function () {
 
 function clear_image() {
   console.log('Runing job');
-  fs.readdirSync(product_image_folder).forEach(file => {
-    console.log(file);
-    verify_image(file);
-  });
+  var products = [];
+  get_products()
+    .then(function(_products) {
+      products = _products;
+      fs.readdirSync(product_image_folder).forEach(file => {
+      products = _products;
+        var product = _.findWhere(products, { image: file });
+        if (!product) {
+          var filePath = product_image_folder + file;
+          return fs.unlink(filePath);
+        }
+      });
+
+    })
+    .catch(function(err) {
+      return;
+    });
 }
-function verify_image(filename) {
-  console.log(typeof filename);
+function get_products() {
+  return new Promise(function (resolve, reject) {
+    Product.find().exec(function (err, products) {
+      if (err) return reject();
+      return resolve(products);
+    });
+  });
 }
