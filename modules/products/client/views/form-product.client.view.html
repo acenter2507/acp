@@ -3,14 +3,14 @@
 
   <div class="row mg20t">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <div class="well drop-image-box" nv-file-over="" uploader="vm.uploader"></div>
       <div class="well">
         <h3>製品登録</h3>
         <form name="vm.form.productForm" ng-submit="vm.handleStartSaveProduct(vm.form.productForm.$valid)" novalidate>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <div class="drop-image-box" ng-if="vm.uploader.isHTML5" nv-file-over uploader="vm.uploader">
-                <!-- <img class="img-responsive" src="{{ vm.imageUrl }}"> -->
-              </div>
+              <!-- <div class="drop-image-box" ng-if="vm.uploader.isHTML5" nv-file-over uploader="vm.uploader">
+              </div> -->
               <a ng-click="handleShowImage(vm.imageUrl)">
                 <img class="img-responsive" src="{{ vm.imageUrl }}">
               </a>
