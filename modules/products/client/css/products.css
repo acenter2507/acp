@@ -92,5 +92,5 @@ img.product-icon {
   border: 1px solid #daa520; }
 .drop-image-box {
   border: 2px dashed lightgray; }
-  .drop-image-box.nv-file-drop {
+  .drop-image-box.nv-file-over {
     border: 2px dashed #3399ff; }
