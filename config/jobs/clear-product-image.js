@@ -32,7 +32,7 @@ function clear_image() {
     });
 }
 function get_products() {
-  Product = mongoose.model('Product');
+  var Product = mongoose.model('Product');
   return new Promise(function (resolve, reject) {
     Product.find().exec(function (err, products) {
       if (err) return reject();
