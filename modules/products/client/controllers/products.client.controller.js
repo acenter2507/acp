@@ -80,6 +80,7 @@
         scope: $scope
       });
       mDialog.closePromise.then(function (res) {
+        console.log(res);
         if (!res.value) return;
         vm.imageUrl = res.value;
         var blob = dataURItoBlob(res.value);
