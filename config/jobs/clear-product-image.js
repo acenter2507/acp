@@ -17,7 +17,6 @@ function clear_image() {
   get_products()
     .then(function (_products) {
       products = _products;
-      console.log(products);
       fs.readdirSync(product_image_path).forEach(file => {
         products = _products;
         var product = _.findWhere(products, { image: product_image_folder + file });
