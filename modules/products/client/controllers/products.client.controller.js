@@ -80,6 +80,7 @@
         scope: $scope
       });
       mDialog.closePromise.then(function (res) {
+        console.log(res.value);
         if (!res.value) {
           console.log('Null');
           vm.cancelUpload();
