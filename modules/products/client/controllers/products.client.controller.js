@@ -80,7 +80,6 @@
         scope: $scope
       });
       mDialog.closePromise.then(function (res) {
-        console.log(res);
         if (!res.value || res.value === '$document') {
           vm.uploader.clearQueue();
           vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
