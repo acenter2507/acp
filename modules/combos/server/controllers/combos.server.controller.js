@@ -225,7 +225,7 @@ exports.copyCombo = function (req, res) {
     if (err) {
       return res.status(400).send({ message: 'セットをコピーできません！' });
     } else {
-      req.products.forEach(product => {
+      req.combo.products.forEach(product => {
         Product.addCombo(product, newCombo._id);
       });
     }
