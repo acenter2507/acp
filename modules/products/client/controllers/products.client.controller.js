@@ -71,10 +71,6 @@
       vm.cancelUpload();
     };
 
-    // Called after the user has failed to uploaded a new picture
-    vm.uploader.onBeforeUploadItem = function (item) {
-      console.log(item._file.name);
-    };
     // Change user profile picture
     function handleCropImage(data) {
       $scope.sourceImageUrl = data;
