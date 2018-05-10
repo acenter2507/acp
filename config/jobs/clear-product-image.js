@@ -4,8 +4,8 @@ var mongoose = require('mongoose'),
   _ = require('underscore'),
   path = require('path'),
   fs = require('fs');
-
-var product_image_folder = path.resolve('./modules/products/client/img/');
+var product_image_folder = './modules/products/client/img/';
+var product_image_path = path.resolve(product_image_folder);
 
 exports.excute = function () {
   clear_image();
@@ -18,11 +18,11 @@ function clear_image() {
     .then(function (_products) {
       products = _products;
       console.log(products);
-      fs.readdirSync(product_image_folder).forEach(file => {
+      fs.readdirSync(product_image_path).forEach(file => {
         products = _products;
-        var product = _.findWhere(products, { image: file });
+        var product = _.findWhere(products, { image: product_image_folder + file });
         if (!product) {
-          var filePath = product_image_folder + '/' + file;
+          var filePath = product_image_path + '/' + file;
           return fs.unlink(filePath);
         }
       });
