@@ -90,3 +90,7 @@ img.product-icon {
   border: 1px solid #ff4444; }
 .product-item-block.duplicate {
   border: 1px solid #daa520; }
+.drop-image-box {
+  max-height: 300px;
+  max-width: 300px;
+  border: 2px dashed #3399ff; }
