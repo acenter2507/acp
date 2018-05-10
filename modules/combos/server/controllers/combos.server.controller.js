@@ -187,13 +187,12 @@ exports.addProduct = function (req, res) {
 };
 
 /**
- * Add product to combo
+ * Remove all product in combo
  */
 exports.clearProduct = function (req, res) {
   var combo = req.combo;
   var products = combo.products;
   combo.products = [];
-  res.end();
 
   combo.save(function (err) {
     if (err) {
@@ -203,6 +202,31 @@ exports.clearProduct = function (req, res) {
     } else {
       products.forEach(product => {
         Product.removeCombo(product, combo._id);
+      });
+    }
+  });
+};
+
+/**
+ * Copy new combo
+ */
+exports.copyProduct = function (req, res) {
+  var newCombo = new Combo({
+    name: req.combo.name,
+    color_code: req.combo.color_code,
+    datetime: req.combo.datetime,
+    author: req.combo.author,
+    sterilize_date: req.combo.sterilize_date,
+    search: req.combo.search,
+    products: req.combo.products
+  });
+
+  newCombo.save(function (err) {
+    if (err) {
+      return res.status(400).send({ message: 'セットをコピーできません！' });
+    } else {
+      req.products.forEach(product => {
+        Product.addCombo(product, newCombo._id);
       });
     }
   });

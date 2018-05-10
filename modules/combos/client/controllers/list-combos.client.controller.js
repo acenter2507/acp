@@ -5,9 +5,9 @@
     .module('combos')
     .controller('CombosListController', CombosListController);
 
-  CombosListController.$inject = ['$scope', 'CombosService', 'CombosApi', 'CommonService'];
+  CombosListController.$inject = ['$scope', '$state', 'CombosService', 'CombosApi', 'CommonService'];
 
-  function CombosListController($scope, CombosService, CombosApi, CommonService) {
+  function CombosListController($scope, $state, CombosService, CombosApi, CommonService) {
     var vm = this;
 
     vm.combos = [];
@@ -93,6 +93,15 @@
           vm.combos = _.without(vm.combos, combo);
         });
       });
+    };
+    vm.handleCopyCombo = function (combo) {
+      CombosApi.removeAll(combo._id)
+        .success(function (data) {
+          $state.go('combos.view', { comboId: data._id });
+        })
+        .error(function (err) {
+          $scope.handleShowToast(err.message, true);
+        });
     };
     vm.handleCheckedAll = function () {
       vm.combos.forEach(function (p) { p.isChecked = vm.checkedAll; });
