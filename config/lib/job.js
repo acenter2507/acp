@@ -1,7 +1,7 @@
 'use strict';
 
 var CronJob = require('cron').CronJob,
-  rank_user = require('../jobs/rank-user');
+  clear_product_image = require('../jobs/clear-product-image');
 
 
 var test_job = new CronJob({
@@ -12,15 +12,15 @@ var test_job = new CronJob({
   start: false,
   timeZone: 'Asia/Tokyo'
 });
-var rank_user_job = new CronJob({
+var clear_product_image_job = new CronJob({
   cronTime: '0 0 * * *', //every 24hours (every midnight)
   onTick: function() {
-    rank_user.excute();
+    clear_product_image.excute();
   },
   start: false,
   timeZone: 'Asia/Tokyo'
 });
 function start() {
-  rank_user_job.start();
+  clear_product_image_job.start();
 }
 exports.start = start;
