@@ -23,7 +23,7 @@ module.exports = {
         'https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.3.20/angular-locale_ja-jp.min.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'public/lib/angular-file-upload/angular-file-upload.min.js',
-        'public/lib/underscore/underscore.min.js',
+        'public/lib/underscore/underscore-min.js',
         'public/lib/moment/min/moment.min.js',
         'public/lib/moment/min/locales.min.js',
         'public/lib/moment-timezone/builds/moment-timezone.min.js',
