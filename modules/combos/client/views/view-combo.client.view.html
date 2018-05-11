@@ -90,11 +90,11 @@
     <div class="product-item-block mg6x" ng-repeat="product in vm.searchResult">
       <div class="product-basic-info">
         <div class="product-avatar">
-          <img src="{{:: product.image }}">
+          <img src="{{ product.image }}">
         </div>
         <div class="product-info">
-          <span class="product-info-name">{{:: product.name}}</span>
-          <span class="font-sm">{{::product.brand }}</span>
+          <span class="product-info-name">{{ product.name}}</span>
+          <span class="font-sm">{{ product.brand }}</span>
         </div>
         <div class="product-action">
           <a class="product-options" ng-click="vm.handleAddProductToCombo(product)">
