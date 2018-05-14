@@ -15,6 +15,76 @@
     <div class="col-xs-12" ng-show="vm.isChecking">
       <div class="well">
         <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
+              <div class="form-group mgn" show-errors>
+                <div class="input-group">
+                  <input focus-me="true" id="qr_code" name="qr_code" type="text" class="form-control" ng-model="vm.qr_code" placeholder="2次元コード入力"
+                    required>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+                <div ng-messages="vm.form.inputForm.qr_code.$error" role="alert">
+                  <p class="help-block error-text font-sm" ng-message="required">2次元コードを入力してください！</p>
+                </div>
+              </div>
+              <div class="form-group mgn mg10t" ng-show="vm.check.dirty">
+                <div class="combo-check-result">
+                  <div class="check-mark">
+                    <img ng-show="vm.check.checking" src="./modules/combos/client/img/box.png">
+                    <div class="loading" ng-show="vm.check.checking">
+                      <i class="fa fa-search"></i>
+                    </div>
+                    <div ng-hide="vm.check.checking" ng-switch="vm.check.result">
+                      <img ng-switch-when="1" src="./modules/combos/client/img/success.png">
+                      <img ng-switch-when="2" src="./modules/combos/client/img/duplicate.png">
+                      <img ng-switch-default src="./modules/combos/client/img/fail.png">
+                    </div>
+                  </div>
+                  <div class="check-message">
+                    <p>{{vm.check.message}}</p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="bg-danger">
+                  <tr>
+                    <th class="text-center">セット名</th>
+                    <th class="text-center">確認済</th>
+                    <th class="text-center">未確認</th>
+                    <th class="text-center">セット外</th>
+                    <th class="text-center">重複</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-center">
+                      <strong class="font-lg">{{ vm.combo.name }}</strong>
+                    </td>
+                    <td class="text-center">
+                      <strong class="font-lg text-primary">{{ vm.check.checkedProducts.length }}</strong>
+                    </td>
+                    <td class="text-center">
+                      <strong class="font-lg text-danger">{{ vm.check.uncheckProducts.length }}</strong>
+                    </td>
+                    <td class="text-center">
+                      <strong class="font-lg">{{ vm.check.wrongSetProducts.length }}</strong>
+                    </td>
+                    <td class="text-center">
+                      <strong class="font-lg text-warning" text-warning>{{ vm.check.duplicateProducts.length }}</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
             <form name="vm.form.inputForm" ng-submit="vm.handleInputCode(vm.form.inputForm.$valid)" novalidate>
               <div class="form-group mgn" show-errors>
