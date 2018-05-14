@@ -87,6 +87,11 @@
           return;
         }
         if (res.value === 1) {
+          vm.imageUrl = data;
+          var blob = dataURItoBlob(data);
+          vm.uploader.queue[0]._file = blob;
+          delete $scope.sourceImageUrl;
+          vm.isGetAvatarFromFile = true;
           return;
         }
         vm.imageUrl = res.value;
