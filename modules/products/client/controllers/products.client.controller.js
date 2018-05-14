@@ -92,13 +92,13 @@
           vm.uploader.queue[0]._file = blob;
           delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
-          return;
+        } else {
+          vm.imageUrl = res.value;
+          var blob = dataURItoBlob(res.value);
+          vm.uploader.queue[0]._file = blob;
+          delete $scope.sourceImageUrl;
+          vm.isGetAvatarFromFile = true;
         }
-        vm.imageUrl = res.value;
-        var blob = dataURItoBlob(res.value);
-        vm.uploader.queue[0]._file = blob;
-        delete $scope.sourceImageUrl;
-        vm.isGetAvatarFromFile = true;
       });
     }
     // Cancel the upload process
