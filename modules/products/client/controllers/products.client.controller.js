@@ -87,8 +87,6 @@
           return;
         }
         if (res.value === 1) {
-          vm.imageUrl = $scope.sourceImageUrl;
-          delete $scope.sourceImageUrl;
           return;
         }
         vm.imageUrl = res.value;
