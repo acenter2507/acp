@@ -83,6 +83,12 @@
         if (!res.value || res.value === '$document') {
           vm.uploader.clearQueue();
           vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
+          delete $scope.sourceImageUrl;
+          return;
+        }
+        if (res.value === 1) {
+          vm.imageUrl = $scope.sourceImageUrl;
+          delete $scope.sourceImageUrl;
           return;
         }
         vm.imageUrl = res.value;
