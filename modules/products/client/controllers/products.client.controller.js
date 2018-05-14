@@ -86,15 +86,16 @@
           delete $scope.sourceImageUrl;
           return;
         }
+        var blob;
         if (res.value === 1) {
           vm.imageUrl = data;
-          var blob = dataURItoBlob(data);
+          blob = dataURItoBlob(data);
           vm.uploader.queue[0]._file = blob;
           delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
         } else {
           vm.imageUrl = res.value;
-          var blob = dataURItoBlob(res.value);
+          blob = dataURItoBlob(res.value);
           vm.uploader.queue[0]._file = blob;
           delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
