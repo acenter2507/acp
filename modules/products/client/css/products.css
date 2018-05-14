@@ -1,3 +1,8 @@
+img.product-image {
+  min-height: 100px;
+  min-width: 100px;
+  max-width: 250px;
+  max-height: 250px; }
 img.product-thumbnail {
   border-radius: 4px;
   height: 34px; }
