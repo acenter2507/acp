@@ -38,10 +38,10 @@
                     <div class="loading" ng-show="vm.check.checking">
                       <i class="fa fa-search"></i>
                     </div>
-                    <div ng-hide="vm.check.checking" ng-switch="vm.check.result">
-                      <img ng-switch-when="1" src="./modules/combos/client/img/success.png">
-                      <img ng-switch-when="2" src="./modules/combos/client/img/duplicate.png">
-                      <img ng-switch-default src="./modules/combos/client/img/fail.png">
+                    <div ng-hide="vm.check.checking">
+                      <img ng-show="vm.check.result === 1" src="./modules/combos/client/img/success.png">
+                      <img ng-show="vm.check.result === 2" src="./modules/combos/client/img/duplicate.png">
+                      <img ng-show="vm.check.result === 3" src="./modules/combos/client/img/fail.png">
                     </div>
                   </div>
                   <div class="check-message">
