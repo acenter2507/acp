@@ -1,3 +1,9 @@
 .ng-hide.ng-hide-animate {
   display: none !important;
 }
+.image-view {
+  width: 100px; }
+  .image-view img {
+    display:block;
+    max-width: 100%;
+    margin:auto; }
