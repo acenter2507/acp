@@ -128,7 +128,8 @@
       $scope.product = product;
       ngDialog.openConfirm({
         templateUrl: 'productViewTemplate.html',
-        scope: $scope
+        scope: $scope,
+        showClose: false
       }).then(function (res) {
         delete $scope.product;
       }, function (res) {

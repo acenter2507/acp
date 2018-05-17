@@ -107,8 +107,7 @@ img.product-icon {
 .product-view {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  background: blue; }
+  width: 100%;}
   .product-view .product-view-image {
     width: 100px;
     height: 100px; }
