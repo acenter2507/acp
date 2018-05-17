@@ -193,7 +193,7 @@
               </td>
               <td>{{ product.brand }}</td>
               <td>
-                <a ui-sref="products.view({ productId: product._id })">{{ product.name }}</a>
+                <a ng-click="vm.handleShowProduct(product)">{{ product.name }}</a>
               </td>
               <td>{{ product.model_number }}</td>
               <td>{{ product.lot_number }}</td>
@@ -235,3 +235,14 @@
     </div>
   </div>
 </div>
+
+<script type="text/ng-template" id="productViewTemplate.html">
+  <div class="product-view">
+    <div class="product-view-image">
+      <img class="img-responsive" url="{{product.image}}">
+    </div>
+    <div class="product-view-info">
+      <pre>{{product}}</pre>
+    </div>
+  </div>
+</script>

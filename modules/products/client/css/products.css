@@ -103,3 +103,14 @@ img.product-icon {
   border: 2px dashed lightgray; }
   .drop-image-box.nv-file-over {
     border: 2px dashed #3399ff; }
+
+.product-view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: blue; }
+  .product-view .product-view-image {
+    width: 100px;
+    height: 100px; }
+  .product-view .product-view-info {
+    flex-grow: 1; }

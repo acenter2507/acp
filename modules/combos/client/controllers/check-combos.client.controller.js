@@ -5,9 +5,9 @@
     .module('combos')
     .controller('ComboCheckController', ComboCheckController);
 
-  ComboCheckController.$inject = ['$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi'];
+  ComboCheckController.$inject = ['$scope', '$timeout', 'CombosService', 'comboResolve', 'ProductsApi', 'ngDialog'];
 
-  function ComboCheckController($scope, $timeout, CombosService, combo, ProductsApi) {
+  function ComboCheckController($scope, $timeout, CombosService, combo, ProductsApi, ngDialog) {
     var vm = this;
 
     vm.combo = combo;
@@ -38,9 +38,9 @@
         if (_.findWhere(vm.check.checkedProducts, { _id: product._id })) {
           product.result = 1;
         }
-        if (_.findWhere(vm.check.duplicateProducts, { _id: product._id })) {
-          product.result = 3;
-        }
+        // if (_.findWhere(vm.check.duplicateProducts, { _id: product._id })) {
+        //   product.result = 3;
+        // }
       });
       if (!$scope.$$phase) $scope.$digest();
     }
@@ -123,6 +123,17 @@
         $('#qr_code').focus();
       }, 100);
 
+    };
+    vm.handleShowProduct = function (product) {
+      $scope.product = product;
+      ngDialog.openConfirm({
+        templateUrl: 'productViewTemplate.html',
+        scope: $scope
+      }).then(function (res) {
+        delete $scope.product;
+      }, function (res) {
+        delete $scope.product;
+      });
     };
   }
 }());
