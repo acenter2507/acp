@@ -65,7 +65,7 @@
             $timeout(function () {
               vm.check.result = 4;
               handleCheckResult();
-            }, 5000);
+            }, 3000);
           });
       } else {
         // セットに追加されました
