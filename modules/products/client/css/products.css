@@ -113,4 +113,5 @@ img.product-icon {
     width: 100px;
     height: 100px; }
   .product-view .product-view-info {
+    margin-left: 10px;
     flex-grow: 1; }
