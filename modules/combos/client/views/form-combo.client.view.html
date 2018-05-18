@@ -30,7 +30,7 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li class="h30">
+                    <li class="h30" ng-show="vm.combo.color._id">
                       <a href="#" ng-click="vm.handleSelectColor()"><span class="label mg5r">　　</span>なし</a>
                     </li>
                     <li class="h30" ng-repeat="color in vm.colors" ng-show="!color.combo">
