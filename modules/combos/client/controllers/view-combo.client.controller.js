@@ -88,6 +88,7 @@
       });
     };
     vm.handleClearProduct = function () {
+      if (vm.combo.products.length === 0) return;
       $scope.handleShowConfirm({
         message: '全ての製品を削除しますか？'
       }, function () {
