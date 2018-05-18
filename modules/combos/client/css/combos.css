@@ -82,7 +82,7 @@
     border: 2px dashed lightgray; }
   .combo-form .combo-form-image.nv-file-over {
     border: 2px dashed #3399ff; }
-    .combo-view .combo-view-image img {
+    .combo-form .combo-form-image img {
       max-width: 100%;
       max-height:100%;
       height: auto; }
