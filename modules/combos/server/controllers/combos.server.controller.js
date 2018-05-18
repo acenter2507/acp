@@ -234,6 +234,7 @@ exports.clearProduct = function (req, res) {
 exports.copyCombo = function (req, res) {
   var newCombo = new Combo({
     name: req.combo.name,
+    image: req.combo.image,
     color_code: req.combo.color_code,
     datetime: req.combo.datetime,
     author: req.combo.author,
