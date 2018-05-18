@@ -177,3 +177,39 @@
   </div>
   <button class="combo-left-aside-close" aria-label="Dismis"></button>
 </div>
+
+
+<script type="text/ng-template" id="productViewTemplate.html">
+  <div class="product-view">
+    <div class="product-view-image">
+      <img class="img-responsive" src="{{ product.image }}">
+    </div>
+    <div class="product-view-info">
+      <h4>{{ product.name }}</h4>
+      <p>
+        <strong>ブランド：</strong>
+        <span>{{ product.brand }}</span>
+      </p>
+      <p>
+        <strong>型番：</strong>
+        <span>{{ product.model_number }}</span>
+      </p>
+      <p>
+        <strong>ロット番号：</strong>
+        <span>{{ product.lot_number }}</span>
+      </p>
+      <p>
+        <strong>二次元コード：</strong>
+        <span>{{ product.qr_code }}</span>
+      </p>
+      <p>
+        <strong>導入年月日：</strong>
+        <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+      </p>
+      <p>
+        <strong>交換日：</strong>
+        <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
+      </p>
+    </div>
+  </div>
+</script>
