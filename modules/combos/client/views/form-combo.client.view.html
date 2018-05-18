@@ -25,18 +25,16 @@
               <div class="form-group">
                 <label for="color_code">カラー</label>
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown">
+                  <button class="btn btn-default dropdown-toggle btn-block text-left" type="button" data-toggle="dropdown">
                     {{(vm.combo.color) ? vm.combo.color.name : 'カラー選択' }}
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li ng-repeat="color in vm.colors">
+                    <li class="h30" ng-repeat="color in vm.colors">
                       <a href="#">
                         {{ color.name }}
                         <span class="label mg5l" ng-style="{ 'background-color': color.color }">　　</span>
                       </a>
-
-
                     </li>
                   </ul>
                 </div>
