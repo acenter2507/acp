@@ -78,6 +78,7 @@
                 <th>型番</th>
                 <th>ロット番号</th>
                 <th>導入年月日</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -98,6 +99,11 @@
                 <td>{{ product.lot_number }}</td>
                 <td>
                   <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-warning btn-xs" ng-click="vm.handleRemoveProductFromCombo(product)">
+                    <i class="fa fa-trash"></i>
+                  </button>
                 </td>
               </tr>
             </tbody>
