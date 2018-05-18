@@ -184,12 +184,12 @@
 
 
 <script type="text/ng-template" id="productViewTemplate.html">
+  <h3 class="mgn mg10b">{{ product.name }}</h3>
   <div class="product-view">
     <div class="product-view-image">
-      <img class="img-responsive" src="{{ product.image }}">
+      <img src="{{ product.image }}">
     </div>
     <div class="product-view-info">
-      <h4>{{ product.name }}</h4>
       <p>
         <strong>ブランド：</strong>
         <span>{{ product.brand }}</span>
