@@ -6,6 +6,8 @@ img.product-image {
 img.product-thumbnail {
   border-radius: 4px;
   height: 34px; }
+  img.product-thumbnail:hover {
+    opacity: 0.8; }
 img.product-result {
   max-width: 34px;
   max-height: 34px; }
