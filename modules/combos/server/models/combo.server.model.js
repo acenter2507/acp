@@ -17,6 +17,11 @@ var ComboSchema = new Schema({
     required: 'セット名称が必須です。',
     trim: true
   },
+  // セット写真
+  image: { type: String },
+  color: { type: Schema.ObjectId, ref: 'Color' },
+  // 二次元コード
+  qr_code: { type: String },
   // セット組カラーコード
   color_code: { type: String },
   // セット年月日
