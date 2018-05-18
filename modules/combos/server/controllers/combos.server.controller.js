@@ -27,7 +27,7 @@ exports.create = function (req, res) {
       });
     } else {
       res.jsonp(combo);
-      var colorId = combo.color._id || combo.color;
+      var colorId = (combo.color) ? combo.color._id || combo.color : '';
       Color.setCombo(colorId, combo._id);
     }
   });
@@ -56,7 +56,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var combo = req.combo;
 
-  var oldColorId = combo.color._id || combo.color;
+  var oldColorId = (combo.color) ? combo.color._id || combo.color : '';
 
   combo = _.extend(combo, req.body);
 
@@ -67,7 +67,7 @@ exports.update = function (req, res) {
       });
     } else {
       res.jsonp(combo);
-      var newColorId = combo.color._id || combo.color;
+      var newColorId = (combo.color) ? combo.color._id || combo.color : '';
       if (oldColorId !== newColorId) {
         Color.removeCombo(oldColorId);
         Color.setCombo(newColorId, combo._id);
@@ -88,7 +88,7 @@ exports.delete = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      var colorId = combo.color._id || combo.color;
+      var colorId = (combo.color) ? combo.color._id || combo.color : '';
       Color.removeCombo(colorId);
       combo.products.forEach(product => {
         Product.removeCombo(product, combo._id);
