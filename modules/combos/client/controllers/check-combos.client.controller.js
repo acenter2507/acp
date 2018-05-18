@@ -128,6 +128,7 @@
       if (!vm.isChecking) return;
       if (product.result !== 2) return;
       vm.check.checkedProducts.push(_.clone(product));
+      vm.check.uncheckProducts = _.without(vm.check.uncheckProducts, product);
       validateProducts(product);
     };
     vm.handleShowProduct = function (product) {
