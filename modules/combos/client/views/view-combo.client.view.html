@@ -98,12 +98,8 @@
                 </td>
                 <td>{{ product.model_number }}</td>
                 <td>{{ product.lot_number }}</td>
-                <td>{{ product.qr_code }}</td>
                 <td>
                   <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
-                </td>
-                <td>
-                  <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
                 </td>
               </tr>
             </tbody>
