@@ -117,7 +117,7 @@
         templateUrl: 'productViewTemplate.html',
         scope: $scope,
         showClose: false,
-        width: 90
+        width: '90%'
       }).then(function (res) {
         delete $scope.product;
       }, function (res) {
