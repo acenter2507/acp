@@ -54,6 +54,7 @@
               <th class="text-center">写真</th>
               <th>カラー</th>
               <th>名称</th>
+              <th>QRコード</th>
               <th>担当者</th>
               <th>年月日</th>
               <th>減菌年月日</th>
@@ -81,6 +82,7 @@
               <td>
                 <a ui-sref="combos.check({ comboId: combo._id })">{{ combo.name }}</a>
               </td>
+              <td>{{ combo.qr_code }}</td>
               <td>{{ combo.author }}</td>
               <td>
                 <span ng-if="combo.datetime">{{ combo.datetime | LL }}</span>
