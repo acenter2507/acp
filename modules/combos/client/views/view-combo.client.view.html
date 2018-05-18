@@ -83,7 +83,7 @@
             </thead>
             <tbody>
               <tr ng-if="vm.combo.products.length === 0">
-                <td colspan="6">製品が追加されていません！</td>
+                <td colspan="7">製品が追加されていません！</td>
               </tr>
               <tr ng-repeat="product in vm.combo.products track by $index">
                 <td class="text-center">
@@ -101,7 +101,7 @@
                   <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
                 </td>
                 <td class="text-center">
-                  <button class="btn btn-warning btn-xs" ng-click="vm.handleRemoveProductFromCombo(product)">
+                  <button class="btn btn-warning btn-sm" ng-click="vm.handleRemoveProductFromCombo(product)">
                     <i class="fa fa-trash"></i>
                   </button>
                 </td>
