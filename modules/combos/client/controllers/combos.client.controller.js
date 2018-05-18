@@ -17,6 +17,7 @@
 
     onCreate();
     function onCreate() {
+      vm.imageUrl = vm.combo.image || './modules/core/client/img/brand/placeholder.png';
       // 画面チェック
       if (vm.combo._id) {
         vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime) : vm.combo.datetime;
