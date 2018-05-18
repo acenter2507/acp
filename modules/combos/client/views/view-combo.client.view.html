@@ -79,16 +79,14 @@
                 <th>名称</th>
                 <th>型番</th>
                 <th>ロット番号</th>
-                <th>２次元コード</th>
                 <th>導入年月日</th>
-                <th>交換日</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-if="vm.combo.products.length === 0">
-                <td colspan="8">製品が登録されていません！</td>
+                <td colspan="6">製品が登録されていません！</td>
               </tr>
-              <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
+              <tr ng-repeat="product in vm.combo.products track by $index">
                 <td class="text-center">
                   <a ng-click="handleShowImage(product.image)">
                     <img class="product-thumbnail" src="{{product.image}}">
