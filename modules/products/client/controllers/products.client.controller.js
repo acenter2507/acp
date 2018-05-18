@@ -18,14 +18,15 @@
 
     onCreate();
     function onCreate() {
-      vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
-      prepareUploader();
-
       // 画面チェック
       if (vm.product._id) {
         vm.product.intro_date = (vm.product.intro_date) ? new Date(vm.product.intro_date) : vm.product.intro_date;
         vm.product.exchange_date = (vm.product.exchange_date) ? new Date(vm.product.exchange_date) : vm.product.exchange_date;
+      } else {
+        vm.product.image = './modules/core/client/img/brand/placeholder.png';
       }
+      vm.imageUrl = vm.product.image;
+      prepareUploader();
     }
 
     function prepareUploader() {
@@ -40,35 +41,36 @@
           return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
         }
       });
+      // Called after the user selected a new picture file
+      vm.uploader.onAfterAddingFile = function (fileItem) {
+        if ($window.FileReader) {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(fileItem._file);
+  
+          fileReader.onload = function (fileReaderEvent) {
+            $timeout(function () {
+              handleCropImage(fileReaderEvent.target.result);
+            }, 0);
+          };
+        }
+      };
+      // Called after the user has successfully uploaded a new picture
+      vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
+        vm.product.image = response;
+        handleSaveProduct();
+        vm.uploader.clearQueue();
+      };
+      // Called after the user has failed to uploaded a new picture
+      vm.uploader.onErrorItem = function (fileItem, response, status, headers) {
+        vm.busy = false;
+        $scope.handleShowToast(response, true);
+        vm.uploader.clearQueue();
+      };
+  
     }
-
-    // Called after the user selected a new picture file
-    vm.uploader.onAfterAddingFile = function (fileItem) {
-      if ($window.FileReader) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(fileItem._file);
-
-        fileReader.onload = function (fileReaderEvent) {
-          $timeout(function () {
-            //vm.imageUrl = fileReaderEvent.target.result;
-            //vm.isGetAvatarFromFile = true;
-            handleCropImage(fileReaderEvent.target.result);
-          }, 0);
-        };
-      }
-    };
-    // Called after the user has successfully uploaded a new picture
-    vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
-      vm.product.image = response;
-      handleSaveProduct();
-      vm.cancelUpload();
-    };
-    // Called after the user has failed to uploaded a new picture
-    vm.uploader.onErrorItem = function (fileItem, response, status, headers) {
-      vm.busy = false;
-      $scope.handleShowToast(response, true);
-      // Clear upload buttons
-      vm.cancelUpload();
+    // Cancel the upload process
+    vm.cancelUpload = function () {
+      vm.uploader.clearQueue();
     };
 
     // Change user profile picture
@@ -82,7 +84,7 @@
       mDialog.closePromise.then(function (res) {
         if (!res.value || res.value === '$document') {
           vm.uploader.clearQueue();
-          vm.imageUrl = vm.product.image || './modules/core/client/img/brand/placeholder.png';
+          vm.imageUrl = vm.product.image;
           delete $scope.sourceImageUrl;
           return;
         }
@@ -91,22 +93,17 @@
           vm.imageUrl = data;
           blob = CommonService.dataURItoBlob(data);
           vm.uploader.queue[0]._file = blob;
-          delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
+          delete $scope.sourceImageUrl;
         } else {
           vm.imageUrl = res.value;
           blob = CommonService.dataURItoBlob(res.value);
           vm.uploader.queue[0]._file = blob;
-          delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
+          delete $scope.sourceImageUrl;
         }
       });
     }
-    // Cancel the upload process
-    vm.cancelUpload = function () {
-      vm.uploader.clearQueue();
-    };
-
     // Save Product
     vm.handleStartSaveProduct = function (isValid) {
       if (vm.busy) return;

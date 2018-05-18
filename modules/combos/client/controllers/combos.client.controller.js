@@ -13,6 +13,7 @@
 
     vm.combo = combo;
     vm.colors = ColorsService.query();
+    vm.busy = false;
     vm.form = {};
 
     onCreate();

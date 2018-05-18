@@ -114,3 +114,29 @@ img.product-icon {
   .product-view .product-view-info {
     margin-left: 10px;
     flex-grow: 1; }
+
+.product-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+  .product-form .product-form-image {
+    position: relative;
+    width: 300px;
+    height: 100%; }
+  .product-form .product-form-image.nv-file-over {
+    border: 2px dashed #3399ff; }
+    .product-form .product-form-image img {
+      max-width: 100%;
+      max-height:100%;
+      border: none;
+      height: auto; }
+    .product-form .product-form-image .btn-upload-file {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: none; }
+    .product-form .product-form-image:hover .btn-upload-file {
+      display: block; }
+  .product-form .product-form-info {
+    margin-left: 20px;
+    flex-grow: 1;}
