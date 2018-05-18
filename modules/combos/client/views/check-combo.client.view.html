@@ -244,30 +244,40 @@
       <img src="{{ product.image }}">
     </div>
     <div class="product-view-info">
-      <p>
-        <strong>ブランド：</strong>
-        <span>{{ product.brand }}</span>
-      </p>
-      <p>
-        <strong>型番：</strong>
-        <span>{{ product.model_number }}</span>
-      </p>
-      <p>
-        <strong>ロット番号：</strong>
-        <span>{{ product.lot_number }}</span>
-      </p>
-      <p>
-        <strong>二次元コード：</strong>
-        <span>{{ product.qr_code }}</span>
-      </p>
-      <p>
-        <strong>導入年月日：</strong>
-        <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
-      </p>
-      <p>
-        <strong>交換日：</strong>
-        <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
-      </p>
+      <table class="table">
+        <tr>
+          <td>
+            <strong>ブランド：</strong>
+          </td>
+          <td>{{ product.brand }}</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>型番：</strong>
+          </td>
+          <td>{{ product.model_number }}</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>ロット番号：</strong>
+          </td>
+          <td>{{ product.lot_number }}</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>導入年月日：</strong>
+          </td>
+          <td>
+            <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="text-right">
+            <a class="btn btn-info btn-sm" ui-sref="products.edit({ productId: product._id })">編集</a>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </script>
