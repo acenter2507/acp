@@ -9,6 +9,8 @@ img.product-thumbnail {
 img.product-result {
   max-width: 34px;
   max-height: 34px; }
+  img.product-result:hover {
+    opacity: 0.8; }
 img.product-icon {
   max-width: 18px;
   max-height: 18px; }
