@@ -136,7 +136,8 @@ exports.search = function (req, res) {
     sort: condition.sort,
     page: page,
     populate: [
-      { path: 'products' }
+      { path: 'products' },
+      { path: 'color' }
     ],
     limit: condition.limit
   }).then(combos => {

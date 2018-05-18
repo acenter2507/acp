@@ -38,6 +38,11 @@ var ComboSchema = new Schema({
 });
 ComboSchema.plugin(paginate);
 
+ComboSchema.pre('save', function (next) {
+  this.search = this.name + '-' + this.qr_code + '-' + this.author;
+  next();
+});
+
 ComboSchema.statics.addProduct = function (comboId, productId) {
   return this.findById(comboId).exec(function (err, combo) {
     if (err || !combo) return;
