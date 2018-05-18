@@ -26,7 +26,7 @@
                 <label for="color_code">カラー</label>
                 <select name="color_code" class="form-control" ng-model="vm.combo.color">
                   <option value>なし</option>
-                  <option ng-repeat="color in vm.colors" value="{{color._id}}" ng-selected="vm.combo.color && color._id === vm.combo.color._id" style="background-color: blue;">
+                  <option ng-repeat="color in vm.colors" value="{{color._id}}" ng-selected="vm.combo.color && color._id === vm.combo.color._id">
                     {{color.name}}
                   </option>
                 </select>
