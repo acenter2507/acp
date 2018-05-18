@@ -34,14 +34,14 @@
               <div class="form-group mgn mg10t" ng-show="vm.check.dirty">
                 <div class="combo-check-result">
                   <div class="check-mark">
-                    <img ng-show="vm.check.checking" src="./modules/combos/client/img/box.png">
+                    <img ng-show="vm.check.checking" src="./modules/core/client/img/brand/box.png">
                     <div class="loading" ng-show="vm.check.checking">
                       <i class="fa fa-search"></i>
                     </div>
                     <div ng-hide="vm.check.checking">
-                      <img ng-show="vm.check.result === 1" src="./modules/combos/client/img/success.png">
-                      <img ng-show="vm.check.result === 2" src="./modules/combos/client/img/duplicate.png">
-                      <img ng-show="vm.check.result === 3 || vm.check.result === 4" src="./modules/combos/client/img/fail.png">
+                      <img ng-show="vm.check.result === 1" src="./modules/core/client/img/brand/success.png">
+                      <img ng-show="vm.check.result === 2" src="./modules/core/client/img/brand/duplicate.png">
+                      <img ng-show="vm.check.result === 3 || vm.check.result === 4" src="./modules/core/client/img/brand/fail.png">
                     </div>
                   </div>
                   <div class="check-message">
@@ -104,14 +104,14 @@
               <div class="form-group mgn mg10t" ng-show="vm.check.dirty">
                 <div class="combo-check-result">
                   <div class="check-mark">
-                    <img ng-show="vm.check.checking" src="./modules/combos/client/img/box.png">
+                    <img ng-show="vm.check.checking" src="./modules/core/client/img/brand/box.png">
                     <div class="loading" ng-show="vm.check.checking">
                       <i class="fa fa-search"></i>
                     </div>
                     <div ng-hide="vm.check.checking" ng-switch="vm.check.result">
-                      <img ng-switch-when="1" src="./modules/combos/client/img/success.png">
-                      <img ng-switch-when="2" src="./modules/combos/client/img/duplicate.png">
-                      <img ng-switch-default src="./modules/combos/client/img/fail.png">
+                      <img ng-switch-when="1" src="./modules/core/client/img/brand/success.png">
+                      <img ng-switch-when="2" src="./modules/core/client/img/brand/duplicate.png">
+                      <img ng-switch-default src="./modules/core/client/img/brand/fail.png">
                     </div>
                   </div>
                   <div class="check-message">
@@ -182,9 +182,9 @@
             </tr>
             <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
               <td class="text-center" ng-switch="product.result">
-                <img class="product-result" ng-switch-when="1" src="./modules/combos/client/img/success.png">
-                <img class="product-result" ng-switch-when="2" src="./modules/combos/client/img/fail.png">
-                <img class="product-result" ng-switch-when="3" src="./modules/combos/client/img/duplicate.png">
+                <img class="product-result" ng-switch-when="1" src="./modules/core/client/img/brand/success.png">
+                <img class="product-result" ng-switch-when="2" src="./modules/core/client/img/brand/fail.png">
+                <img class="product-result" ng-switch-when="3" src="./modules/core/client/img/brand/duplicate.png">
               </td>
               <td class="text-center">
                 <a ng-click="handleShowImage(product.image)">
@@ -211,24 +211,24 @@
     </div>
     <div class="col-xs-12">
       <p class="mgn">
-        <img class="product-icon" src="./modules/combos/client/img/success.png">
+        <img class="product-icon" src="./modules/core/client/img/brand/success.png">
         <span>確認された製品</span>
-        <img class="product-icon mg10l" src="./modules/combos/client/img/fail.png">
+        <img class="product-icon mg10l" src="./modules/core/client/img/brand/fail.png">
         <span>確認されていない製品</span>
-        <img class="product-icon mg10l" src="./modules/combos/client/img/duplicate.png">
+        <img class="product-icon mg10l" src="./modules/core/client/img/brand/duplicate.png">
         <span>重複した製品</span>
       </p>
       <!-- <div class="well">
         <p class="mgn">
-          <img class="product-icon" src="./modules/combos/client/img/success.png">
+          <img class="product-icon" src="./modules/core/client/img/brand/success.png">
           <span>確認された製品</span>
         </p>
         <p class="mgn">
-          <img class="product-icon" src="./modules/combos/client/img/fail.png">
+          <img class="product-icon" src="./modules/core/client/img/brand/fail.png">
           <span>確認されていない製品</span>
         </p>
         <p class="mgn">
-          <img class="product-icon" src="./modules/combos/client/img/duplicate.png">
+          <img class="product-icon" src="./modules/core/client/img/brand/duplicate.png">
           <span>重複した製品</span>
         </p>
       </div> -->

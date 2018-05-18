@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Combo = mongoose.model('Combo'),
+  Color = mongoose.model('Color'),
   Product = mongoose.model('Product'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
@@ -24,6 +25,8 @@ exports.create = function (req, res) {
       });
     } else {
       res.jsonp(combo);
+      var colorId = combo.color._id || combo.color;
+      Color.setCombo(colorId, combo._id);
     }
   });
 };
@@ -76,6 +79,8 @@ exports.delete = function (req, res) {
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      var colorId = combo.color._id || combo.color;
+      Color.removeCombo(colorId);
       combo.products.forEach(product => {
         Product.removeCombo(product, combo._id);
       });

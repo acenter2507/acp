@@ -25,4 +25,20 @@ var ColorSchema = new Schema({
 });
 ColorSchema.plugin(paginate);
 
+ColorSchema.statics.setCombo = function (colorId, comboId) {
+  return this.findById(colorId).exec(function (err, color) {
+    if (err || !color) return;
+    color.combo = comboId;
+    return color.save();
+  });
+};
+
+ColorSchema.statics.removeCombo = function (colorId) {
+  return this.findById(colorId).exec(function (err, color) {
+    if (err || !color) return;
+    color.combo = undefined;
+    return color.save();
+  });
+};
+
 mongoose.model('Color', ColorSchema);
