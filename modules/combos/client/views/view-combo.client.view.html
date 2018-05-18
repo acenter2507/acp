@@ -20,14 +20,14 @@
           <div class="combo-view-info">
             <table class="table">
               <tr>
-                <td>
+                <td class="w100">
                   <strong>カラー：</strong>
                 </td>
                 <td>
                   {{ vm.combo.color.name }}
                   <span ng-if="vm.combo.color" class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
                 </td>
-                <td>
+                <td class="w100">
                   <strong>減菌年月日：</strong>
                 </td>
                 <td>
@@ -35,11 +35,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td class="w100">
                   <strong>QRコード：</strong>
                 </td>
                 <td>{{ vm.combo.qr_code }}</td>
-                <td>
+                <td class="w100">
                   <strong>年月日：</strong>
                 </td>
                 <td>
@@ -47,7 +47,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td class="w100">
                   <strong>担当者：</strong>
                 </td>
                 <td>{{ vm.combo.author }}</td>

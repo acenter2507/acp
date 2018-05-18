@@ -232,6 +232,7 @@ exports.clearProduct = function (req, res) {
  * Copy new combo
  */
 exports.copyCombo = function (req, res) {
+  console.log(req.combo);
   var newCombo = new Combo({
     name: req.combo.name,
     image: req.combo.image,
