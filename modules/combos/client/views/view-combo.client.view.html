@@ -7,33 +7,45 @@
         <h3>{{vm.combo.name}}</h3>
         <div class="combo-view">
           <div class="combo-view-image">
-            <img src="{{ vm.combo.image }}">
+            <a ng-click="handleShowImage(vm.combo.image)">
+              <img src="{{ vm.combo.image }}">
+            </a>
           </div>
           <div class="combo-view-info">
             <table class="table">
               <tr>
-                <td><strong>カラー：</strong></td>
+                <td>
+                  <strong>カラー：</strong>
+                </td>
                 <td class="text-right">
                   {{ vm.combo.color.name }}
                   <span class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
                 </td>
               </tr>
               <tr>
-                <td><strong>QRコード：</strong></td>
+                <td>
+                  <strong>QRコード：</strong>
+                </td>
                 <td class="text-right">{{ vm.combo.qr_code }}</td>
               </tr>
               <tr>
-                <td><strong>担当者：</strong></td>
+                <td>
+                  <strong>担当者：</strong>
+                </td>
                 <td class="text-right">{{ vm.combo.author }}</td>
               </tr>
               <tr>
-                <td><strong>減菌年月日：</strong></td>
+                <td>
+                  <strong>減菌年月日：</strong>
+                </td>
                 <td class="text-right">
                   <span ng-if="vm.combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
                 </td>
               </tr>
               <tr>
-                <td><strong>年月日：</strong></td>
+                <td>
+                  <strong>年月日：</strong>
+                </td>
                 <td class="text-right">
                   <span ng-if="vm.combo.datetime">{{ vm.combo.datetime | LL }}</span>
                 </td>
