@@ -70,7 +70,7 @@ exports.update = function (req, res) {
       var newColorId = combo.color._id || combo.color;
       if (oldColorId !== newColorId) {
         Color.removeCombo(oldColorId);
-        Color.setCombo(oldColorId, combo._id);
+        Color.setCombo(newColorId, combo._id);
       }
     }
   });
