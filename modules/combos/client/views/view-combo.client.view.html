@@ -84,9 +84,9 @@
             </thead>
             <tbody>
               <tr ng-if="vm.combo.products.length === 0">
-                <td colspan="6">製品が登録されていません！</td>
+                <td colspan="6">製品が追加されていません！</td>
               </tr>
-              <tr ng-repeat="product in vm.combo.products track by $index">
+              <tr ng-repeat="product in vm.combo.products">
                 <td class="text-center">
                   <a ng-click="handleShowImage(product.image)">
                     <img class="product-thumbnail" src="{{product.image}}">
