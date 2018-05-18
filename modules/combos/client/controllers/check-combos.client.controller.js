@@ -124,6 +124,12 @@
       }, 100);
 
     };
+    vm.handleConfirmProduct = function (product) {
+      if (!vm.isChecking) return;
+      if (product.result !== 2) return;
+      vm.check.checkedProducts.push(_.clone(product));
+      handleCheckResult(product);
+    };
     vm.handleShowProduct = function (product) {
       $scope.product = product;
       ngDialog.openConfirm({
