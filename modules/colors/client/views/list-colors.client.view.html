@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Colors</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="color in vm.colors"
+       ui-sref="colors.view({ colorId: color._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="color.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="color.user" ng-bind="color.user.displayName"></span>
+        <span ng-if="!color.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="color.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.colors.$resolved && !vm.colors.length">
+    No Colors yet, why don't you <a ui-sref="colors.create">create one</a>?
+  </div>
+</section>
