@@ -23,7 +23,7 @@
                 <td>
                   <strong>カラー：</strong>
                 </td>
-                <td class="text-right">
+                <td>
                   {{ vm.combo.color.name }}
                   <span ng-if="vm.combo.color"  class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
                 </td>
@@ -32,19 +32,19 @@
                 <td>
                   <strong>QRコード：</strong>
                 </td>
-                <td class="text-right">{{ vm.combo.qr_code }}</td>
+                <td>{{ vm.combo.qr_code }}</td>
               </tr>
               <tr>
                 <td>
                   <strong>担当者：</strong>
                 </td>
-                <td class="text-right">{{ vm.combo.author }}</td>
+                <td>{{ vm.combo.author }}</td>
               </tr>
               <tr>
                 <td>
                   <strong>減菌年月日：</strong>
                 </td>
-                <td class="text-right">
+                <td>
                   <span ng-if="vm.combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
                 </td>
               </tr>
@@ -52,7 +52,7 @@
                 <td>
                   <strong>年月日：</strong>
                 </td>
-                <td class="text-right">
+                <td>
                   <span ng-if="vm.combo.datetime">{{ vm.combo.datetime | LL }}</span>
                 </td>
               </tr>
