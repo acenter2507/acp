@@ -7,7 +7,7 @@
         <h3>セット定義</h3>
         <div class="combo-form">
           <div class="combo-form-image" nv-file-over uploader="vm.uploader">
-
+            <img class="combo-form-image" src="{{ vm.imageUrl }}">
           </div>
           <div class="combo-form-info">
             <form name="vm.form.comboForm" ng-submit="vm.handleSaveCombo(vm.form.comboForm.$valid)" novalidate>
