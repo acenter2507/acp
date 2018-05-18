@@ -85,6 +85,7 @@
     .combo-form .combo-form-image img {
       max-width: 100%;
       max-height:100%;
+      border: none;
       height: auto; }
   .combo-form .combo-form-info {
     margin-left: 20px;
