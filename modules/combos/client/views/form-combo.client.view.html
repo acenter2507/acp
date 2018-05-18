@@ -34,7 +34,7 @@
                       <a ng-click="vm.handleSelectColor()"><span class="label mg5r">　　</span>なし</a>
                     </li>
                     <li class="h30" ng-repeat="color in vm.colors">
-                      <a ng-click="vm.handleSelectColor(color)">
+                      <a href="#" ng-click="vm.handleSelectColor(color)">
                         <span class="label mg5r" ng-style="{ 'background-color': color.color }">　　</span>
                         {{ color.name }}
                       </a>
