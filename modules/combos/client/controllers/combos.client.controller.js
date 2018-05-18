@@ -155,6 +155,10 @@
         handlePreviousScreen();
       });
     };
+    // Select color
+    vm.handleSelectColor = function (color) {
+      
+    };
     // Back to before state
     function handlePreviousScreen() {
       $state.go($state.previous.state.name || 'home', $state.previous.params);
