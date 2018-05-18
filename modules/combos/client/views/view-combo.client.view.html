@@ -12,11 +12,15 @@
           <div class="combo-view-info">
             <table class="table">
               <tr>
-                <td><strong>カラーコード：</strong></td>
+                <td><strong>カラー：</strong></td>
                 <td class="text-right">
                   {{ vm.combo.color.name }}
                   <span class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
                 </td>
+              </tr>
+              <tr>
+                <td><strong>QRコード：</strong></td>
+                <td class="text-right">{{ vm.combo.qr_code }}</td>
               </tr>
               <tr>
                 <td><strong>担当者：</strong></td>
