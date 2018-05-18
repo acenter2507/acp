@@ -257,3 +257,17 @@ exports.comboByID = function (req, res, next, id) {
     next();
   });
 };
+
+/**
+ * Change Combo image
+ */
+exports.image = function (req, res) {
+  var upload = multer(config.uploads.comboImage).single('comboImage');
+  var comboImageFilter = require(path.resolve('./config/lib/multer')).imageFilter;
+  upload.fileFilter = comboImageFilter;
+  upload(req, res, function (uploadError) {
+    if (uploadError) return res.status(400).send({ message: '写真をアップロードできません！' });
+    var imageUrl = config.uploads.comboImage.dest + req.file.filename;
+    return res.jsonp(imageUrl);
+  });
+};

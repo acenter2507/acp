@@ -103,7 +103,7 @@ exports.list = function (req, res) {
  */
 exports.image = function (req, res) {
   var upload = multer(config.uploads.productImage).single('productImage');
-  var productImageFilter = require(path.resolve('./config/lib/multer')).productImageFilter;
+  var productImageFilter = require(path.resolve('./config/lib/multer')).imageFilter;
   upload.fileFilter = productImageFilter;
   upload(req, res, function (uploadError) {
     if (uploadError) return res.status(400).send({ message: '写真をアップロードできません！' });

@@ -41,6 +41,12 @@ module.exports = {
       limits: {
         fileSize: 5*1024*1024 // Max file size in bytes (5 MB)
       }
+    },
+    comboImage: {
+      dest: './modules/combos/client/img/', // Profile upload destination path
+      limits: {
+        fileSize: 5*1024*1024 // Max file size in bytes (5 MB)
+      }
     }
   }
 };

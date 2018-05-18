@@ -10,6 +10,7 @@ module.exports = function (app) {
 
   app.route('/api/combos/search').post(combos.search);
   app.route('/api/combos/removeAll').post(combos.removeAll);
+  app.route('/api/combos/image').post(combos.image);
 
   // Combos Routes
   app.route('/api/combos')//.all(combosPolicy.isAllowed)
