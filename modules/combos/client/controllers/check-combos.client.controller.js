@@ -125,7 +125,7 @@
 
     };
     vm.handleConfirmProduct = function (product) {
-      vm.check.checking = false;
+      vm.check.dirty = false;
       $timeout(function () {
         $('#qr_code').focus();
       }, 100);
