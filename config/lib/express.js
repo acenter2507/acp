@@ -223,7 +223,7 @@ module.exports.initColorData = function (app) {
     if (colors.length > 0) {
       return;
     } else {
-      var colors = [
+      var _colors = [
         { name: '赤', code: '1001-64', color: '#ff0000' },
         { name: '黄', code: '1001-65', color: '#ffff00' },
         { name: 'オレンジ', code: '1001-66', color: '#ffa500' },
@@ -231,8 +231,8 @@ module.exports.initColorData = function (app) {
         { name: '茶', code: '1001-69', color: '#a52a2a' }
       ];
       var promise = [];
-      for (let index = 0; index < colors.length; index++) {
-        const element = colors[index];
+      for (let index = 0; index < _colors.length; index++) {
+        const element = _colors[index];
         var color = new Color(element);
         promise.push(color.save());
       }
