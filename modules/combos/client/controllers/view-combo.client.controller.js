@@ -94,6 +94,7 @@
         CombosApi.clearProduct(vm.combo._id)
           .success(function () {
             vm.combo.products = [];
+            if (!$scope.$$phase) $scope.$digest();
           })
           .error(function (err) {
             $scope.handleShowToast(err.message, true);
