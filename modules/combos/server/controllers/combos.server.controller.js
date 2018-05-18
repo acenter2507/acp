@@ -218,6 +218,7 @@ exports.clearProduct = function (req, res) {
       products.forEach(product => {
         Product.removeCombo(product, combo._id);
       });
+      res.end();
     }
   });
 };
