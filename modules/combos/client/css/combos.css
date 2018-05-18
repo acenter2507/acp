@@ -80,5 +80,7 @@
     width: 300px;
     height: 300px;
     border: 2px dashed lightgray; }
+  .combo-form .combo-form-image.nv-file-over {
+    border: 2px dashed #3399ff; }
   .combo-form .combo-form-image {
     flex-grow: 1;}
