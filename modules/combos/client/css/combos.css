@@ -78,7 +78,7 @@
   flex-direction: row; }
   .combo-form .combo-form-image {
     position: relative;
-    width: 300px;
+    width: 400px;
     height: 100%; }
   .combo-form .combo-form-image.nv-file-over {
     border: 2px dashed #3399ff; }

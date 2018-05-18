@@ -12,23 +12,26 @@
           <div class="combo-view-info">
             <table class="table">
               <tr>
-                <td>カラーコード</td>
-                <td class="text-right">{{ vm.combo.color_code }}</td>
-              </tr>
-              <tr>
-                <td>担当者</td>
-                <td class="text-right">{{ vm.combo.author }}</td>
-              </tr>
-              <tr>
-                <td>減菌年月日</td>
+                <td><strong>カラーコード：</strong></td>
                 <td class="text-right">
-                  <span ng-if="combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
+                  {{ vm.combo.color.name }}
+                  <span class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
                 </td>
               </tr>
               <tr>
-                <td>年月日</td>
+                <td><strong>担当者：</strong></td>
+                <td class="text-right">{{ vm.combo.author }}</td>
+              </tr>
+              <tr>
+                <td><strong>減菌年月日：</strong></td>
                 <td class="text-right">
-                  <span ng-if="combo.datetime">{{ vm.combo.datetime | LL }}</span>
+                  <span ng-if="vm.combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>年月日：</strong></td>
+                <td class="text-right">
+                  <span ng-if="vm.combo.datetime">{{ vm.combo.datetime | LL }}</span>
                 </td>
               </tr>
               <td colspan="2" class="text-right">
