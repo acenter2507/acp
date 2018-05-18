@@ -6,9 +6,9 @@
     .module('combos')
     .controller('CombosController', CombosController);
 
-  CombosController.$inject = ['$scope', '$state', 'comboResolve', 'ColorsService', 'FileUploader', '$window'];
+  CombosController.$inject = ['$timeout', '$scope', '$state', 'comboResolve', 'ColorsService', 'FileUploader', '$window'];
 
-  function CombosController($scope, $state, combo, ColorsService, FileUploader, $window) {
+  function CombosController($timeout, $scope, $state, combo, ColorsService, FileUploader, $window) {
     var vm = this;
 
     vm.combo = combo;
