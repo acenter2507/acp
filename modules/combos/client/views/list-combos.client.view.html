@@ -10,11 +10,15 @@
             <i class="fa fa-arrow-circle-down" ng-class="{'fa-rotate-180': openTools}"></i> 検索ツール
           </accordion-heading>
           <div class="form-group">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
+              <label for="qr_code">QRコード</label>
+              <input focus-me name="qr_code" type="text" ng-model="vm.condition.qr_code" class="form-control">
+            </div>
+            <div class="col-sm-4">
               <label for="key">検索キー</label>
               <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー">
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
               <label for="limit">表示件数</label>
               <input name="limit" type="number" ng-model="vm.condition.limit" class="form-control">
             </div>

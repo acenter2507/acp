@@ -129,6 +129,9 @@ exports.search = function (req, res) {
     ];
     and_arr.push({ $or: or_arr });
   }
+  if (condition.qr_code && condition.qr_code !== '') {
+    and_arr.push({ qr_code: condition.qr_code });
+  }
   if (and_arr.length > 0) {
     query = { $and: and_arr };
   }
