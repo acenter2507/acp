@@ -2,42 +2,45 @@
   <div class="d-sm-down-none h80"></div>
 
   <div class="row mg20t">
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="col-xs-12">
       <div class="well">
-        <h3>セット情報</h3>
-        <table class="table">
-          <tr>
-            <td>名称</td>
-            <td class="text-right">{{ vm.combo.name }}</td>
-          </tr>
-          <tr>
-            <td>カラーコード</td>
-            <td class="text-right">{{ vm.combo.color_code }}</td>
-          </tr>
-          <tr>
-            <td>担当者</td>
-            <td class="text-right">{{ vm.combo.author }}</td>
-          </tr>
-          <tr>
-            <td>減菌年月日</td>
-            <td class="text-right">
-              <span ng-if="combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
-            </td>
-          </tr>
-          <tr>
-            <td>年月日</td>
-            <td class="text-right">
-              <span ng-if="combo.datetime">{{ vm.combo.datetime | LL }}</span>
-            </td>
-          </tr>
-          <td colspan="2" class="text-right">
-            <a class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</a>
-            <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
-            <a class="btn btn-primary" ui-sref="combos.check({ comboId: vm.combo._id })">検査</a>
-            <a class="btn btn-success" ng-click="vm.handleCopyCombo()">コピー</a>
-          </td>
-          </tr>
-        </table>
+        <h3>{{vm.combo.name}}</h3>
+        <div class="combo-view">
+          <div class="combo-view-image">
+            <img src="{{ vm.combo.image }}">
+          </div>
+          <div class="combo-view-info">
+            <table class="table">
+              <tr>
+                <td>カラーコード</td>
+                <td class="text-right">{{ vm.combo.color_code }}</td>
+              </tr>
+              <tr>
+                <td>担当者</td>
+                <td class="text-right">{{ vm.combo.author }}</td>
+              </tr>
+              <tr>
+                <td>減菌年月日</td>
+                <td class="text-right">
+                  <span ng-if="combo.datetime">{{ vm.combo.sterilize_date | LL }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>年月日</td>
+                <td class="text-right">
+                  <span ng-if="combo.datetime">{{ vm.combo.datetime | LL }}</span>
+                </td>
+              </tr>
+              <td colspan="2" class="text-right">
+                <a class="btn btn-info" ui-sref="combos.edit({ comboId: vm.combo._id })">編集</a>
+                <button type="button" class="btn btn-danger" ng-click="vm.handleDeleteCombo()">削除</button>
+                <a class="btn btn-primary" ui-sref="combos.check({ comboId: vm.combo._id })">検査</a>
+                <a class="btn btn-success" ng-click="vm.handleCopyCombo()">コピー</a>
+              </td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 

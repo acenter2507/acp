@@ -97,3 +97,19 @@
   .combo-form .combo-form-info {
     margin-left: 20px;
     flex-grow: 1;}
+
+.combo-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+  .combo-view .combo-view-image {
+    width: 300px;
+    height: 100%; }
+    .combo-view .combo-view-image img {
+      max-width: 100%;
+      max-height:100%;
+      border: none;
+      height: auto; }
+  .combo-view .combo-view-info {
+    margin-left: 20px;
+    flex-grow: 1; }
