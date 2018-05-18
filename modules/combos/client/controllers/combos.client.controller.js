@@ -157,7 +157,9 @@
     };
     // Select color
     vm.handleSelectColor = function (color) {
-      
+      if (!color) {
+        vm.combo.color = undefined;
+      }
     };
     // Back to before state
     function handlePreviousScreen() {
