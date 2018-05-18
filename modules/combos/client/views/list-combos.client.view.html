@@ -51,8 +51,9 @@
               <th ng-show="vm.isSelecting" class="text-center">
                 <input type="checkbox" ng-change="vm.handleCheckedAll()" ng-model="vm.checkedAll">
               </th>
+              <th class="text-center">写真</th>
+              <th>カラー</th>
               <th>名称</th>
-              <th>カラーコード</th>
               <th>担当者</th>
               <th>年月日</th>
               <th>減菌年月日</th>
@@ -68,10 +69,18 @@
               <td ng-show="vm.isSelecting" class="text-center">
                 <input type="checkbox" ng-model="combo.isChecked">
               </td>
+              <td class="text-center">
+                <a ng-click="handleShowImage(combo.image)">
+                  <img class="product-thumbnail" src="{{combo.image}}">
+                </a>
+              </td>
+              <td>
+                {{ combo.color.name }}
+                <span ng-if="combo.color" class="label mg5l" ng-style="{ 'background-color': combo.color.color }">　　</span>
+              </td>
               <td>
                 <a ui-sref="combos.check({ comboId: combo._id })">{{ combo.name }}</a>
               </td>
-              <td>{{ combo.color_code }}</td>
               <td>{{ combo.author }}</td>
               <td>
                 <span ng-if="combo.datetime">{{ combo.datetime | LL }}</span>
