@@ -6,9 +6,9 @@
     .module('combos')
     .controller('ComboViewController', ComboViewController);
 
-  ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi', 'CombosApi'];
+  ComboViewController.$inject = ['$scope', '$state', '$timeout', 'comboResolve', 'ProductsApi', 'CombosApi', 'ngDialog'];
 
-  function ComboViewController($scope, $state, $timeout, combo, ProductsApi, CombosApi) {
+  function ComboViewController($scope, $state, $timeout, combo, ProductsApi, CombosApi, ngDialog) {
     var vm = this;
 
     vm.combo = combo;
