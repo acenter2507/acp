@@ -8,8 +8,10 @@ var path = require('path'),
   Combo = mongoose.model('Combo'),
   Color = mongoose.model('Color'),
   Product = mongoose.model('Product'),
+  config = require(path.resolve('./config/config')),
+  multer = require('multer'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-  _ = require('lodash');
+  _ = require('underscore');
 
 /**
  * Create a Combo
