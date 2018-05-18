@@ -63,7 +63,7 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
       templateUrl: 'imageTemplate.html',
       scope: $scope,
       showClose: false,
-      width: '90%'
+      width: 500
     }).then(function(res) {
       delete $scope.url;
     }, function(res) {
