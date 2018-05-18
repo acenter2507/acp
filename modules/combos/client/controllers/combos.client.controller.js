@@ -114,7 +114,7 @@
       if (vm.isGetAvatarFromFile) {
         vm.uploader.uploadAll();
       } else {
-        product.image = vm.imageUrl;
+        combo.image = vm.imageUrl;
         handleSaveCombo();
       }
 
