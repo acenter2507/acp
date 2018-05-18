@@ -89,8 +89,8 @@
       height: auto; }
     .combo-form .combo-form-image .btn-upload-file {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      right: 10px;
+      top: 10px;
       display: none; }
     .combo-form .combo-form-image:hover .btn-upload-file {
       display: block; }
