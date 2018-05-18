@@ -128,7 +128,7 @@
       if (!vm.isChecking) return;
       if (product.result !== 2) return;
       vm.check.checkedProducts.push(_.clone(product));
-      handleCheckResult(product);
+      validateProducts(product);
     };
     vm.handleShowProduct = function (product) {
       $scope.product = product;
