@@ -64,51 +64,57 @@
       </div>
     </div>
     <div class="col-xs-12">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead class="bg-primary">
-            <tr>
-              <th class="text-center">結果</th>
-              <th class="text-center">写真</th>
-              <th>ブランド</th>
-              <th>名称</th>
-              <th>型番</th>
-              <th>ロット番号</th>
-              <th>２次元コード</th>
-              <th>導入年月日</th>
-              <th>交換日</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-if="vm.combo.products.length === 0">
-              <td colspan="8">製品が登録されていません！</td>
-            </tr>
-            <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
-              <td class="text-center">
-                <a ng-click="handleShowImage(product.image)">
-                  <img class="product-thumbnail" src="{{product.image}}">
-                </a>
-              </td>
-              <td>{{ product.brand }}</td>
-              <td>
-                <a ng-click="vm.handleShowProduct(product)">{{ product.name }}</a>
-              </td>
-              <td>{{ product.model_number }}</td>
-              <td>{{ product.lot_number }}</td>
-              <td>{{ product.qr_code }}</td>
-              <td>
-                <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
-              </td>
-              <td>
-                <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="well">
+        <h3>製品一覧</h3>
+        <div class="form-group text-right">
+          <button class="btn btn-primary" ng-click="vm.handleStartSearchProduct()">追加</button>
+          <button class="btn btn-danger" ng-click="vm.handleClearProduct()">クリア</button>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead class="bg-primary">
+              <tr>
+                <th class="text-center">写真</th>
+                <th>ブランド</th>
+                <th>名称</th>
+                <th>型番</th>
+                <th>ロット番号</th>
+                <th>２次元コード</th>
+                <th>導入年月日</th>
+                <th>交換日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-if="vm.combo.products.length === 0">
+                <td colspan="8">製品が登録されていません！</td>
+              </tr>
+              <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
+                <td class="text-center">
+                  <a ng-click="handleShowImage(product.image)">
+                    <img class="product-thumbnail" src="{{product.image}}">
+                  </a>
+                </td>
+                <td>{{ product.brand }}</td>
+                <td>
+                  <a ng-click="vm.handleShowProduct(product)">{{ product.name }}</a>
+                </td>
+                <td>{{ product.model_number }}</td>
+                <td>{{ product.lot_number }}</td>
+                <td>{{ product.qr_code }}</td>
+                <td>
+                  <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
+                </td>
+                <td>
+                  <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div class="col-xs-12">
+    <!-- <div class="col-xs-12">
       <div class="well" ng-if="vm.combo._id">
         <h3>製品一覧</h3>
         <p class="text-muted" ng-if="vm.combo.products.length === 0">製品が追加されていません！</p>
@@ -141,7 +147,7 @@
         </div>
         <div class="clearfix"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="d-sm-down-none h600"></div>
