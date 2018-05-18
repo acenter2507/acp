@@ -31,20 +31,30 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li ng-repeat="color in vm.colors">
-                      {{color.name}}
-                      <span class="label" ng-style="{ 'background-color': color.color }"></span>
+                      <a href="#">
+                        <span class="label" ng-style="{ 'background-color': color.color }">{{color.name}}</span>
+                      </a>
+
+
                     </li>
                   </ul>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">HTML</a></li>
-                      <li><a href="#">CSS</a></li>
-                      <li><a href="#">JavaScript</a></li>
-                    </ul>
-                  </div>
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                  </ul>
+                </div>
                 <!-- <select name="color_code" class="form-control" ng-model="vm.combo.color">
                   <option value>なし</option>
                   <option ng-repeat="color in vm.colors" value="{{color._id}}" ng-selected="vm.combo.color && color._id === vm.combo.color._id">
