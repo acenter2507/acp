@@ -159,7 +159,7 @@
     // Select color
     vm.handleSelectColor = function (color) {
       if (!color) {
-        vm.combo.color = null;
+        vm.combo.color = '';
       } else {
         vm.combo.color = color;
       }
