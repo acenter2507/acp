@@ -111,6 +111,19 @@
           $scope.handleShowToast(err.message, true);
         });
     };
+    vm.handleShowProduct = function (product) {
+      $scope.product = product;
+      ngDialog.openConfirm({
+        templateUrl: 'productViewTemplate.html',
+        scope: $scope,
+        showClose: false,
+        width: 90
+      }).then(function (res) {
+        delete $scope.product;
+      }, function (res) {
+        delete $scope.product;
+      });
+    };
     function handleSearchProducts() {
       if (vm.isSearching) return;
       vm.isSearching = true;
