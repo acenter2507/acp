@@ -103,7 +103,7 @@
       });
     }
 
-    vm.handleStartSaveCombo = function () {
+    vm.handleStartSaveCombo = function (isValid) {
       if (vm.busy) return;
       vm.busy = true;
       if (!isValid) {
