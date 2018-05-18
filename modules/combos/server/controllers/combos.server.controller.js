@@ -35,6 +35,7 @@ exports.read = function (req, res) {
 
   Combo.findById(req.combo._id)
     .populate('products')
+    .populate('color')
     .exec(function (err, combo) {
       if (err)
         return res.status(400).send({

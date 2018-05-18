@@ -159,6 +159,8 @@
     vm.handleSelectColor = function (color) {
       if (!color) {
         vm.combo.color = undefined;
+      } else {
+        vm.combo.color = color;
       }
     };
     // Back to before state
