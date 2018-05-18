@@ -78,8 +78,7 @@
   flex-direction: row; }
   .combo-form .combo-form-image {
     width: 300px;
-    height: 300px;
-    border: 2px dashed lightgray; }
+    height: 300px; }
   .combo-form .combo-form-image.nv-file-over {
     border: 2px dashed #3399ff; }
     .combo-form .combo-form-image img {
