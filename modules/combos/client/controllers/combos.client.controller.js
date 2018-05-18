@@ -6,9 +6,9 @@
     .module('combos')
     .controller('CombosController', CombosController);
 
-  CombosController.$inject = ['$timeout', '$scope', '$state', 'comboResolve', 'ColorsService', 'FileUploader', '$window', 'ngDialog'];
+  CombosController.$inject = ['$timeout', '$scope', '$state', 'comboResolve', 'ColorsService', 'FileUploader', '$window', 'ngDialog', 'CommonService'];
 
-  function CombosController($timeout, $scope, $state, combo, ColorsService, FileUploader, $window, ngDialog) {
+  function CombosController($timeout, $scope, $state, combo, ColorsService, FileUploader, $window, ngDialog, CommonService) {
     var vm = this;
 
     vm.combo = combo;
@@ -89,13 +89,13 @@
         var blob;
         if (res.value === 1) {
           vm.imageUrl = data;
-          blob = dataURItoBlob(data);
+          blob = CommonService.dataURItoBlob(data);
           vm.uploader.queue[0]._file = blob;
           vm.isGetAvatarFromFile = true;
           delete $scope.sourceImageUrl;
         } else {
           vm.imageUrl = res.value;
-          blob = dataURItoBlob(res.value);
+          blob = CommonService.dataURItoBlob(res.value);
           vm.uploader.queue[0]._file = blob;
           vm.isGetAvatarFromFile = true;
           delete $scope.sourceImageUrl;

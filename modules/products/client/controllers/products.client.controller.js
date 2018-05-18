@@ -6,9 +6,9 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$timeout', '$window', '$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog'];
+  ProductsController.$inject = ['$timeout', '$window', '$scope', '$state', 'productResolve', 'FileUploader', 'ngDialog', 'CommonService'];
 
-  function ProductsController($timeout, $window, $scope, $state, product, FileUploader, ngDialog) {
+  function ProductsController($timeout, $window, $scope, $state, product, FileUploader, ngDialog, CommonService) {
     var vm = this;
 
     vm.product = product;
@@ -89,13 +89,13 @@
         var blob;
         if (res.value === 1) {
           vm.imageUrl = data;
-          blob = dataURItoBlob(data);
+          blob = CommonService.dataURItoBlob(data);
           vm.uploader.queue[0]._file = blob;
           delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
         } else {
           vm.imageUrl = res.value;
-          blob = dataURItoBlob(res.value);
+          blob = CommonService.dataURItoBlob(res.value);
           vm.uploader.queue[0]._file = blob;
           delete $scope.sourceImageUrl;
           vm.isGetAvatarFromFile = true;
@@ -162,17 +162,6 @@
         vm.busy = false;
         $scope.handleShowToast(res.data.message, true);
       }
-    }
-    // Change image from URI to blob
-    function dataURItoBlob(dataURI) {
-      if (!dataURI) return;
-      var binary = atob(dataURI.split(',')[1]);
-      var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-      var array = [];
-      for (var i = 0; i < binary.length; i++) {
-        array.push(binary.charCodeAt(i));
-      }
-      return new Blob([new Uint8Array(array)], { type: mimeString });
     }
     // Back to before state
     function handlePreviousScreen() {

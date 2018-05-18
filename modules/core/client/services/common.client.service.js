@@ -33,11 +33,22 @@ function CommonService() {
     }
     return true;
   };
-  this.isStringEmpty = function(str) {
+  this.isStringEmpty = function (str) {
     if (!str || str === '') {
       return true;
     }
     return false;
+  };
+  // Change image from URI to blob
+  this.dataURItoBlob = function (dataURI) {
+    if (!dataURI) return;
+    var binary = atob(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i));
+    }
+    return new Blob([new Uint8Array(array)], { type: mimeString });
   };
   return this;
 }
