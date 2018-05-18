@@ -43,6 +43,9 @@
         // }
       });
       if (!$scope.$$phase) $scope.$digest();
+      $timeout(function () {
+        $('#qr_code').focus();
+      }, 100);
     }
 
     vm.handleInputCode = function () {
