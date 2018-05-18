@@ -6,12 +6,13 @@
     .module('combos')
     .controller('CombosController', CombosController);
 
-  CombosController.$inject = ['$scope', '$state', 'comboResolve'];
+  CombosController.$inject = ['$scope', '$state', 'comboResolve', 'ColorsService', 'FileUploader'];
 
-  function CombosController($scope, $state, combo) {
+  function CombosController($scope, $state, combo, ColorsService, FileUploader) {
     var vm = this;
 
     vm.combo = combo;
+    vm.colors = ColorsService.query();
     vm.form = {};
 
     onCreate();
@@ -21,7 +22,23 @@
         vm.combo.datetime = (vm.combo.datetime) ? new Date(vm.combo.datetime) : vm.combo.datetime;
         vm.combo.sterilize_date = (vm.combo.sterilize_date) ? new Date(vm.combo.sterilize_date) : vm.combo.sterilize_date;
       }
+      prepareUploader();
     }
+
+    function prepareUploader() {
+      vm.uploader = new FileUploader({
+        url: 'api/combos/image',
+        alias: 'comboImage'
+      });
+      vm.uploader.filters.push({
+        name: 'imageFilter',
+        fn: function (item, options) {
+          var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+          return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+      });
+    }
+
 
     vm.handleSaveCombo = function () {
       if (vm.combo._id) {
