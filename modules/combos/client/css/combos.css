@@ -83,4 +83,5 @@
   .combo-form .combo-form-image.nv-file-over {
     border: 2px dashed #3399ff; }
   .combo-form .combo-form-info {
+    margin-left: 20px;
     flex-grow: 1;}
