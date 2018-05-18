@@ -56,6 +56,8 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var combo = req.combo;
 
+  var oldColorId = combo.color._id || combo.color;
+
   combo = _.extend(combo, req.body);
 
   combo.save(function (err) {
@@ -65,6 +67,11 @@ exports.update = function (req, res) {
       });
     } else {
       res.jsonp(combo);
+      var newColorId = combo.color._id || combo.color;
+      if (oldColorId !== newColorId) {
+        Color.removeCombo(oldColorId);
+        Color.setCombo(oldColorId, combo._id);
+      }
     }
   });
 };
