@@ -116,6 +116,7 @@ exports.list = function (req, res) {
 exports.search = function (req, res) {
   var page = req.body.page || 1;
   var condition = req.body.condition || {};
+  console.log(condition);
 
   var query = {};
   var and_arr = [];
