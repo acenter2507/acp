@@ -56,7 +56,7 @@
       // Called after the user has successfully uploaded a new picture
       vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
         vm.combo.image = response;
-        handleSaveProduct();
+        handleSaveCombo();
         vm.uploader.clearQueue();
       };
       // Called after the user has failed to uploaded a new picture
