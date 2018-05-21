@@ -34,7 +34,7 @@ function clear_image() {
 function get_combos() {
   var Combo = mongoose.model('Combo');
   return new Promise(function (resolve, reject) {
-    Product.find().exec(function (err, combos) {
+    Combo.find().exec(function (err, combos) {
       if (err) return reject();
       return resolve(combos);
     });
