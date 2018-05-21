@@ -224,11 +224,20 @@ module.exports.initColorData = function (app) {
       return;
     } else {
       var _colors = [
-        { name: '赤', code: '1001-64', color: '#ff0000' },
-        { name: '黄', code: '1001-65', color: '#ffff00' },
-        { name: 'オレンジ', code: '1001-66', color: '#ffa500' },
-        { name: '青', code: '1001-67', color: '#0000ff' },
-        { name: '茶', code: '1001-69', color: '#a52a2a' }
+        { name: '赤', code: '1001-64', color: '#CC3300' },
+        { name: '黄', code: '1001-65', color: '#FFFF00' },
+        { name: 'オレンジ', code: '1001-66', color: '#FF9900' },
+        { name: '青', code: '1001-67', color: '#3333FF' },
+        { name: '緑', code: '1001-68', color: '#336600' },
+        { name: '茶', code: '1001-69', color: '#993300' },
+        { name: '白', code: '1001-70', color: '#FFFFFF' },
+        { name: '黒', code: '1001-71', color: '#000000' },
+        { name: '朱', code: '1001-94', color: '#FF6600' },
+        { name: '紫', code: '1001-95', color: '#990099' },
+        { name: 'ライムグリーン', code: '1001-96', color: '#66CC00' },
+        { name: 'グレイ', code: '1001-97', color: '#666666' },
+        { name: 'ピンク', code: '1001-98', color: '#FF33CC' },
+        { name: 'ライトブルー', code: '1001-99', color: '#3399FF' }
       ];
       var promise = [];
       for (let index = 0; index < _colors.length; index++) {
