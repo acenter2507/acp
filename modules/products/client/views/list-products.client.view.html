@@ -12,7 +12,7 @@
           <div class="form-group">
             <div class="col-sm-6">
               <label for="key">検索キー</label>
-              <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー" autocomplete="off">
+              <input name="key" type="text" ng-model="vm.condition.key" class="form-control" placeholder="検索キー" autocomplete="off" enter-me="vm.handleStartSearch()">
             </div>
             <div class="col-sm-6">
               <label for="limit">表示件数</label>
