@@ -169,7 +169,7 @@ exports.removeAll = function (req, res) {
   //       return res.status(400).send({ message: 'セットを削除できません！' });
   //     res.end();
   //     ids.forEach(comboId => {
-        
+
   //       Product.find({ combos: comboId }).exec((err, products) => {
   //         products.forEach(product => {
   //           Product.removeCombo(product._id, comboId);
@@ -178,16 +178,16 @@ exports.removeAll = function (req, res) {
   //     });
   //   });
 
-    function clearInfoOfCombo(combo) {
-      var colorId = combo.color._id || combo.color;
-      Color.removeCombo(colorId);
-      Product.find({ combos: combo._id }).exec((err, products) => {
-        products.forEach(product => {
-          Product.removeCombo(product._id, combo._id);
-        });
+  function clearInfoOfCombo(combo) {
+    var colorId = combo.color._id || combo.color;
+    Color.removeCombo(colorId);
+    Product.find({ combos: combo._id }).exec((err, products) => {
+      products.forEach(product => {
+        Product.removeCombo(product._id, combo._id);
       });
-      combo.remove();
-    }
+    });
+    combo.remove();
+  }
 };
 
 /**
