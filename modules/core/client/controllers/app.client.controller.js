@@ -64,7 +64,7 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
       scope: $scope,
       appendClassName: 'ngdialog-custom',
       showClose: false,
-      width: 800
+      width: 700
     }).then(function(res) {
       delete $scope.url;
     }, function(res) {
