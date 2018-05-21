@@ -154,19 +154,40 @@ exports.search = function (req, res) {
 exports.removeAll = function (req, res) {
   var ids = req.body.comboIds || [];
 
-  Combo.remove({ _id: { $in: ids } })
-    .exec(function (err) {
-      if (err)
-        return res.status(400).send({ message: 'セットを削除できません！' });
-      res.end();
-      ids.forEach(comboId => {
-        Product.find({ combos: comboId }).exec((err, products) => {
-          products.forEach(product => {
-            Product.removeCombo(product._id, comboId);
-          });
+  Combo.find({ _id: { $in: ids } })
+    .exec(function (err, combos) {
+      var promise = [];
+      combos.forEach(combo => {
+        promise.push(clearInfoOfCombo(combo));
+      });
+      Promise.all(promise);
+    });
+
+  // Combo.remove({ _id: { $in: ids } })
+  //   .exec(function (err) {
+  //     if (err)
+  //       return res.status(400).send({ message: 'セットを削除できません！' });
+  //     res.end();
+  //     ids.forEach(comboId => {
+        
+  //       Product.find({ combos: comboId }).exec((err, products) => {
+  //         products.forEach(product => {
+  //           Product.removeCombo(product._id, comboId);
+  //         });
+  //       });
+  //     });
+  //   });
+
+    function clearInfoOfCombo(combo) {
+      var colorId = combo.color._id || combo.color;
+      Color.removeCombo(colorId);
+      Product.find({ combos: combo._id }).exec((err, products) => {
+        products.forEach(product => {
+          Product.removeCombo(product._id, combo._id);
         });
       });
-    });
+      combo.remove();
+    }
 };
 
 /**
