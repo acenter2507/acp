@@ -24,7 +24,7 @@
     function prepareCondition() {
       vm.condition = {
         sort: '-created',
-        limit: 50
+        limit: 20
       };
     }
 
