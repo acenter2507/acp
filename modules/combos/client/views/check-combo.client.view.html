@@ -171,14 +171,12 @@
               <th>名称</th>
               <th>型番</th>
               <th>ロット番号</th>
-              <th>QRコード</th>
               <th>導入年月日</th>
-              <th>交換日</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-if="vm.combo.products.length === 0">
-              <td colspan="9">製品が登録されていません！</td>
+              <td colspan="7">製品が登録されていません！</td>
             </tr>
             <tr ng-repeat="product in vm.combo.products track by $index | orderBy: '-result'">
               <td class="text-center" ng-switch="product.result">
@@ -199,12 +197,8 @@
               </td>
               <td>{{ product.model_number }}</td>
               <td>{{ product.lot_number }}</td>
-              <td>{{ product.qr_code }}</td>
               <td>
                 <span ng-if="product.intro_date">{{ product.intro_date | LL }}</span>
-              </td>
-              <td>
-                <span ng-if="product.exchange_date">{{ product.exchange_date | LL }}</span>
               </td>
             </tr>
           </tbody>
