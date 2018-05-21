@@ -219,35 +219,45 @@ module.exports.configureSocketIO = function (app, db) {
 module.exports.initColorData = function (app) {
   var mongoose = require('mongoose');
   var Color = mongoose.model('Color');
-  Color.find().exec(function (err, colors) {
-    if (colors.length > 0) {
-      return;
-    } else {
-      var _colors = [
-        { name: '赤', code: '1001-64', color: '#CC3300' },
-        { name: '黄', code: '1001-65', color: '#FFFF00' },
-        { name: 'オレンジ', code: '1001-66', color: '#FF9900' },
-        { name: '青', code: '1001-67', color: '#3333FF' },
-        { name: '緑', code: '1001-68', color: '#336600' },
-        { name: '茶', code: '1001-69', color: '#993300' },
-        { name: '白', code: '1001-70', color: '#FFFFFF' },
-        { name: '黒', code: '1001-71', color: '#000000' },
-        { name: '朱', code: '1001-94', color: '#FF6600' },
-        { name: '紫', code: '1001-95', color: '#990099' },
-        { name: 'ライムグリーン', code: '1001-96', color: '#66CC00' },
-        { name: 'グレイ', code: '1001-97', color: '#666666' },
-        { name: 'ピンク', code: '1001-98', color: '#FF33CC' },
-        { name: 'ライトブルー', code: '1001-99', color: '#3399FF' }
-      ];
-      var promise = [];
-      for (let index = 0; index < _colors.length; index++) {
-        const element = _colors[index];
-        var color = new Color(element);
-        promise.push(color.save());
+  // Reset DB
+  if (process.env.DB_RESET === 'true') {
+    Color.remove({}, function () {
+      createColorData();
+    });
+  } else {
+    Color.find().exec(function (err, colors) {
+      if (colors.length > 0) {
+        return;
+      } else {
+        createColorData();
       }
-      Promise.all(promise);
+    });
+  }
+  function createColorData() {
+    var _colors = [
+      { name: '赤', code: '1001-64', color: '#CC3300' },
+      { name: '黄', code: '1001-65', color: '#FFFF00' },
+      { name: 'オレンジ', code: '1001-66', color: '#FF9900' },
+      { name: '青', code: '1001-67', color: '#3333FF' },
+      { name: '緑', code: '1001-68', color: '#336600' },
+      { name: '茶', code: '1001-69', color: '#993300' },
+      { name: '白', code: '1001-70', color: '#FFFFFF' },
+      { name: '黒', code: '1001-71', color: '#000000' },
+      { name: '朱', code: '1001-94', color: '#FF6600' },
+      { name: '紫', code: '1001-95', color: '#990099' },
+      { name: 'ライムグリーン', code: '1001-96', color: '#66CC00' },
+      { name: 'グレイ', code: '1001-97', color: '#666666' },
+      { name: 'ピンク', code: '1001-98', color: '#FF33CC' },
+      { name: 'ライトブルー', code: '1001-99', color: '#3399FF' }
+    ];
+    var promise = [];
+    for (let index = 0; index < _colors.length; index++) {
+      const element = _colors[index];
+      var color = new Color(element);
+      promise.push(color.save());
     }
-  });
+    Promise.all(promise);
+  }
 };
 
 

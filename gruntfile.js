@@ -23,6 +23,10 @@ module.exports = function (grunt) {
       },
       prod: {
         NODE_ENV: 'production'
+      },
+      release: {
+        NODE_ENV: 'production',
+        DB_RESET: 'true'
       }
     },
     watch: {
@@ -247,6 +251,8 @@ module.exports = function (grunt) {
     var done = this.async();
 
     grunt.file.mkdir(path.normalize(__dirname + '/modules/users/client/img/profile/uploads'));
+    grunt.file.mkdir(path.normalize(__dirname + '/modules/combos/client/img'));
+    grunt.file.mkdir(path.normalize(__dirname + '/modules/products/client/img'));
 
     done();
   });
@@ -318,4 +324,7 @@ module.exports = function (grunt) {
 
   // Run the project in production mode
   grunt.registerTask('prod', ['build', 'env:prod', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
+
+  // 最初一回目のサーバースタート
+  grunt.registerTask('release', ['build', 'env:release', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
 };
