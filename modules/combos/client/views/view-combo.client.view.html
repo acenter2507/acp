@@ -24,8 +24,11 @@
                   <strong>カラー：</strong>
                 </td>
                 <td>
-                  {{ vm.combo.color.name }}
-                  <span ng-if="vm.combo.color" class="label mg5l" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
+                  <span ng-if="vm.combo.color">
+                    <span class="label mg5r" ng-style="{ 'background-color': vm.combo.color.color }">　　</span>
+                    <span>{{vm.combo.color.code}}</span>
+                    <span>({{vm.combo.color.name}})</span>
+                  </span>
                 </td>
                 <td class="w100">
                   <strong>減菌年月日：</strong>
