@@ -1,7 +1,7 @@
 'use strict';
 
 var CronJob = require('cron').CronJob,
-  clear_product_image = require('../jobs/clear-product-image');
+  clear_product_image = require('../jobs/clear-product-image'),
   clear_combo_image = require('../jobs/clear-combo-image');
 
 
