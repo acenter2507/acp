@@ -7,7 +7,8 @@ angular
   .directive('focusMe', focusMeDirective)
   .directive('a', blockExpandDirective)
   .directive('a', selectInListDirective)
-  .directive('button', toggleLeftSideDirective);
+  .directive('button', toggleLeftSideDirective)
+  .directive('enterMe', enterMeDirective);
 
 // Hủy tác dụng của link rỗng
 function preventClickDirective() {
@@ -133,4 +134,17 @@ function toggleLeftSideDirective() {
       }
     });
   }
+}
+// Focus me
+function enterMeDirective() {
+  return function (scope, element, attrs) {
+    element.bind("keydown keypress", function (event) {
+      if (event.which === 13) {
+        scope.$apply(function () {
+          scope.$eval(attrs.myEnter);
+        });
+        event.preventDefault();
+      }
+    });
+  };
 }
