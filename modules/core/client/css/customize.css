@@ -9,10 +9,6 @@
     height: auto;
     margin:auto; }
 
-    .ngdialog.ngdialog-theme-default {
-      /* padding-bottom: 160px; */
-      /* padding-top: 160px; */
-  }
-.ngdialog-image {
+.ngdialog-custom {
   padding-top: 50px !important;
   padding-bottom: 0px !important;}

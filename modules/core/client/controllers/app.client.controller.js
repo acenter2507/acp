@@ -62,7 +62,7 @@ function AppController($scope, toastr, ngDialog, $timeout, Socket) {
     ngDialog.openConfirm({
       templateUrl: 'imageTemplate.html',
       scope: $scope,
-      appendClassName: 'ngdialog-image',
+      appendClassName: 'ngdialog-custom',
       showClose: false,
       width: 800
     }).then(function(res) {

@@ -115,6 +115,7 @@
       $scope.product = product;
       ngDialog.openConfirm({
         templateUrl: 'productViewTemplate.html',
+        appendClassName: 'ngdialog-custom',
         scope: $scope,
         showClose: false,
         width: 800
