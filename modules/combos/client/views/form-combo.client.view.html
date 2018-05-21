@@ -26,6 +26,12 @@
                 <label for="color_code">カラー</label>
                 <div class="dropdown">
                   <button class="btn btn-default dropdown-toggle btn-block" type="button" data-toggle="dropdown" style="text-align: left;">
+                    <span ng-show="!vm.combo.color">カラー選択</span>
+                    <span ng-show="vm.combo.color">
+                      <span class="label mg5r" ng-style="{ 'background-color': color.color }">　　</span>
+                      <span>{{vm.combo.color.name}}</span>
+                      <span>{{vm.combo.color.code}}</span>
+                    </span>
                     {{(vm.combo.color) ? vm.combo.color.name : 'カラー選択' }}
                     <span class="caret"></span>
                   </button>
