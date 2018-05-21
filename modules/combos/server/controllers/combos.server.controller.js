@@ -161,6 +161,7 @@ exports.removeAll = function (req, res) {
         promise.push(clearInfoOfCombo(combo));
       });
       Promise.all(promise);
+      res.end();
     });
 
   // Combo.remove({ _id: { $in: ids } })
