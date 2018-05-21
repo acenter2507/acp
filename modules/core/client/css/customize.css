@@ -11,5 +11,6 @@
     margin:auto; }
 
 .ngdialog-custom {
+  background: transparent;
   padding-top: 50px !important;
   padding-bottom: 0 !important;}
