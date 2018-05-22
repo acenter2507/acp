@@ -5,9 +5,9 @@
     .module('combos')
     .controller('CombosListController', CombosListController);
 
-  CombosListController.$inject = ['$scope', '$state', 'CombosService', 'CombosApi', 'CommonService'];
+  CombosListController.$inject = ['$scope', '$state', 'CombosService', 'CombosApi', 'CommonService', '$timeout'];
 
-  function CombosListController($scope, $state, CombosService, CombosApi, CommonService) {
+  function CombosListController($scope, $state, CombosService, CombosApi, CommonService, $timeout) {
     var vm = this;
 
     vm.combos = [];
@@ -50,6 +50,9 @@
     }
     vm.handleClearCondition = function () {
       prepareCondition();
+      $timeout(function () {
+        $('#qr_code').focus();
+      }, 100);
     };
 
     vm.handlePageChanged = function (page) {
